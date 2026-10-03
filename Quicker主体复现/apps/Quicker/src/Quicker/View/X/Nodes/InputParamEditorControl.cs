@@ -129,9 +129,12 @@ public class InputParamEditorControl : Control
 
 	private void bcYLHrp0jV6()
 	{
-		Grid grid = (BodyGrid = new Grid());
-		grid.Margin = new Thickness(0.0, 0.0, 0.0, 10.0);
-		grid.Focusable = false;
+		Grid grid = new Grid
+		{
+			Margin = new Thickness(0.0, 0.0, 0.0, 10.0),
+			Focusable = false
+		};
+		BodyGrid = grid;
 		grid.ColumnDefinitions.Add(new ColumnDefinition
 		{
 			Width = new GridLength(120.0)
@@ -140,13 +143,6 @@ public class InputParamEditorControl : Control
 		{
 			Width = new GridLength(10.0)
 		});
-		int num = 1;
-		if (yPEZL6FrONqBpOffp82J != null)
-		{
-			goto IL_009e;
-		}
-		goto IL_0108;
-		IL_009e:
 		grid.ColumnDefinitions.Add(new ColumnDefinition
 		{
 			Width = new GridLength(1.0, GridUnitType.Star)
@@ -155,83 +151,52 @@ public class InputParamEditorControl : Control
 		{
 			Width = new GridLength(40.0)
 		});
-		if (wCFLHiuOIOX.Type == VarType.Boolean)
+		if (wCFLHiuOIOX.Type != VarType.Boolean || wCFLHiuOIOX.VariableMode != ParamVariableMode.Input)
 		{
-			num = 0;
-			if (!c40oj2FrJSHrTDhjlF4o())
+			TextBlock label = new TextBlock
 			{
-				int num2 = default(int);
-				num = num2;
-			}
-			goto IL_0108;
-		}
-		goto IL_012e;
-		IL_02da:
-		AddVisualChild(grid);
-		return;
-		IL_0218:
-		StackPanel stackPanel = default(StackPanel);
-		if (AppState.HHxtaMaoqJr().ShowParamDescAsToolTip)
-		{
-			Button button = new Button();
-			Grid.SetColumn(button, 3);
-			button.Margin = new Thickness(0.0, 4.0, 0.0, 0.0);
-			button.Style = TryFindResource("HintQuestionStyle") as Style;
-			button.ToolTip = wCFLHiuOIOX.Description;
-			grid.Children.Add(button);
-		}
-		else
-		{
-			TextBlock element = new TextBlock
-			{
-				Style = (TryFindResource("HelpText") as Style),
-				Text = wCFLHiuOIOX.Description
+				Margin = new Thickness(5.0),
+				HorizontalAlignment = HorizontalAlignment.Right,
+				TextWrapping = TextWrapping.Wrap,
+				Text = wCFLHiuOIOX.Name
 			};
-			stackPanel.Children.Add(element);
+			DW6LHAsEJK7(label);
+			Grid.SetColumn(label, 0);
+			label.PreviewMouseDown += I4YLHB3IRsc;
+			grid.Children.Add(label);
 		}
-		goto IL_02da;
-		IL_0108:
-		switch (num)
-		{
-		case 1:
-			break;
-		default:
-			goto IL_011d;
-		case 2:
-			goto IL_0218;
-		case 3:
-			return;
-		}
-		goto IL_009e;
-		IL_011d:
-		if (wCFLHiuOIOX.VariableMode != ParamVariableMode.Input)
-		{
-			goto IL_012e;
-		}
-		goto IL_01b6;
-		IL_012e:
-		DW6LHAsEJK7(new TextBlock());
-		Grid.SetColumn(sXcLHM0GBxm(), 0);
-		sXcLHM0GBxm().Margin = new Thickness(5.0);
-		sXcLHM0GBxm().HorizontalAlignment = HorizontalAlignment.Right;
-		sXcLHM0GBxm().PreviewMouseDown += I4YLHB3IRsc;
-		sXcLHM0GBxm().TextWrapping = TextWrapping.Wrap;
-		sXcLHM0GBxm().Text = wCFLHiuOIOX.Name;
-		grid.Children.Add(sXcLHM0GBxm());
-		goto IL_01b6;
-		IL_01b6:
-		stackPanel = new StackPanel();
+
+		StackPanel stackPanel = new StackPanel { Focusable = false };
 		Grid.SetColumn(stackPanel, 2);
-		stackPanel.Focusable = false;
 		Wrapper = new ContentControl();
 		stackPanel.Children.Add(Wrapper);
 		grid.Children.Add(stackPanel);
+
 		if (!string.IsNullOrEmpty(wCFLHiuOIOX.Description))
 		{
-			int num2 = 2;
-			goto IL_0218;
+			if (AppState.HHxtaMaoqJr().ShowParamDescAsToolTip)
+			{
+				Button button = new Button
+				{
+					Margin = new Thickness(0.0, 4.0, 0.0, 0.0),
+					Style = TryFindResource("HintQuestionStyle") as Style,
+					ToolTip = wCFLHiuOIOX.Description
+				};
+				Grid.SetColumn(button, 3);
+				grid.Children.Add(button);
+			}
+			else
+			{
+				// 说明和输入控件共用同一个已创建的容器。
+				stackPanel.Children.Add(new TextBlock
+				{
+					Style = TryFindResource("HelpText") as Style,
+					Text = wCFLHiuOIOX.Description
+				});
+			}
 		}
-		goto IL_02da;
+
+		AddVisualChild(grid);
 	}
 
 	protected override Visual GetVisualChild(int index)

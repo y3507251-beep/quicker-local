@@ -490,3 +490,15 @@
 - **实际构建：**关于页首次构建出现 `Panel` 与同名命名空间冲突，已使用完整类型名修正。最终现有 `dotnet build src\Quicker.csproj -c Release --nologo -v:q` 成功，**0 个错误、5,966 个警告**。产物为 `artifacts/bin/Release/net472/Quicker.exe` 及配套 Common DLL；本机日志 `artifacts/build-action-compatibility.log`。未新增辅助构建脚本或运行自动测试。
 - **实际替换：**用户回复“已退出，继续替换”后，于 2026-10-04 01:08:44 通过 Windows UAC 将新 EXE 和配套 Common DLL 复制到 `C:\Program Files\Quicker`，复制进程退出码为 0。旧文件保存在 `artifacts/deploy-backups/20261004-010844-before-action-compatibility`。未自动启动程序或运行用户动作，尚不能把构建和复制成功等同于运行问题全部解决。
 - **文档与发布：**公开 README 记录这批具体修改、翻页用法及实际边界；上述六处源码/工程与本修改记录同步公开仓库。个人动作、账号数据库、日志、回退文件及构建产物均留在本机。未访问原始备份、未操作 HAPP 或其他项目。
+
+
+### EXE-024｜2026-10-04｜修复拖入动作模块时的公共参数编辑器空引用
+
+- **用户反馈与日志：**用户拖入“激活进程主窗口”后报空引用，随后确认拖入其它动作模块也出现同样错误。现有本机日志连续记录 `InputParamEditorControl.bcYLHrp0jV6 → 构造函数 → ActionStepEditorWindow.gpWLW2nFl4o → hkBLWSWcR5M → StepListControl.EditStep`；还记录步骤右键菜单 `StepListControl.CEgL1CNT5vH` 的空引用。错误发生在构建编辑界面阶段，尚未执行模块。
+- **全部源码修改（相对主 EXE 的 `src`）：**
+  - `Quicker/View/X/Nodes/InputParamEditorControl.cs`：将 `bcYLHrp0jV6` 重写为顺序创建网格、标签、输入容器及说明控件的普通代码。原跳转到 `IL_0218` 时把已经创建的 `stackPanel` 再赋为 `default(StackPanel)`，导致显示参数说明时解引用 null。修复后说明文字加入原输入容器；保留四列布局、布尔输入标签规则、双击创建变量及“说明作为工具提示”设置。所有使用该公共编辑器的模块共用此修复，没有单独放行某个动作。
+  - `Quicker/View/X/Nodes/StepListControl.cs`：在 `CEgL1CNT5vH` 方法入口初始化菜单和闭包局部变量，删除跳转标签处的重新初始化，避免“放入...”父菜单创建后在填充循环/条件子项前又被置空；保留原复制、剪切、粘贴、子程序、运行和删除事件处理。
+- **实际构建：**沿用 `dotnet build src\Quicker.csproj -c Release --nologo -v:q`，构建成功，**0 个错误、5,965 个警告**。产物为 `artifacts/bin/Release/net472/Quicker.exe` 及配套 Common DLL；本机构建输出留在 `artifacts/build-step-editor.log`。未修改工程、依赖或构建脚本，未添加辅助脚本或测试框架。
+- **运行与部署状态：**未自动运行测试、启动软件或执行动作。构建完成时安装目录的 Quicker 仍在运行，已请用户保存编辑内容并退出，以便按此前“编译后直接替换”的要求部署；不能把构建通过视为拖入、编辑或运行交互已经确认正常。
+- **文档与公开范围：**按用户持续记录和同步 GitHub 的要求更新本记录、仓库首页 README，并仅同步上述两处源码及这两份文档；用户日志、动作正文、数据库和构建产物不公开。本轮未改动本地动作、账号或其它项目，未访问 Quicker原始备份。
+

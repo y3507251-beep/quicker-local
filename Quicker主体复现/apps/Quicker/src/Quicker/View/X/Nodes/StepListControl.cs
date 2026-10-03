@@ -3431,6 +3431,10 @@ public class StepListControl : System.Windows.Controls.Control, GongSolutions.Wp
 
 	private void CEgL1CNT5vH(StepNode stepNode_0)
 	{
+		// 跨跳转标签保留已创建的菜单和闭包对象。
+		System.Windows.Controls.MenuItem menuItem7 = null;
+		_003C_003Ec__DisplayClass17_1 _003C_003Ec__DisplayClass17_2 = null;
+		_003C_003Ec__DisplayClass17_2 _003C_003Ec__DisplayClass17_3 = null;
 		_003C_003Ec__DisplayClass17_0 _003C_003Ec__DisplayClass17_ = new _003C_003Ec__DisplayClass17_0();
 		_003C_003Ec__DisplayClass17_.laySFs9Ruuf = this;
 		_003C_003Ec__DisplayClass17_.yS0SFHDjxTx = stepNode_0;
@@ -3498,8 +3502,6 @@ public class StepListControl : System.Windows.Controls.Control, GongSolutions.Wp
 		}
 		goto IL_094b;
 		IL_0421:
-		_003C_003Ec__DisplayClass17_1 _003C_003Ec__DisplayClass17_2 = default(_003C_003Ec__DisplayClass17_1);
-		_003C_003Ec__DisplayClass17_2 _003C_003Ec__DisplayClass17_3 = default(_003C_003Ec__DisplayClass17_2);
 		switch (num3)
 		{
 		case 3:
@@ -3619,7 +3621,6 @@ public class StepListControl : System.Windows.Controls.Control, GongSolutions.Wp
 		}
 		goto IL_09b4;
 		IL_02e4:
-		System.Windows.Controls.MenuItem menuItem7 = default(System.Windows.Controls.MenuItem);
 		AppHelper.AddMenuItem(menuItem7.Items, "循环：重复(_R)", "快捷键：Ctrl+R", $"fa:{EFontAwesomeIcon.Light_Repeat}:#6aaded", _003C_003Ec__DisplayClass17_.UWySFYrMys1);
 		AppHelper.AddMenuItem(menuItem7.Items, "如果/否则 的 “如果” 分支(_I)", "快捷键：Ctrl+I", $"fa:{EFontAwesomeIcon.Light_ProjectDiagram}:#6aaded", _003C_003Ec__DisplayClass17_.cFcSFI97Flx);
 		AppHelper.AddMenuItem(menuItem7.Items, "如果/否则 的 “否则” 分支(_F)", "", $"fa:{EFontAwesomeIcon.Light_ProjectDiagram}:#6aaded", _003C_003Ec__DisplayClass17_.BuQSFWIpVlo);
