@@ -1,0 +1,32 @@
+# 构建结果、运行依赖和本机配置
+**/artifacts/
+**/bin/
+**/obj/
+**/original/
+**/.vs/
+/Quicker/
+*.dll
+*.exe
+*.pdb
+*.user
+*.suo
+
+# 账号数据、动作工作区、备份与私钥不参与源码发布
+*.db
+*.db-*
+*.sqlite*
+*.pfx
+*.p12
+*.pem
+*.key
+*.log
+*.zip
+*.rar
+.env
+.env.*
+**/user.config
+**/ImageCache/
+**/data/
+**/states/
+**/logs/
+**/backups/

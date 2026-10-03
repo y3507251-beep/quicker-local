@@ -1,0 +1,74 @@
+using System.ComponentModel.DataAnnotations;
+
+namespace Quicker.Modules.TextTools;
+
+public enum TextToolType
+{
+	Na = 0,
+	[Display(Name = "在编辑器中修改")]
+	EditInCodeWindow = 1,
+	[Display(Name = "选择一个文件")]
+	SelectSingleFile = 2,
+	[Display(Name = "选择多个文件")]
+	SelectMultiFile = 3,
+	[Display(Name = "选择文件夹")]
+	SelectSingleFolder = 4,
+	[Display(Name = "选择窗口并获取进程的路径")]
+	SelectProcessPath = 5,
+	[Display(Name = "选择窗口并获取进程名称")]
+	SelectProcessName = 6,
+	[Display(Name = "选择窗口并获取标题")]
+	SelectWindowTitle = 7,
+	[Display(Name = "选择窗口并获取其类名")]
+	SelectWindowClass = 8,
+	[Display(Name = "选择屏幕位置")]
+	SelectLocationPoint = 9,
+	[Display(Name = "选择屏幕区域")]
+	SelectLocationArea = 10,
+	[Display(Name = "选择屏幕颜色")]
+	SelectColor = 11,
+	[Display(Name = "选择颜色(#RRGGBB)")]
+	ColorPicker = 12,
+	[Display(Name = "选择颜色(#AARRGGBB)")]
+	ColorPickerArgb = 13,
+	[Display(Name = "截图")]
+	CaptureToFile = 14,
+	[Display(Name = "选择图标")]
+	SelectIcon = 15,
+	[Display(Name = "输入并获取键名")]
+	SelectKeyName = 16,
+	[Display(Name = "输入并获取'模拟按键B'的值")]
+	SelectSendKeysData = 17,
+	[Display(Name = "输入并获取虚拟键码数字")]
+	SelectKeyCode = 18,
+	[Display(Name = "选择动作ID")]
+	SelectActionId = 19,
+	[Display(Name = "选择动作名称")]
+	SelectActionName = 20,
+	[Display(Name = "选择控件XPath")]
+	SelectControlXPath = 21,
+	[Display(Name = "布尔表达式助手")]
+	BoolExpressionHelper = 22,
+	[Display(Name = "选择保存路径")]
+	SelectSavePath = 23,
+	[Display(Name = "选择窗口句柄")]
+	SelectWindowHandle = 24,
+	[Display(Name = "选择场景标识")]
+	SelectProfileExe = 25,
+	[Display(Name = "操作项编辑器")]
+	OperationItemEditor = 26,
+	[Display(Name = "选择蓝牙设备")]
+	SelectBluetoothDevice = 27,
+	[Display(Name = "选择蓝牙低功耗设备")]
+	SelectBluetoothLEDevice = 28,
+	[Display(Name = "选择网络连接")]
+	SelectNetworkProfile = 29,
+	[Display(Name = "选择窗口位置")]
+	SelectRelativePoint = 30,
+	[Display(Name = "获取网页元素CSS选择器")]
+	SelectWebElementSelector = 31,
+	[Display(Name = "子程序选择工具")]
+	Custom = 1020,
+	[Display(Name = "扩展选择菜单")]
+	ExtraSelectMenu = 1024
+}

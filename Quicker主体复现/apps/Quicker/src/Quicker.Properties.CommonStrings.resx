@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="Common_ActionType_SendKeys_Desc" xml:space="preserve"><value>模拟键盘按键，如快捷键等。</value></data>
+  <data name="GetClipboardTextStep_Execute_NoData" xml:space="preserve"><value>获得的剪贴板文本为空。</value></data>
+  <data name="WriteClipboardStep_Type_Clear_Name" xml:space="preserve"><value>清空剪贴板</value></data>
+  <data name="Common_ActionType_Composite_Desc" xml:space="preserve"><value>顺序执行多个动作</value></data>
+  <data name="Common_ActionType_RunScriptFile" xml:space="preserve"><value>执行脚本(文件)</value></data>
+  <data name="Common_ActionType_OpenProfile" xml:space="preserve"><value>加载动作页</value></data>
+  <data name="Common_ActionType_Composite" xml:space="preserve"><value>组合动作(旧版)</value></data>
+  <data name="Common_ActionType_OpenUrl_Desc" xml:space="preserve"><value>使用浏览器打开网址</value></data>
+  <data name="XActionRunner_ExecuteAction_Err_UnknownStepType" xml:space="preserve"><value>不支持步骤类型：{0}。动作已中止。可能您使用的Quicker版本比较旧了。</value></data>
+  <data name="Common_ActionType_SendText_Desc" xml:space="preserve"><value>发送文本内容到活动窗口</value></data>
+  <data name="WriteClipboardStep_Description" xml:space="preserve"><value>将文本或图片等内容写入剪贴板</value></data>
+  <data name="WriteClipboardStep_Execute_Err_NotSupportType" xml:space="preserve"><value>不支持的写入剪贴板类型，可能您的Quicker版本太旧了：</value></data>
+  <data name="WriteFileToClipboardStep_Execute_Err_FailedToWriteFileList" xml:space="preserve"><value>保存文件列表到剪贴板失败。</value></data>
+  <data name="App_EnsureSingleton_AlreadyRunning" xml:space="preserve"><value>Quicker已经在运行，不能启动多个实例！</value></data>
+  <data name="App_ApplicationStart_DbError" xml:space="preserve"><value>准备本地数据文件失败!
+请备份并删除quicker.db文件后重新运行Quicker。
+错误信息：</value></data>
+  <data name="GetClipboardImageStep_Name" xml:space="preserve"><value>获取剪贴板图片</value></data>
+  <data name="SubProgramActionRunner_ExecuteAction_Err_SubProgramUnknown" xml:space="preserve"><value>子程序不存在：[{0}]</value></data>
+  <data name="WriteFileToClipboardStep_GetSummary_Format" xml:space="preserve"><value>{0} {1} =&gt; 剪贴板</value></data>
+  <data name="WriteFileToClipboardStep_FileListParam_Desc" xml:space="preserve"><value>要存入剪贴板的多个文件路径（与单个文件二选一）</value></data>
+  <data name="WriteFileToClipboardStep_FileListParam_Name" xml:space="preserve"><value>文件列表</value></data>
+  <data name="WriteClipboardStep__inputParam_Desc" xml:space="preserve"><value>要写入剪贴板的数据</value></data>
+  <data name="WriteClipboardStep__inputParam_Name" xml:space="preserve"><value>输入</value></data>
+  <data name="Common_ActionType_OpenFolder_Desc" xml:space="preserve"><value>用资源管理器打开目录</value></data>
+  <data name="GetClipboardTextStep_Format_UnicodeText" xml:space="preserve"><value>纯文本（默认）</value></data>
+  <data name="WriteClipboardStep__textParam_Name" xml:space="preserve"><value>文本内容</value></data>
+  <data name="WriteClipboardStep__textParam_Desc" xml:space="preserve"><value>纯文本格式内容。</value></data>
+  <data name="GetClipboardImageStep__stopIfEmptyParam" xml:space="preserve"><value>失败后中止动作</value></data>
+  <data name="WriteFileToClipboardStep_Execute_Err_NeedFileList" xml:space="preserve"><value>需要传入文件路径列表。</value></data>
+  <data name="App_ApplicationStart_WrongVersion" xml:space="preserve"><value>您安装了不正确的版本，请安装x64版本的Quicker。</value></data>
+  <data name="Common_ActionType_OpenFile" xml:space="preserve"><value>打开文件</value></data>
+  <data name="WriteClipboardStep_Name" xml:space="preserve"><value>写入剪贴板</value></data>
+  <data name="GetClipboardFileListStep_Description" xml:space="preserve"><value>获取剪贴板中复制的文件(或文件夹)的路径列表</value></data>
+  <data name="Common_ActionType_RunProgram_Desc" xml:space="preserve"><value>运行程序或Windows命令，打开文件或目录等</value></data>
+  <data name="Common_ActionType_SendText" xml:space="preserve"><value>发送文本</value></data>
+  <data name="Common_ActionType_SendKeys" xml:space="preserve"><value>模拟按键</value></data>
+  <data name="GetClipboardImageStep_Execute_Err_NoData" xml:space="preserve"><value>剪贴板中没有图片。</value></data>
+  <data name="Common_ActionType_RunScriptFile_Desc" xml:space="preserve"><value>运行时将脚本内容存入文件并执行</value></data>
+  <data name="App_ApplicationStart_StartUpCompleteMessage" xml:space="preserve"><value>Quicker启动了~~</value></data>
+  <data name="GetClipboardTextStep_OutputParam_Desc" xml:space="preserve"><value>将获得的文本内容写入到变量</value></data>
+  <data name="GetClipboardTextStep_OutputParam_Name" xml:space="preserve"><value>结果内容</value></data>
+  <data name="UI_ActionBackupConfirmWindow_Title" xml:space="preserve"><value>保存动作版本</value></data>
+  <data name="Common_ActionType_OpenProfile_Desc" xml:space="preserve"><value>加载指定的动作页到上下文面板区域</value></data>
+  <data name="WriteFileToClipboardStep_Description" xml:space="preserve"><value>将文件或文件列表存入剪贴板</value></data>
+  <data name="GetClipboardTextStep_Name" xml:space="preserve"><value>获取剪贴板文本</value></data>
+  <data name="WriteClipboardStep_Type_Auto_Name" xml:space="preserve"><value>自动（纯文本或图片）</value></data>
+  <data name="WriteFileToClipboardStep_Execute_FailedToWriteClipboard" xml:space="preserve"><value>保存文件到剪贴板失败。</value></data>
+  <data name="UrlActionRunner_ExecuteAction_Err_NoUrlToOpen" xml:space="preserve"><value>请指定要打开的网址！</value></data>
+  <data name="GetClipboardTextStep_Format_CommaSeparatedValue" xml:space="preserve"><value>逗号分隔的值（csv）</value></data>
+  <data name="RunScriptFileActionRunner_ExecuteAction_Error_DataEmpty" xml:space="preserve"><value>动作内容为空。</value></data>
+  <data name="GetClipboardImageStep_Execute_Err_Failed" xml:space="preserve"><value>获取剪贴板图片失败。</value></data>
+  <data name="RunScriptFileActionRunner_ExecuteAction_Err_RunScriptError" xml:space="preserve"><value>执行脚本出错。</value></data>
+  <data name="GetClipboardFileListStep_Err_Failed" xml:space="preserve"><value>获取剪贴板文件失败。</value></data>
+  <data name="Common_ActionType_OpenFolder" xml:space="preserve"><value>打开Windows文件夹</value></data>
+  <data name="GetClipboardTextStep_Description" xml:space="preserve"><value>读取剪贴板中的文本内容</value></data>
+  <data name="Common_ActionType_XAction" xml:space="preserve"><value>组合动作</value></data>
+  <data name="WriteClipboardStep_Type_Csv_Name" xml:space="preserve"><value>Csv</value></data>
+  <data name="GetClipboardImageStep__successParam_desc" xml:space="preserve"><value>是否成功获得剪贴板图片</value></data>
+  <data name="GetClipboardImageStep__outputParam_img" xml:space="preserve"><value>结果图片</value></data>
+  <data name="GetClipboardFileListStep__outputParam_FileList" xml:space="preserve"><value>文件列表</value></data>
+  <data name="WriteFileToClipboardStep_Name" xml:space="preserve"><value>文件放入剪贴板</value></data>
+  <data name="Common_ActionType_OpenUrl" xml:space="preserve"><value>打开网址</value></data>
+  <data name="WriteFileToClipboardStep_Execute_Err_NoFileToWrite" xml:space="preserve"><value>没有要存入剪贴板的文件</value></data>
+  <data name="FolderActionRunner_ExecuteAction_NotSupportedActionType" xml:space="preserve"><value>不支持此动作类型：</value></data>
+  <data name="GetClipboardFileListStep_Name" xml:space="preserve"><value>获取剪贴板文件列表</value></data>
+  <data name="GetClipboardTextStep_SuccessParam_Name" xml:space="preserve"><value>是否成功</value></data>
+  <data name="GetClipboardTextStep_SuccessParam_Desc" xml:space="preserve"><value>是否成功获得文本</value></data>
+  <data name="CommonExeInfo_Taskbar_Desc" xml:space="preserve"><value>Windows任务栏上设置的动作页</value></data>
+  <data name="CommonExeInfo_Taskbar_Name" xml:space="preserve"><value>任务栏</value></data>
+  <data name="GetClipboardTextStep_TxtFormatParam_Desc" xml:space="preserve"><value>需要读取的剪贴板文本内容格式。通常请使用Unicode纯文本格式。</value></data>
+  <data name="GetClipboardTextStep_TxtFormatParam_Name" xml:space="preserve"><value>文本数据格式</value></data>
+  <data name="WriteFileToClipboardStep_Execute_Err_FileNotExists" xml:space="preserve"><value>文件不存在：{0}</value></data>
+  <data name="XActionRunner_ExecuteAction_Err_DataEmpty" xml:space="preserve"><value>动作内容为空。</value></data>
+  <data name="GetClipboardFileListStep__stopIfEmptyParam_Name" xml:space="preserve"><value>失败后中止动作</value></data>
+  <data name="GetClipboardFileListStep__stopIfEmptyParam_Desc" xml:space="preserve"><value>获取选中的文本失败后，是否停止后续动作的执行。</value></data>
+  <data name="GetClipboardImageStep__successParam" xml:space="preserve"><value>是否成功</value></data>
+  <data name="UrlActionRunner_ExecuteAction_Err_Fmt" xml:space="preserve"><value>错误：{0}</value></data>
+  <data name="GetClipboardImageStep_Description" xml:space="preserve"><value>读取剪贴板中的图片内容输出到图片变量中。</value></data>
+  <data name="WriteClipboardStep_Type_Rtf_Name" xml:space="preserve"><value>Rtf</value></data>
+  <data name="WriteClipboardStep_GetSummary_FormatStr" xml:space="preserve"><value>{0} =&gt; 剪贴板</value></data>
+  <data name="WriteClipboardStep_Type_Html_Name" xml:space="preserve"><value>HTML片段</value></data>
+  <data name="Common_ActionType_OpenFile_Desc" xml:space="preserve"><value>打开文件或程序</value></data>
+  <data name="Common_ActionType_RunProgram" xml:space="preserve"><value>运行程序或打开文件</value></data>
+  <data name="CommonExeInfo_Global_Desc" xml:space="preserve"><value>加载到全局面板的动作页</value></data>
+  <data name="CommonExeInfo_Global_Name" xml:space="preserve"><value>全局</value></data>
+  <data name="WriteClipboardStep__imgVarParam_Desc" xml:space="preserve"><value>要写入剪贴板的图片内容</value></data>
+  <data name="WriteClipboardStep__imgVarParam_Name" xml:space="preserve"><value>图片(变量)</value></data>
+  <data name="CommonExeInfo_Desktop_Name" xml:space="preserve"><value>桌面</value></data>
+  <data name="CommonExeInfo_Desktop_Desc" xml:space="preserve"><value>Windows桌面动作页</value></data>
+  <data name="Common_Err_UnknownEncoding" xml:space="preserve"><value>无法识别编码：</value></data>
+  <data name="WriteClipboardStep_Type_Text_Name" xml:space="preserve"><value>纯文本</value></data>
+  <data name="WriteClipboardStep__htmlParam_Name" xml:space="preserve"><value>HTML内容</value></data>
+  <data name="WriteClipboardStep__htmlParam_Desc" xml:space="preserve"><value>HTML代码片段</value></data>
+  <data name="TYPE_ENABLE" xml:space="preserve"><value>ENABLE</value></data>
+  <data name="GetClipboardFileListStep__successParam_isSuccess_Desc" xml:space="preserve"><value>是否成功获得文件列表</value></data>
+  <data name="CommonExeInfo_Common_Desc" xml:space="preserve"><value>通用动作页，可以附加到其他软件的动作页后</value></data>
+  <data name="CommonExeInfo_Common_Name" xml:space="preserve"><value>通用</value></data>
+  <data name="GetClipboardFileListStep_Execute_Err_NoData" xml:space="preserve"><value>剪贴板中没有文件。</value></data>
+  <data name="WriteClipboardStep_Execute_NotSuccess" xml:space="preserve"><value>没有成功写入剪贴板。</value></data>
+  <data name="Common_ActionType_XAction_Desc" xml:space="preserve"><value>包含多个步骤的组合操作</value></data>
+  <data name="WriteClipboardStep_TypeParam_Desc" xml:space="preserve"><value>操作类型</value></data>
+  <data name="WriteClipboardStep_TypeParam_Name" xml:space="preserve"><value>类型</value></data>
+  <data name="WriteClipboardStep_Type_Image_Name" xml:space="preserve"><value>图片</value></data>
+  <data name="GetClipboardTextStep_StopIfEmptyParam_Name" xml:space="preserve"><value>失败后中止动作</value></data>
+  <data name="GetClipboardTextStep_StopIfEmptyParam_Desc" xml:space="preserve"><value>获取选中的文本失败后，是否停止后续动作的执行。</value></data>
+  <data name="GetClipboardFileListStep__outputParam_FileList_Desc" xml:space="preserve"><value>从剪贴板获取的文件路径列表</value></data>
+  <data name="WriteFileToClipboardStep_FileParam_Desc" xml:space="preserve"><value>要存入剪贴板的文件(夹)路径（与文件列表二选一）</value></data>
+  <data name="WriteFileToClipboardStep_FileParam_Name" xml:space="preserve"><value>单个文件</value></data>
+  <data name="GetClipboardImageStep__stopIfEmptyParam_Desc" xml:space="preserve"><value>获取失败后，是否停止后续动作的执行。</value></data>
+  <data name="GetClipboardImageStep__outputParam_img_desc" xml:space="preserve"><value>将获得的图片写入到变量</value></data>
+  <data name="GetClipboardFileListStep__successParam_isSuccess" xml:space="preserve"><value>是否成功</value></data>
+  </root>

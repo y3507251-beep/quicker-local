@@ -1,0 +1,35 @@
+namespace Quicker.Domain.Actions.Runtime;
+
+public enum ActionTrigger
+{
+	NA,
+	Panel,
+	TriggerKey,
+	FloatButton,
+	FloatPanel,
+	DashboardWindow,
+	ActionEditor,
+	CircleMenu,
+	SearchWindow,
+	Gesture,
+	OtherMouse,
+	Hotkey,
+	PowerKeys,
+	TextCommand,
+	App,
+	Extern,
+	AutoRun,
+	ContextMenu,
+	LeftButtonPlus,
+	ScrollOnButton,
+	AdvancedMouseAction,
+	Association,
+	SearchInput,
+	SearchCallback,
+	SearchContextMenu,
+	BrowserContextMenu,
+	WebpageButton,
+	EventTrigger,
+	HotkeyWatcher,
+	QuickScreenShot
+}
