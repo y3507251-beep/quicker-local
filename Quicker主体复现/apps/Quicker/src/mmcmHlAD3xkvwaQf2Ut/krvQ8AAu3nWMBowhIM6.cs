@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
@@ -229,14 +229,11 @@ internal class krvQ8AAu3nWMBowhIM6
 		webViewBrowser.Activate();
 	}
 
-	[AsyncStateMachine(typeof(_003CShowSetupWizardAsync_003Ed__2))]
 	internal static Task cm6Ow5ljga()
 	{
-		_003CShowSetupWizardAsync_003Ed__2 stateMachine = default(_003CShowSetupWizardAsync_003Ed__2);
-		stateMachine._003C_003Et__builder = AsyncTaskMethodBuilder.Create();
-		stateMachine._003C_003E1__state = -1;
-		stateMachine._003C_003Et__builder.Start(ref stateMachine);
-		return stateMachine._003C_003Et__builder.Task;
+		// 入门帮助是公开网页，使用默认浏览器打开，不申请账号自动登录链接。
+		AppHelper.TryOpenUrlOrFile("https://getquicker.net/r?id=22");
+		return Task.CompletedTask;
 	}
 
 	internal static bool g7MmKyHSGpNwgHXaaRj()

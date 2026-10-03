@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -487,115 +487,27 @@ public class ProfilePageControl : Canvas
 
 	public void RefreshUi()
 	{
-		IDictionary<Guid, int> dictionary = (IDictionary<Guid, int>)GetValue(ExeSettingsWindow.ActionUseCountsProperty);
-		int num = default(int);
-		if (ActionProfile.IsGlobalProfile())
+		var profile = ActionProfile;
+		var counts = GetValue(ExeSettingsWindow.ActionUseCountsProperty) as IDictionary<Guid, int>;
+		bool isGlobal = profile != null && profile.IsGlobalProfile();
+		Height = isGlobal ? qF0Lxr4fTCv * 3 + 4 * I9ALxprMaRa : qF0Lxr4fTCv * 4 + 5 * I9ALxprMaRa;
+		for (int row = 0; row < 4; row++)
 		{
-			base.Height = qF0Lxr4fTCv * 3.0 + 4.0 * I9ALxprMaRa;
-			num = 0;
-			goto IL_01b3;
-		}
-		base.Height = qF0Lxr4fTCv * 4.0 + 5.0 * I9ALxprMaRa;
-		for (int i = 0; i < 4; i++)
-		{
-			int buttonIndex = AppHelper.GetButtonIndex(false, 3, i);
-			ttwLx4sauEL[buttonIndex].Visibility = Visibility.Visible;
-		}
-		goto IL_0287;
-		IL_0201:
-		int num2;
-		int buttonIndex2 = default(int);
-		while (true)
-		{
-			switch (num2)
+			for (int col = 0; col < 4; col++)
 			{
-			case 3:
-				break;
-			case 1:
-				ttwLx4sauEL[buttonIndex2].Visibility = Visibility.Collapsed;
-				num++;
-				num2 = 3;
-				if (k9PwQIFuzrM69oFarhei != null)
+				var button = ttwLx4sauEL[AppHelper.GetButtonIndex(false, row, col)];
+				var action = profile?.ActionItems?.FirstOrDefault(item => item.Row == row && item.Col == col);
+				button.Visibility = isGlobal && row == 3 ? Visibility.Collapsed : Visibility.Visible;
+				button.ActionItem = action;
+				button.ShowKeyTip = false;
+				button.KeyTip = "";
+				if (counts != null && Guid.TryParse(action?.Id, out var id))
 				{
-					continue;
-				}
-				break;
-			default:
-				goto IL_022f;
-			case 2:
-				return;
-			}
-			break;
-		}
-		goto IL_01b3;
-		IL_022f:
-		_003C_003Ec__DisplayClass42_1 _003C_003Ec__DisplayClass42_ = default(_003C_003Ec__DisplayClass42_1);
-		_003C_003Ec__DisplayClass42_.OveSiLR5dxx++;
-		goto IL_0243;
-		IL_0243:
-		if (_003C_003Ec__DisplayClass42_.OveSiLR5dxx < 4)
-		{
-			int buttonIndex3 = AppHelper.GetButtonIndex(false, _003C_003Ec__DisplayClass42_.TvTSivsiXG8.jQVSituoNZK, _003C_003Ec__DisplayClass42_.OveSiLR5dxx);
-			ActionItem actionItem = ActionProfile.ActionItems?.FirstOrDefault(_003C_003Ec__DisplayClass42_.U0GSigL4XCq);
-			ttwLx4sauEL[buttonIndex3].ActionItem = actionItem;
-			ttwLx4sauEL[buttonIndex3].ShowKeyTip = false;
-			if (dictionary != null && actionItem != null && !string.IsNullOrEmpty(actionItem.Id))
-			{
-				ttwLx4sauEL[buttonIndex3].ShowKeyTip = true;
-				if (Guid.TryParse(actionItem.Id, out var result))
-				{
-					if (dictionary.ContainsKey(result))
-					{
-						ttwLx4sauEL[buttonIndex3].KeyTip = dictionary[result].ToString();
-						num2 = 0;
-						if (!muMCCUFoVauwnOH4weS7())
-						{
-							goto IL_01d3;
-						}
-						goto IL_0201;
-					}
-					ttwLx4sauEL[buttonIndex3].KeyTip = "<5";
+					button.ShowKeyTip = true;
+					button.KeyTip = counts.TryGetValue(id, out int count) ? count.ToString() : "<5";
 				}
 			}
-			goto IL_022f;
 		}
-		_003C_003Ec__DisplayClass42_0 _003C_003Ec__DisplayClass42_2 = default(_003C_003Ec__DisplayClass42_0);
-		_003C_003Ec__DisplayClass42_2.jQVSituoNZK++;
-		goto IL_0278;
-		IL_01d3:
-		int num3 = default(int);
-		num2 = num3;
-		goto IL_0201;
-		IL_01b3:
-		if (num < 4)
-		{
-			buttonIndex2 = AppHelper.GetButtonIndex(false, 3, num);
-			num2 = 1;
-			if (k9PwQIFuzrM69oFarhei != null)
-			{
-				goto IL_01d3;
-			}
-			goto IL_0201;
-		}
-		goto IL_0287;
-		IL_0287:
-		_003C_003Ec__DisplayClass42_2 = new _003C_003Ec__DisplayClass42_0();
-		_003C_003Ec__DisplayClass42_2.jQVSituoNZK = 0;
-		goto IL_0278;
-		IL_0278:
-		if (_003C_003Ec__DisplayClass42_2.jQVSituoNZK < 4)
-		{
-			_003C_003Ec__DisplayClass42_ = new _003C_003Ec__DisplayClass42_1();
-			_003C_003Ec__DisplayClass42_.TvTSivsiXG8 = _003C_003Ec__DisplayClass42_2;
-			_003C_003Ec__DisplayClass42_.OveSiLR5dxx = 0;
-			goto IL_0243;
-		}
-		num2 = 2;
-		if (k9PwQIFuzrM69oFarhei != null)
-		{
-			goto IL_01d3;
-		}
-		goto IL_0201;
 	}
 
 	protected override Size MeasureOverride(Size constraint)

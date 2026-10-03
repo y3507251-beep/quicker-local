@@ -473,3 +473,20 @@
 - **实际过程：**操作时 Quicker 已退出，无须终止进程。普通权限复制因安装目录访问权限被拒绝；随后通过 Windows UAC 启动管理员复制进程，退出码 0，`replacement-result.txt` 记录两文件复制成功，时间 2026-10-04 00:33:22。未更改系统权限设置。
 - **运行状态：**未自动启动软件、执行动作或运行验证；由用户启动安装目录里的 EXE 检查实际效果。本条只确认替换完成，不表示重命名、OCR、剪贴板、置顶或右键操作已经运行通过。
 - **公开说明：**GitHub 首页 README 同步本次三处源码修复和实际替换状态，源码与修改记录一起提交；回退文件、构建产物、部署结果和用户数据保持本机留存。
+
+
+### EXE-023｜2026-10-04｜动作插件身份兼容、场景刷新、手动业务更新及帮助入口
+
+- **用户反馈及要求：**剪贴板动作报“需要强名称程序集（0x80131044）”；“场景与动作”空引用闪退；批量更新不应作为账号同步禁用；关于页和入门向导应保留点击打开公开网站的功能。另按用户要求修改本机微信传输助手以支持微信 4，编译后直接替换。
+- **全部涉及 EXE 文件与方法：**
+  - `src/Quicker.csproj`：新增 `SignAssembly`、`PublicSign`、`AssemblyOriginatorKeyFile`，共用 Common 工程现有的公开密钥。日志中的 IntelliTools 剪贴板窗口 BAML 要求 `Quicker, PublicKeyToken=93dcfca1bd14948b`，此前重建 EXE 的身份为无公钥。此次保持插件引用需要的程序集身份；公开签名不含原厂私钥，也不代表原厂数字签名。没有改变系统签名验证设置，没有引入新构建脚本。
+  - `src/Quicker/View/Controls/ProfilePageControl.cs`：重写 `RefreshUi` 为普通行列循环，去掉跳转标签处将闭包对象重置为 null 后递增的错误；动作页暂时为空时清空按钮及旧计数提示。保留全局 3×4、场景 4×4 的布局。
+  - `src/Quicker/Domain/Services/SharedActionImportService.cs`：增加 `CheckUpdatesAsync`；仅手动查询时提交动作的共享编号列表到既有 `sync/CheckActionUpdates` 接口。`ReadApiAsync<T>` 共用 GET/POST、匿名请求及官方接口 401 时单次使用已有凭据的策略。下载仍使用已有主动导入链路保存动作正文、依赖和图标。未恢复登录、令牌刷新、账户权限、工作区云同步或后台更新。
+  - `src/Quicker/Settings/Pages/Tools/UpdateActionsPage.cs`：把旧“设为自动更新”按钮改为“检查动作更新”；`ghLD8JkPcn` 打开页面只初始化界面；点击 `rltDHWe49C` 才调用 `oFrDauMHEY` 手动查询。`n4fD7ZMWyO` 清理旧列表并容忍空动作列表或非法编号；`UpdateActionAsync`、`VBKDquCPjB`、`SJVDZSQL2T` 在 UI 上等待用户选择的下载/替换操作，沿用覆盖确认和忽略更新设置。删除该按钮原有设置后台自动更新的实现。旧后台查询入口仍保持禁用。
+  - `src/Quicker/Settings/Pages/About/AboutSettingPage.cs`：增加公开网站链接及 `AddWebsiteLink`，包括主页、动作库、教程、讨论区、本项目问题反馈、原作者微博；只在点击时交给默认浏览器。项目署名仍为“本项目由 Codex 计划与执行”，保留组件许可说明。
+  - `src/mmcmHlAD3xkvwaQf2Ut/krvQ8AAu3nWMBowhIM6.cs`：`cm6Ow5ljga` 入门向导入口直接打开原公开帮助地址 `https://getquicker.net/r?id=22`，不再请求自动登录网址，也不再因被删除的账号服务抛出异常。
+- **上半区翻页说明：**只读检查本机动作页确认上半区仅有 1 个全局页，含 12 个动作。源码滚轮只在已有全局页之间切换，不会创建下一页；此处没有另加数量限制。增加页面通过“场景与动作 → 全局 → 新建动作页”。本轮没有擅自修改页数、布局或滚轮含义。
+- **本机微信动作修改（不随公开源码发布）：**保留原动作、原模板正文及写入前动作页 JSON 到 `artifacts/local-actions/20261004-weixin4`。指定微信传输助手改为使用本地正文，保留其原编号、图标和状态数据；同时识别旧 `WeChat` 与新版 `Weixin` 进程及 Qt 主窗口类，包含托盘隐藏窗口。旧版保留原控件操作；新版“获取焦点_微信”改为在已置前的微信窗口中搜索文件传输助手，再交回原粘贴和发送流程。输入联系人名称采用模拟输入，不覆盖待发剪贴板；发送开关和热键不改。此本地修改标记忽略网站更新，防止手动批量更新时默认覆盖。原 `LocalSharedAction` 模板没有改写；账号信息与其它动作未改。没有自动执行动作、访问聊天内容或发送消息，实际新版微信交互尚未确认。
+- **实际构建：**关于页首次构建出现 `Panel` 与同名命名空间冲突，已使用完整类型名修正。最终现有 `dotnet build src\Quicker.csproj -c Release --nologo -v:q` 成功，**0 个错误、5,966 个警告**。产物为 `artifacts/bin/Release/net472/Quicker.exe` 及配套 Common DLL；本机日志 `artifacts/build-action-compatibility.log`。未新增辅助构建脚本或运行自动测试。
+- **实际替换：**用户回复“已退出，继续替换”后，于 2026-10-04 01:08:44 通过 Windows UAC 将新 EXE 和配套 Common DLL 复制到 `C:\Program Files\Quicker`，复制进程退出码为 0。旧文件保存在 `artifacts/deploy-backups/20261004-010844-before-action-compatibility`。未自动启动程序或运行用户动作，尚不能把构建和复制成功等同于运行问题全部解决。
+- **文档与发布：**公开 README 记录这批具体修改、翻页用法及实际边界；上述六处源码/工程与本修改记录同步公开仓库。个人动作、账号数据库、日志、回退文件及构建产物均留在本机。未访问原始备份、未操作 HAPP 或其他项目。

@@ -1,7 +1,9 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -18,7 +20,7 @@ using yyXIB9Yxgd6ACb7T4ig;
 
 namespace Quicker.Domain.Services;
 
-// 只由用户主动导入调用。启动、查看详情和运行已有动作不得调用此下载入口。
+// 仅供用户主动导入、手动检查和更新动作。启动、查看详情和运行已有动作不调用这里。
 internal static class SharedActionImportService
 {
     private const string ApiRoot = "https://api.getquicker.net/api";
@@ -121,6 +123,25 @@ internal static class SharedActionImportService
         }
     }
 
+    internal static async Task<ApiResult<CheckActionUpdatesDto>> CheckUpdatesAsync(IEnumerable<Guid> actionIds)
+    {
+        try
+        {
+            var ids = actionIds.Where(id => id != Guid.Empty).Distinct().ToList();
+            if (ids.Count == 0)
+                return new ApiResult<CheckActionUpdatesDto> { IsSuccess = true, Data = new CheckActionUpdatesDto() };
+            using var client = CreateDownloadClient();
+            var data = await ReadApiAsync<CheckActionUpdatesDto>(client,
+                ApiRoot + "/sync/CheckActionUpdates?onlyversion=false",
+                new CheckActionUpdatesVm { SharedActions = ids }).ConfigureAwait(false);
+            return new ApiResult<CheckActionUpdatesDto> { IsSuccess = true, Data = data };
+        }
+        catch (Exception error)
+        {
+            return ApiResult<CheckActionUpdatesDto>.Error("检查动作更新失败：" + error.Message);
+        }
+    }
+
     private static HttpClient CreateDownloadClient()
     {
         var handler = new HttpClientHandler
@@ -135,32 +156,42 @@ internal static class SharedActionImportService
         return new HttpClient(handler) { Timeout = TimeSpan.FromSeconds(30) };
     }
 
-    private static async Task<SharedActionDto> ReadApiAsync(HttpClient client, string url)
+    private static Task<SharedActionDto> ReadApiAsync(HttpClient client, string url)
+        => ReadApiAsync<SharedActionDto>(client, url);
+
+    private static async Task<T> ReadApiAsync<T>(HttpClient client, string url, object payload = null) where T : class
     {
-        var response = await client.GetAsync(url).ConfigureAwait(false);
+        async Task<HttpResponseMessage> SendAsync(string token = null)
+        {
+            using var request = new HttpRequestMessage(payload == null ? HttpMethod.Get : HttpMethod.Post, url);
+            if (payload != null)
+                request.Content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
+            if (!string.IsNullOrEmpty(token))
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            return await client.SendAsync(request).ConfigureAwait(false);
+        }
+
+        var response = await SendAsync().ConfigureAwait(false);
         if (response.StatusCode == HttpStatusCode.Unauthorized)
         {
-            // 使用用户此前正常登录保留的凭据，不登录、不刷新令牌、不恢复后台同步。
-            // 只允许固定官方 HTTPS API；客户端禁止重定向，图片请求永远不带此头。
+            // 仅为本次手动业务请求使用已有凭据；不登录、刷新令牌或同步账号。
             var user = AppState.SQLDataMgr.PP6trtaO3SY<UserInfo>("user_info");
             if (!string.IsNullOrEmpty(user?.Token) && new Uri(url).GetLeftPart(UriPartial.Authority) == "https://api.getquicker.net")
             {
                 response.Dispose();
-                using var request = new HttpRequestMessage(HttpMethod.Get, url);
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", user.Token);
-                response = await client.SendAsync(request).ConfigureAwait(false);
+                response = await SendAsync(user.Token).ConfigureAwait(false);
             }
         }
         using (response)
         {
-        if (response.StatusCode == HttpStatusCode.Unauthorized || response.StatusCode == HttpStatusCode.Forbidden)
-            throw new InvalidOperationException("网站要求该内容的访问权限，匿名或已有网站凭据无法下载。请从网站取得有权限的完整动作文件后本地导入；软件不会因此恢复账号登录或云同步。");
-        response.EnsureSuccessStatusCode();
-        var result = JsonConvert.DeserializeObject<ApiResult<SharedActionDto>>(
-            await response.Content.ReadAsStringAsync().ConfigureAwait(false));
-        if (result == null || !result.IsSuccess || result.Data == null)
-            throw new InvalidDataException(result?.Message ?? "网站没有返回完整动作内容。");
-        return result.Data;
+            if (response.StatusCode == HttpStatusCode.Unauthorized || response.StatusCode == HttpStatusCode.Forbidden)
+                throw new InvalidOperationException("网站要求该内容的访问权限，匿名或已有网站凭据无法访问。可取得有权限的完整动作文件后本地导入；软件不会因此恢复账号登录或云同步。");
+            response.EnsureSuccessStatusCode();
+            var result = JsonConvert.DeserializeObject<ApiResult<T>>(
+                await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+            if (result == null || !result.IsSuccess || result.Data == null)
+                throw new InvalidDataException(result?.Message ?? "网站没有返回有效动作数据。");
+            return result.Data;
         }
     }
 

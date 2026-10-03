@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using Quicker.Common.Entities;
 using Quicker.Utilities;
 using Quicker.Utilities.Win32;
@@ -51,6 +52,21 @@ public class AboutSettingPage : SettingPage
         panel.Children.Add(licensesButton);
         panel.Children.Add(new TextBlock
         {
+            Text = "网站与帮助",
+            FontSize = 16,
+            FontWeight = FontWeights.Bold,
+            Margin = new Thickness(0, 20, 0, 8)
+        });
+        var links = new WrapPanel();
+        AddWebsiteLink(links, "Quicker 主页", "https://getquicker.net");
+        AddWebsiteLink(links, "动作库", "https://getquicker.net/Share");
+        AddWebsiteLink(links, "教程与文档", "https://getquicker.net/KC");
+        AddWebsiteLink(links, "讨论区", "https://getquicker.net/QA");
+        AddWebsiteLink(links, "本项目问题反馈", "https://github.com/y3507251-beep/quicker-local/issues");
+        AddWebsiteLink(links, "原作者微博", "https://weibo.com/cuiliang123");
+        panel.Children.Add(links);
+        panel.Children.Add(new TextBlock
+        {
             Text = "基于 Quicker 1.44.10 恢复源码修改；原版及第三方组件保留各自版权与许可。详见项目 NOTICE。",
             TextWrapping = TextWrapping.Wrap,
             Margin = new Thickness(0, 16, 0, 0)
@@ -64,4 +80,13 @@ public class AboutSettingPage : SettingPage
     }
 
     protected override bool SaveDataFromUi(UserSettings settings) => true;
+
+    private static void AddWebsiteLink(System.Windows.Controls.Panel panel, string title, string url)
+    {
+        var link = new Hyperlink(new Run(title));
+        link.Click += (_, _) => AppHelper.TryOpenUrlOrFile(url);
+        var label = new TextBlock { Margin = new Thickness(0, 0, 16, 8) };
+        label.Inlines.Add(link);
+        panel.Children.Add(label);
+    }
 }

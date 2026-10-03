@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -1038,16 +1038,13 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 		LvItems.ItemsSource = uUpDrAl9GN;
 		base.Loaded += ghLD8JkPcn;
 		ChkSkipConfirm.IsChecked = AppState.UserPreference.SkipConfirmationWhenBatchUpdateActions;
+		BtnSetAutoUpdate.Content = "检查动作更新";
+		BtnSetAutoUpdate.ToolTip = "手动查询网站上的动作版本；选择动作后下载到本地。";
 	}
 
-	[AsyncStateMachine(typeof(_003COnLoaded_003Ed__9))]
 	private void ghLD8JkPcn(object sender, RoutedEventArgs e)
 	{
-		_003COnLoaded_003Ed__9 stateMachine = default(_003COnLoaded_003Ed__9);
-		stateMachine._003C_003Et__builder = AsyncVoidMethodBuilder.Create();
-		stateMachine._003C_003E4__this = this;
-		stateMachine._003C_003E1__state = -1;
-		stateMachine._003C_003Et__builder.Start(ref stateMachine);
+		XKQDYgYWbQ();
 	}
 
 	protected override void LoadDataToUi(UserSettings settings)
@@ -1064,15 +1061,39 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 		return !SpdDbKdXLE();
 	}
 
-	[AsyncStateMachine(typeof(_003CLoadData_003Ed__13))]
-	private Task oFrDauMHEY()
+	private async Task oFrDauMHEY()
 	{
-		_003CLoadData_003Ed__13 stateMachine = default(_003CLoadData_003Ed__13);
-		stateMachine._003C_003Et__builder = AsyncTaskMethodBuilder.Create();
-		stateMachine._003C_003E4__this = this;
-		stateMachine._003C_003E1__state = -1;
-		stateMachine._003C_003Et__builder.Start(ref stateMachine);
-		return stateMachine._003C_003Et__builder.Task;
+		if (SpdDbKdXLE()) return;
+		Nx9D6gsoDf(true);
+		BtnSetAutoUpdate.IsEnabled = false;
+		try
+		{
+			var ids = new HashSet<Guid>();
+			foreach (var profile in gX1DmhEk5y.mP6tXA8VyNP().Values)
+			{
+				if (profile?.ActionItems == null) continue;
+				foreach (var action in profile.ActionItems)
+					if (Guid.TryParse(action?.TemplateId, out var id)) ids.Add(id);
+			}
+			var result = await SharedActionImportService.CheckUpdatesAsync(ids);
+			if (!result.IsSuccess)
+			{
+				AppHelper.ShowWarning(result.Message);
+				return;
+			}
+			n4fD7ZMWyO(result.Data.SharedActions ?? new List<CheckActionUpdatesDto.SharedActionInfo>());
+			if (YCqDx38xbP.Count == 0) AppHelper.ShowInformation("没有可更新的动作。");
+		}
+		catch (Exception error)
+		{
+			AppHelper.ShowWarning("检查动作更新异常：" + error.Message);
+		}
+		finally
+		{
+			Nx9D6gsoDf(false);
+			BtnSetAutoUpdate.IsEnabled = true;
+			XKQDYgYWbQ();
+		}
 	}
 
 	private void n4fD7ZMWyO(IList<CheckActionUpdatesDto.SharedActionInfo> ilist_0)
@@ -1080,12 +1101,12 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 		List<SharedActionUpdateListItem> list = new List<SharedActionUpdateListItem>();
 		foreach (ActionProfile value in gX1DmhEk5y.mP6tXA8VyNP().Values)
 		{
-			foreach (ActionItem actionItem in value.ActionItems)
+			foreach (ActionItem actionItem in value.ActionItems ?? new List<ActionItem>())
 			{
-				if (!string.IsNullOrEmpty(actionItem.TemplateId))
+				if (actionItem != null && Guid.TryParse(actionItem.TemplateId, out var templateId))
 				{
 					_003C_003Ec__DisplayClass14_0 _003C_003Ec__DisplayClass14_ = new _003C_003Ec__DisplayClass14_0();
-					_003C_003Ec__DisplayClass14_.vUHv92wANZP = Guid.Parse(actionItem.TemplateId);
+					_003C_003Ec__DisplayClass14_.vUHv92wANZP = templateId;
 					CheckActionUpdatesDto.SharedActionInfo sharedActionInfo = ilist_0.FirstOrDefault(_003C_003Ec__DisplayClass14_.brQv9SQ6uJ4);
 					if (sharedActionInfo != null && sharedActionInfo.Revision > actionItem.TemplateRevision && !string.Equals(actionItem.SharedActionId, actionItem.TemplateId, StringComparison.OrdinalIgnoreCase))
 					{
@@ -1114,6 +1135,7 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 			}
 		}
 		LvItems.BeginInit();
+		YCqDx38xbP.Clear();
 		foreach (SharedActionUpdateListItem item2 in list.OrderByDescending(_003C_003Ec.KZiv9tk5cZm ?? (_003C_003Ec.KZiv9tk5cZm = _003C_003Ec.ukJvZzm9p8M.jaLvZlG4Txj)))
 		{
 			YCqDx38xbP.Add(item2);
@@ -1132,16 +1154,31 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 		stateMachine._003C_003Et__builder.Start(ref stateMachine);
 	}
 
-	[AsyncStateMachine(typeof(_003CUpdateItem_003Ed__16))]
-	private Task VBKDquCPjB(SharedActionUpdateListItem sharedActionUpdateListItem_0)
+	private async Task VBKDquCPjB(SharedActionUpdateListItem item)
 	{
-		_003CUpdateItem_003Ed__16 stateMachine = default(_003CUpdateItem_003Ed__16);
-		stateMachine._003C_003Et__builder = AsyncTaskMethodBuilder.Create();
-		stateMachine._003C_003E4__this = this;
-		stateMachine.item = sharedActionUpdateListItem_0;
-		stateMachine._003C_003E1__state = -1;
-		stateMachine._003C_003Et__builder.Start(ref stateMachine);
-		return stateMachine._003C_003Et__builder.Task;
+		if (SpdDbKdXLE() || item == null) return;
+		Nx9D6gsoDf(true);
+		try { await UpdateActionAsync(item); }
+		finally { Nx9D6gsoDf(false); XKQDYgYWbQ(); }
+	}
+
+	private async Task<bool> UpdateActionAsync(SharedActionUpdateListItem item)
+	{
+		try
+		{
+			var current = gX1DmhEk5y.GetActionById(item.ActionId);
+			if (current.Item1 == null || current.Item2 == null) return false;
+			bool updated = await WUKDKqxkcS.InstallAction(current.Item1,
+				AppHelper.CreateSharedActionLink(current.Item1.TemplateId), current.Item2,
+				current.Item1.Row, current.Item1.Col, Window.GetWindow(this), ChkSkipConfirm.IsChecked == true);
+			if (updated) YCqDx38xbP.Remove(item);
+			return updated;
+		}
+		catch (Exception error)
+		{
+			AppHelper.ShowWarning("更新动作出错：" + error.GetMessageWithInner());
+			return false;
+		}
 	}
 
 	[AsyncStateMachine(typeof(_003CLvItems_OnMouseDoubleClick_003Ed__17))]
@@ -1161,14 +1198,20 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 		AppHelper.TryOpenUrlOrFile("https://getquicker.net/Share/Actions/Versions?code=" + sharedActionUpdateListItem.Action.TemplateId);
 	}
 
-	[AsyncStateMachine(typeof(_003CBtnUpdateSelected_OnClick_003Ed__19))]
-	private void SJVDZSQL2T(object sender, RoutedEventArgs e)
+	private async void SJVDZSQL2T(object sender, RoutedEventArgs e)
 	{
-		_003CBtnUpdateSelected_OnClick_003Ed__19 stateMachine = default(_003CBtnUpdateSelected_OnClick_003Ed__19);
-		stateMachine._003C_003Et__builder = AsyncVoidMethodBuilder.Create();
-		stateMachine._003C_003E4__this = this;
-		stateMachine._003C_003E1__state = -1;
-		stateMachine._003C_003Et__builder.Start(ref stateMachine);
+		if (SpdDbKdXLE()) return;
+		var items = WQND9AZ6Vj().Where(item => item != null).ToList();
+		if (items.Count == 0) { AppHelper.ShowWarning("请选择动作后执行。", true); return; }
+		Nx9D6gsoDf(true);
+		try
+		{
+			int updated = 0;
+			foreach (var item in items)
+				if (await UpdateActionAsync(item)) updated++;
+			AppHelper.ShowInformation($"共更新了{updated}个动作");
+		}
+		finally { Nx9D6gsoDf(false); XKQDYgYWbQ(); }
 	}
 
 	private IList<SharedActionUpdateListItem> WQND9AZ6Vj()
@@ -1214,9 +1257,8 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 	private void XKQDYgYWbQ()
 	{
 		ChkShowSkippedActions.Visibility = ((!YCqDx38xbP.Any(_003C_003Ec.crpv9gXa2K9 ?? (_003C_003Ec.crpv9gXa2K9 = _003C_003Ec.ukJvZzm9p8M.blgvZi49Zss))) ? Visibility.Collapsed : Visibility.Visible);
-		Button btnSetAutoUpdate = BtnSetAutoUpdate;
+		BtnSetAutoUpdate.Visibility = Visibility.Visible;
 		Visibility visibility = (BtnAddToSkipList.Visibility = ((!LvItems.SelectedItems.Cast<SharedActionUpdateListItem>().Any(_003C_003Ec.Tpfv9LAGNcB ?? (_003C_003Ec.Tpfv9LAGNcB = _003C_003Ec.ukJvZzm9p8M.ip1vZ3HT4t0))) ? Visibility.Collapsed : Visibility.Visible));
-		btnSetAutoUpdate.Visibility = visibility;
 		BtnRemoveFromSkipList.Visibility = ((!LvItems.SelectedItems.Cast<SharedActionUpdateListItem>().Any(_003C_003Ec.ieCv9vD7Jml ?? (_003C_003Ec.ieCv9vD7Jml = _003C_003Ec.ukJvZzm9p8M.WopvZf8Iyxh))) ? Visibility.Collapsed : Visibility.Visible);
 		if (LvItems.SelectedItems.Count == 0)
 		{
@@ -1303,29 +1345,9 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 		e.Handled = true;
 	}
 
-	private void rltDHWe49C(object sender, RoutedEventArgs e)
+	private async void rltDHWe49C(object sender, RoutedEventArgs e)
 	{
-		IList<SharedActionUpdateListItem> list = WQND9AZ6Vj();
-		if (list.Count == 0)
-		{
-			AppHelper.ShowWarning("请选择要忽略更新的动作。 ", true);
-		}
-		IList<ActionItem> list2 = new List<ActionItem>();
-		foreach (SharedActionUpdateListItem item in list)
-		{
-			if (!item.AutoUpdate)
-			{
-				item.Action.AutoUpdate = true;
-				list2.Add(item.Action);
-			}
-		}
-		if (list2.Count > 0)
-		{
-			WUKDKqxkcS.UpdateActionProfiles(list2);
-			uUpDrAl9GN.Refresh();
-			LvItems.SelectedItems.Clear();
-			AppHelper.ShowSuccess("下次Quicker启动时将会自动检查并更新动作。");
-		}
+		await oFrDauMHEY();
 	}
 
 	[DebuggerNonUserCode]
