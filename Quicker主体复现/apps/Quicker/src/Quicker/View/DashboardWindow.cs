@@ -78,10 +78,9 @@ public class DashboardWindow : Window, IComponentConnector
 		InitializeComponent();
 		base.Loaded += Xpgg48N8TUe;
 		base.SourceInitialized += sHog4cRvhqP;
-		if (AppState.DataService.Hb9tmk3OsJ7())
 		{
 			UiSettings settings = FMP9ONqzXcgZ6r3WmZZ.A4qHeQImJ6();
-			bool canUseSkin = AppState.DataService.FjftbTOtevj();
+			bool canUseSkin = true;
 			UIHelper.UpdateUiSkinCommon(this, settings, canUseSkin);
 		}
 	}

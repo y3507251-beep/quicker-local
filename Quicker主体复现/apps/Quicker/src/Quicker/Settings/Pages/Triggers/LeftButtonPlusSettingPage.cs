@@ -483,14 +483,6 @@ public class LeftButtonPlusSettingPage : SettingPage, IComponentConnector, IStyl
 	{
 		InitializeComponent();
 		T92o1oMDLW();
-		if (!AppState.DataService.Hb9tmk3OsJ7())
-		{
-			PnlVersionTip.Visibility = Visibility.Visible;
-			ListView lvActions = LvActions;
-			GridAddKeys.IsEnabled = false;
-			lvActions.IsEnabled = false;
-		}
-		else
 		{
 			PnlVersionTip.Visibility = Visibility.Collapsed;
 			ListView lvActions2 = LvActions;

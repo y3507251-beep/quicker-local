@@ -28,52 +28,25 @@ public class UserLimitation
 
 	public bool EnableSearching { get; set; }
 
-    // 开源，免费版的本地默认配置。
-    // 这些是配置值，具体什么时候检查、如何限制，由使用这些配置的代码决定。
-    public static UserLimitation Free { get; set; } = new UserLimitation
+    // 本地版没有会员分级。以下模型仅兼容旧数据格式，EXE 不再用它限制本地功能。
+    // 数量和容量的 0 表示不设产品配额；实际容量由本机内存、磁盘和数据格式决定。
+    public static UserLimitation Unrestricted { get; } = new UserLimitation
     {
-        // 是否允许使用移动端：true 表示允许。
         CanUseMobileApp = true,
-
-        // 是否启用动作历史：false 表示不启用。
         EnableActionHistory = true,
-
-        // 是否启用动作快捷键：false 表示不启用。
         EnableActionHotKey = true,
-
-        // 是否启用悬浮按钮：false 表示不启用。
         EnableFloatButton = true,
-
-        // 是否启用搜索功能：false 表示不启用。
         EnableSearching = true,
-
-        // 是否启用启动器功能：false 表示不启用。
         EnableStarter = true,
-
-        // 是否开启按钮锁定标志：true 表示开启。
-        // 具体锁定哪些按钮、如何锁定，需要查看使用该属性的代码。
-        LockButton = true,
-
-        // 程序配置数量上限：默认 12。
-        MaxExeCount = 20,
-
-        // 图标数量上限：默认 50。
-        MaxIconCount = 100,
-
-        // 每个程序的页面数量上限：默认 1。
-        MaxPagePerExe = 2,
-
-        // 电脑数量上限：默认 2。
-        // 具体统计绑定电脑还是同时在线电脑，目前尚未确认。
-        MaxPcCount = 2,
-
-        // 单个页面文件的大小上限：默认 500000。
-        // 大小单位目前尚未确认。
-        MaxPageFileSize = 1000000,
-
-        // 页面文件的总大小上限：默认 1000000。
-        // 大小单位和计入范围目前尚未确认。
-        TotalPageFileSize = 2000000
+        LockButton = false, // 不再锁定通用面板右上角按钮。
+        MaxExeCount = 0,
+        MaxIconCount = 0,
+        MaxPagePerExe = 0,
+        MaxPcCount = 0,
+        MaxPageFileSize = 0,
+        TotalPageFileSize = 0
     };
 
+    // 保留旧属性名以兼容依赖程序集；不代表存在免费/付费两个版本。
+    public static UserLimitation Free { get; set; } = Unrestricted;
 }

@@ -257,7 +257,6 @@ public class ExeListControl : UserControl, IComponentConnector, IStyleConnector
 				}
 				goto IL_0206;
 				IL_0103:
-				if (exeListControl.zXJLNLQ6gqe.Hb9tmk3OsJ7() || exeListControl.zXJLNLQ6gqe.LDPtXifl4Ca() < 10)
 				{
 					newExeSettingsWindow = new NewExeSettingsWindow(exeListControl.PncLN2iOaPH.Select(_003C_003Ec.qCcSnwa2QfH ?? (_003C_003Ec.qCcSnwa2QfH = _003C_003Ec.Ou8SjO8XVKU.k3bSjTb1Wkr)).ToList(), exeListControl.zXJLNLQ6gqe)
 					{
@@ -279,10 +278,6 @@ public class ExeListControl : UserControl, IComponentConnector, IStyleConnector
 						}
 						goto IL_0206;
 					}
-				}
-				else
-				{
-					AppHelper.ShowWarning("免费版可创建10个应用程序场景，已达到限额。请购买专业版后再使用此功能。");
 				}
 				goto end_IL_000e;
 				IL_0206:

@@ -102,7 +102,6 @@ public class EventTriggersSettingPage : SettingPage, IComponentConnector, IStyle
 					_003C_003E1__state = -1;
 					goto IL_00ee;
 				}
-				if (AppState.DataService.Hb9tmk3OsJ7() || eventTriggersSettingPage.g4sTqBiDpP.Count < 2)
 				{
 					_003Cdlg_003E5__2 = new EventTriggerTaskEditorWindow(null);
 					_003Cdlg_003E5__2.Owner = Window.GetWindow(eventTriggersSettingPage);
@@ -135,7 +134,6 @@ public class EventTriggersSettingPage : SettingPage, IComponentConnector, IStyle
 					}
 					goto IL_00ee;
 				}
-				AppHelper.ShowWarning("本功能为专业版功能，免费版最多可创建2条规则。");
 				goto end_IL_0010;
 				IL_00ee:
 				if (awaiter.GetResult() == true)
@@ -216,21 +214,10 @@ public class EventTriggersSettingPage : SettingPage, IComponentConnector, IStyle
 			g4sTqBiDpP.Reset(settings.TriggerTasks.Select(_003C_003Ec.RAAvhNjHRjt ?? (_003C_003Ec.RAAvhNjHRjt = _003C_003Ec.GCwvhusvYwu.WvJvhLpCSdh)));
 		}
 		LvActions.ItemsSource = g4sTqBiDpP;
-		if (!AppState.DataService.Hb9tmk3OsJ7())
-		{
-			LblVersionInfo.Visibility = Visibility.Visible;
-			uTZTN08imV();
-		}
 	}
 
 	private void uTZTN08imV()
 	{
-		if (!AppState.DataService.Hb9tmk3OsJ7() && g4sTqBiDpP.Count >= 2)
-		{
-			PnlButtons.IsEnabled = false;
-			BtnPasteData.IsEnabled = false;
-		}
-		else
 		{
 			PnlButtons.IsEnabled = true;
 			BtnPasteData.IsEnabled = true;
@@ -374,11 +361,6 @@ public class EventTriggersSettingPage : SettingPage, IComponentConnector, IStyle
 						if (list.Count == 0)
 						{
 							AppHelper.ShowWarning("数据格式不正确！");
-							return;
-						}
-						if (!AppState.DataService.Hb9tmk3OsJ7() && g4sTqBiDpP.Count + list.Count > 2)
-						{
-							AppHelper.ShowWarning("免费版最多可创建2条规则，粘贴的规则数量过多。");
 							return;
 						}
 					}

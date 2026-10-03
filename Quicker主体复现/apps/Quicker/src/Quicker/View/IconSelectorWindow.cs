@@ -331,11 +331,9 @@ public class IconSelectorWindow : Window, IComponentConnector, IStyleConnector
 				_003CiconFile_003E5__2 = (sender as FrameworkElement).Tag as IconFileDto;
 				if (_003CiconFile_003E5__2 != null)
 				{
-					if (AppState.DataService.Hb9tmk3OsJ7())
 					{
 						goto IL_0056;
 					}
-					AppHelper.ShowWarning("此操作需要专业版支持。");
 				}
 				goto end_IL_000e;
 				IL_0056:

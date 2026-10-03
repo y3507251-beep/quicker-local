@@ -212,11 +212,6 @@ public class NewExeSettingsWindow : System.Windows.Window, IComponentConnector
 		{
 			ExeSelectorControl.SelectExe(gYSgMq464GV);
 		}
-		if (!I5vgMRXuOK6.ructbfXlqnJ())
-		{
-			BtnSave.IsEnabled = false;
-			PnlNoMore.Visibility = Visibility.Visible;
-		}
 	}
 
 	protected override AutomationPeer OnCreateAutomationPeer()

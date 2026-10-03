@@ -1721,21 +1721,8 @@ public static class XActionHelper
 
 	public static bool HasProOnlyStep(XAction action)
 	{
-		if (action == null)
-		{
-			return false;
-		}
-		if (action.SubPrograms.HasData())
-		{
-			foreach (SubProgram subProgram in action.SubPrograms)
-			{
-				if (NcftD12y2d6(subProgram.Steps))
-				{
-					return true;
-				}
-			}
-		}
-		return NcftD12y2d6(action.Steps);
+		// 兼容旧动作编辑接口；本地版不再按模块划分会员权限。
+		return false;
 	}
 
 	public static bool IsMatchFilter(ActionStep step, string filter)
@@ -1992,33 +1979,6 @@ public static class XActionHelper
 			eobtDHYPVkg(item.IfSteps, ref _003C_003Ec__DisplayClass38_0_0);
 			eobtDHYPVkg(item.ElseSteps, ref _003C_003Ec__DisplayClass38_0_0);
 		}
-	}
-
-	[CompilerGenerated]
-	internal static bool NcftD12y2d6(IList<ActionStep> ilist_0)
-	{
-		if (!ilist_0.HasData())
-		{
-			return false;
-		}
-		foreach (ActionStep item in ilist_0)
-		{
-			IStepRunner runner = StepRunnerRegistry.GetRunner(item.StepRunnerKey);
-			if (runner == null || !runner.IsProOnly)
-			{
-				if (!NcftD12y2d6(item.IfSteps))
-				{
-					if (NcftD12y2d6(item.ElseSteps))
-					{
-						return true;
-					}
-					continue;
-				}
-				return true;
-			}
-			return true;
-		}
-		return false;
 	}
 
 	[CompilerGenerated]

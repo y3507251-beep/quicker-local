@@ -2108,7 +2108,7 @@ public class SearchWindow : Window, IComponentConnector, IStyleConnector, ISearc
 				}
 				if (searchResultItem is ActionSearchResultItem actionSearchResultItem)
 				{
-					if (actionSearchResultItem.Tag is ActionItem actionItem_ && UZ7gOGXeXki.hfGtbAvJrRQ(true))
+					if (actionSearchResultItem.Tag is ActionItem actionItem_)
 					{
 						FkIgFwGCJhC.S0utq5GWhlA(actionItem_, this, new System.Windows.Point(FMP9ONqzXcgZ6r3WmZZ.A4qHeQImJ6().ButtonSize / 2.0, FMP9ONqzXcgZ6r3WmZZ.A4qHeQImJ6().ButtonSize / 2.0), AppState.AppServer, AppState.Y2RtaqSv0AQ(), AppState.lWutartRfUY(), AppState.DataService, AppState.TKStaiOMyPb(), "NO_BIND");
 						frameworkElement.CaptureMouse();

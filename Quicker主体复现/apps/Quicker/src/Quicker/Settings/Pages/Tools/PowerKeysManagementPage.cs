@@ -504,14 +504,9 @@ public class PowerKeysManagementPage : SettingPage, IComponentConnector, IStyleC
 		x8f5sUg2Tw(jYgDtjae2Y);
 		UpdateKeyList(AppState.DataService.UserPreference.LastEditingPowerKey);
 		base.Loaded += rB85H90Ixf;
-		if (xgZDwjeE05.Hb9tmk3OsJ7())
 		{
 			PnlVersionTip.Visibility = Visibility.Collapsed;
-			LblVersionTip.Text = $"此功能为专业版功能，免费版可创建 {10} 条规则。";
-		}
-		else
-		{
-			PnlVersionTip.Visibility = Visibility.Visible;
+			LblVersionTip.Text = string.Empty;
 		}
 		GroupTab.ItemsSource = Groups;
 	}
@@ -701,10 +696,6 @@ public class PowerKeysManagementPage : SettingPage, IComponentConnector, IStyleC
 		}
 		else
 		{
-			if (!xgZDwjeE05.wDPt6vvKvtA(1, true))
-			{
-				return;
-			}
 			PowerKeyActionEditWindow powerKeyActionEditWindow = new PowerKeyActionEditWindow(null, CurrentPowerKey, xgZDwjeE05, OXo5dtl6C5());
 			powerKeyActionEditWindow.Owner = base.ParentWindow;
 			if (powerKeyActionEditWindow.ShowDialog() != true)

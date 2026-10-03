@@ -748,7 +748,6 @@ public class InternalSubProgramListControl : UserControl, IComponentConnector, I
 
 	private void GbjLXa7hhmf(object sender, RoutedEventArgs e)
 	{
-		if (AppState.DataService.IKjtbU9GGtP() && !AppState.DataService.BV9tm7kpqII())
 		{
 			(bool, string) tuple = AppHelper.ShowSelectFileDialog("*.qka|*.qka", ".qka", "", "", "导入动作定义");
 			if (!tuple.Item1)
@@ -796,7 +795,7 @@ public class InternalSubProgramListControl : UserControl, IComponentConnector, I
 				return;
 			}
 		}
-		AppHelper.ShowVersionLimitInfo(Window.GetWindow(this), "了解 “导入导出动作定义” 功能", "https://getquicker.net/KC/Help/Doc/action-history");
+
 	}
 
 	private void jhaLX7bDpHi(object sender, RoutedEventArgs e)

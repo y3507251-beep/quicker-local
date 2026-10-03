@@ -284,7 +284,6 @@ public class InstallTextCommandWindow : Window, IComponentConnector
 	{
 		GroupName = CbGroup.Text ?? "";
 		SelectedTextCommands = LvTextCommands.SelectedItems.Cast<TextCommand>().ToList();
-		if (AppState.DataService.jLBt6tCcE7p(SelectedTextCommands.Count))
 		{
 			base.DialogResult = true;
 		}

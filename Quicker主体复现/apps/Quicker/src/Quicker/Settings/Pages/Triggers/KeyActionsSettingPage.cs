@@ -171,7 +171,6 @@ public class KeyActionsSettingPage : SettingPage, IComponentConnector, IStyleCon
 				TaskAwaiter<bool?> awaiter = default(TaskAwaiter<bool?>);
 				if (num != 0)
 				{
-					if (AppState.DataService.Hb9tmk3OsJ7())
 					{
 						goto IL_008f;
 					}
@@ -205,12 +204,7 @@ public class KeyActionsSettingPage : SettingPage, IComponentConnector, IStyleCon
 				}
 				goto IL_00f2;
 				IL_0070:
-				if (keyActionsSettingPage._list.Count < 1)
-				{
-					goto IL_008f;
-				}
-				AppHelper.ShowWarning("免费版支持创建1条按键触发规则，当前已达到限额。\n如您已购买专业版，请重启软件生效。");
-				goto end_IL_0010;
+				goto IL_008f;
 				IL_00f2:
 				if (awaiter.GetResult() == true)
 				{
@@ -488,11 +482,6 @@ public class KeyActionsSettingPage : SettingPage, IComponentConnector, IStyleCon
 	public KeyActionsSettingPage()
 	{
 		InitializeComponent();
-		if (!AppState.DataService.Hb9tmk3OsJ7())
-		{
-			LblLimit.Visibility = Visibility.Visible;
-		}
-		else
 		{
 			LblLimit.Visibility = Visibility.Collapsed;
 		}

@@ -536,7 +536,7 @@ public class ActionButton : Button
 				Label = ActionItem?.Title?.Replace("\\n", "\n");
 				Icon = ActionItem?.Icon;
 				base.ToolTip = I7lLKgJZwm7(ActionItem);
-				if (ActionItem != null && AppState.DataService.CpItmVISR7P().ShowActionNewVersionTip && AppState.DataService.T0DtXck0Jas(ActionItem) && !AppState.DataService.BV9tm7kpqII())
+				if (ActionItem != null && AppState.DataService.CpItmVISR7P().ShowActionNewVersionTip && AppState.DataService.T0DtXck0Jas(ActionItem))
 				{
 					if (Window.GetWindow(this) is CircleMenuWindow)
 					{

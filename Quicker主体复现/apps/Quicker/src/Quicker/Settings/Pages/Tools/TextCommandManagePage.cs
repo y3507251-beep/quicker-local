@@ -1612,11 +1612,7 @@ public class TextCommandManagePage : SettingPage, IComponentConnector, IStyleCon
 		gSg5eLMQtR = AppState.Y2RtaqSv0AQ();
 		InitializeComponent();
 		base.Loaded += xuH43HYxR7;
-		LblVersionTip.Visibility = (sTZ5hJPqhu.Hb9tmk3OsJ7() ? Visibility.Collapsed : Visibility.Visible);
-		if (!sTZ5hJPqhu.Hb9tmk3OsJ7())
-		{
-			LblVersionTip.Text = $"此功能为专业版功能，免费版可创建 {10} 条规则。";
-		}
+		LblVersionTip.Visibility = (Visibility.Collapsed);
 		GroupTab.ItemsSource = Groups;
 	}
 
@@ -1737,7 +1733,6 @@ public class TextCommandManagePage : SettingPage, IComponentConnector, IStyleCon
 
 	private void akk4zLau8d(object sender, RoutedEventArgs e)
 	{
-		if (sTZ5hJPqhu.jLBt6tCcE7p(1, true))
 		{
 			TextCommandEditWindow textCommandEditWindow = new TextCommandEditWindow(sTZ5hJPqhu, VMW5tSauPM(), Groups.Select(_003C_003Ec.j3cvZPwxLFj ?? (_003C_003Ec.j3cvZPwxLFj = _003C_003Ec.BOmvZCSdnVh.dJ2vZLvstkn)).ToList());
 			textCommandEditWindow.Owner = base.ParentWindow;

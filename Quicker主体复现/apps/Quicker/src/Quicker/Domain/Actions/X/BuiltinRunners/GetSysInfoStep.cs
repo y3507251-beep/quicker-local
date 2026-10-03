@@ -180,7 +180,7 @@ public class GetSysInfoStep : IStepRunner, IStepRunningInfo
 			XActionHelper.OutputResult(kHrtijlD4LD, x3dStf3Iyp6, fIOStzXj2Yx, AppState.AppServer.GetActionRunningCount(fIOStzXj2Yx.ActionId), HicSgw119YV);
 			XActionHelper.OutputResult(yW5tinhIRCU, x3dStf3Iyp6, fIOStzXj2Yx, fIOStzXj2Yx.RootContext.IsDebugging, HicSgw119YV);
 			XActionHelper.OutputResult(fq5ti4sDEmc, x3dStf3Iyp6, fIOStzXj2Yx, fIOStzXj2Yx.RootContext.ActionTrigger.ToString(), HicSgw119YV);
-			XActionHelper.OutputResult(Q2stid5wCOG, x3dStf3Iyp6, fIOStzXj2Yx, AppState.DataService.Hb9tmk3OsJ7(), HicSgw119YV);
+			XActionHelper.OutputResult(Q2stid5wCOG, x3dStf3Iyp6, fIOStzXj2Yx, true, HicSgw119YV);
 			XActionHelper.OutputResultIfNeeded(arytiop3pVn, _003C_003Ec.muaStAnOkIw ?? (_003C_003Ec.muaStAnOkIw = _003C_003Ec.PekStTtcadb.K1NStnoQ0ds), x3dStf3Iyp6, fIOStzXj2Yx, HicSgw119YV);
 			XActionHelper.OutputResultIfNeeded(bTwtiTtfRuI, _003C_003Ec.aw2StOMZ4PL ?? (_003C_003Ec.aw2StOMZ4PL = _003C_003Ec.PekStTtcadb.CdSSt4dmkDV), x3dStf3Iyp6, fIOStzXj2Yx, HicSgw119YV);
 			XActionHelper.OutputResultIfNeeded(RiRtiX13vLe, _003C_003Ec.OEDStFg6K1d ?? (_003C_003Ec.OEDStFg6K1d = _003C_003Ec.PekStTtcadb.WhmSt5waWlA), x3dStf3Iyp6, fIOStzXj2Yx, HicSgw119YV);
@@ -538,8 +538,8 @@ public class GetSysInfoStep : IStepRunner, IStepRunningInfo
 		Q2stid5wCOG = new StepOutParamDef
 		{
 			Key = "isPro",
-			Name = "是否为专业版",
-			Description = "当前用户是否使用专业版软件。",
+			Name = "本地完整功能可用",
+			Description = "本地版恒为 true。保留旧参数键以兼容已有动作，不代表会员身份。",
 			Type = VarType.Boolean
 		};
 		arytiop3pVn = new StepOutParamDef

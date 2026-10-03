@@ -84,7 +84,7 @@ public class MouseActionManagePage : SettingPage, IComponentConnector, IStyleCon
 		InitializeComponent();
 		base.Loaded += NBJddpL6vg;
 		LvActions.SetValue(GongSolutions.Wpf.DragDrop.DragDrop.DropHandlerProperty, new ReorderDropTarget());
-		PnlVersionTip.Visibility = (Hpoo2tRiKC.Hb9tmk3OsJ7() ? Visibility.Collapsed : Visibility.Visible);
+		PnlVersionTip.Visibility = (Visibility.Collapsed);
 	}
 
 	private void NBJddpL6vg(object sender, RoutedEventArgs e)
@@ -116,11 +116,6 @@ public class MouseActionManagePage : SettingPage, IComponentConnector, IStyleCon
 
 	private void YFCdT4RFhs(object sender, RoutedEventArgs e)
 	{
-		if (!Hpoo2tRiKC.Hb9tmk3OsJ7() && Hpoo2tRiKC.FnrtmLxNViE().Count >= 5)
-		{
-			AppHelper.ShowVersionLimitInfo(base.ParentWindow, $"免费版支持创建{5}条自定义鼠标操作。", "https://getquicker.net/pricing");
-			return;
-		}
 		MouseActionEditWindow mouseActionEditWindow = new MouseActionEditWindow(Hpoo2tRiKC, null)
 		{
 			Owner = base.ParentWindow
@@ -332,11 +327,6 @@ public class MouseActionManagePage : SettingPage, IComponentConnector, IStyleCon
 					}
 					if (list2.Count <= 0 || AppHelper.Confirm("这些条目（名称）在本地已存在，您确定要粘贴么？\r\n" + string.Join("\r\n", list2)))
 					{
-						if (!Hpoo2tRiKC.Hb9tmk3OsJ7() && Hpoo2tRiKC.FnrtmLxNViE().Count + list.Count >= 5)
-						{
-							AppHelper.ShowVersionLimitInfo(base.ParentWindow, $"免费版支持创建 {5} 条自定义鼠标操作。", "https://getquicker.net/pricing");
-							return;
-						}
 						Hpoo2tRiKC.FnrtmLxNViE().AddRange(list);
 						Save(true);
 						AppHelper.ShowSuccess($"已成功粘贴 {list.Count} 项。");

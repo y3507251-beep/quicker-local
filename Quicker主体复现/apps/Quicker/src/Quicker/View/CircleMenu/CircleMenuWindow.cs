@@ -860,7 +860,7 @@ public class CircleMenuWindow : Window, IComponentConnector
 		IsWorking = true;
 		_popupTime = AppHelper.fLiLTj0x4QY();
 		i9TL99TObPu = false;
-		ShowExternalCircle = forClick && AppState.HHxtaMaoqJr().CircleMenuShowExternalWhenPopup && AulL979r08D.HnJtXqHvdn3();
+		ShowExternalCircle = forClick && AppState.HHxtaMaoqJr().CircleMenuShowExternalWhenPopup;
 		usUL9WWw4Nk = forClick;
 		KluL9hrBtcu = 0;
 		AppState.Lista4qx2wK().CountCircleMenu();
@@ -970,11 +970,6 @@ public class CircleMenuWindow : Window, IComponentConnector
 
 	public void TryTriggerExternAction()
 	{
-		if (!AulL979r08D.HnJtXqHvdn3())
-		{
-			AppHelper.ShowWarning("轮盘菜单扩展圈需要购买专业版后使用。\n(免费版可试用90天扩展圈)");
-			return;
-		}
 		ActionItem actionItem = BtnCorner.ActionItem;
 		if (actionItem != null)
 		{
@@ -1218,7 +1213,6 @@ public class CircleMenuWindow : Window, IComponentConnector
 		}
 		base.FontSize = AulL979r08D.CpItmVISR7P().CircleMenuFontSize;
 		UiSettings uiSettings = FMP9ONqzXcgZ6r3WmZZ.A4qHeQImJ6();
-		if (AppState.DataService.Hb9tmk3OsJ7())
 		{
 			string text = (uiSettings.FontFamily1 + "," + uiSettings.FontFamily2).Trim(',');
 			try
@@ -1337,15 +1331,6 @@ public class CircleMenuWindow : Window, IComponentConnector
 		if (IsMouseOnWindow(point_0))
 		{
 			return CircleMenu.GetMouseOverAction(point_0);
-		}
-		if (!AulL979r08D.HnJtXqHvdn3() && CnuL9tK9ZBc() != null)
-		{
-			if ((DateTime.Now - UwZL9kRF8Hy).TotalSeconds > 5.0)
-			{
-				AppHelper.ShowWarning("轮盘菜单扩展圈需要购买专业版后使用。如果您已购买，请重启Quicker生效。\n(免费版可试用90天扩展圈)");
-				UwZL9kRF8Hy = DateTime.Now;
-			}
-			return null;
 		}
 		return CnuL9tK9ZBc();
 	}

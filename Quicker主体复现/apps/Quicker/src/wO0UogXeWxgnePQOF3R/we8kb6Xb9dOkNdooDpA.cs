@@ -444,10 +444,6 @@ internal class we8kb6Xb9dOkNdooDpA
 			}
 			if (_003C_003Ec__DisplayClass19_.Enov5NOka8Y != null)
 			{
-				if (!Oc2txqfLeTK.c4Kt6gVDJcx(true))
-				{
-					return true;
-				}
 				GaZT3MMHZ3eZxDOySux.ReZLM3wimyT(_003C_003Ec__DisplayClass19_.fA3v5SUuYfY, "text_command");
 				return true;
 			}

@@ -103,11 +103,6 @@ public class EditProfileWindow : System.Windows.Window, IComponentConnector
 		LblExe.Text = I8sgMJun69g.ExeDisplayName;
 		TxtProfileName.Text = I8sgMJun69g.Name;
 		TxtValidForMachines.Text = I8sgMJun69g.Settings.ValidForMachines;
-		if (RhPgMCQ6hoI.phyt6wLqU0M() == 1 && string.IsNullOrEmpty(I8sgMJun69g.Settings.ValidForMachines))
-		{
-			LblValidForMachines.Visibility = Visibility.Collapsed;
-			PnlValidForMachines.Visibility = Visibility.Collapsed;
-		}
 		if (!string.IsNullOrEmpty(I8sgMJun69g.AliasOfProfile))
 		{
 			List<ActionProfile> source = PLSgM0FWKXa.GetProfiles(false).Where(_003C_003Ec.d5rSKXoFgga ?? (_003C_003Ec.d5rSKXoFgga = _003C_003Ec.r5CSK6vY1xJ.n52SKbVPsPZ)).ToList();

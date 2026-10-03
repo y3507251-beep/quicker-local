@@ -19,9 +19,8 @@ public sealed class LocalWorkspaceInfo
 			UserId = Id,
 			UserName = DisplayName,
 			NickName = DisplayName,
-			MemberLevel = MemberLevel.Free,
 			RegTimeUtc = CreatedUtc,
-			UserLimitation = UserLimitation.Free
+			UserLimitation = UserLimitation.Unrestricted
 		};
 	}
 }

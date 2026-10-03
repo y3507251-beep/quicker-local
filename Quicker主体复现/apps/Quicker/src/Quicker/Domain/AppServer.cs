@@ -1411,15 +1411,10 @@ public class AppServer : IDisposable
 
 	public void FeedbackAction(ActionItem action, bool addToPendingListIfCancel)
 	{
-		if (!AppState.DataService.BV9tm7kpqII() && !AppState.DataService.JTftmqIPFYx())
 		{
 			ActionFeedbackWindow actionFeedbackWindow = new ActionFeedbackWindow(action, addToPendingListIfCancel);
 			actionFeedbackWindow.Owner = null;
 			actionFeedbackWindow.Show();
-		}
-		else
-		{
-			AppHelper.ShowInformation("体验帐号不支持此功能。");
 		}
 	}
 
@@ -1655,10 +1650,6 @@ public class AppServer : IDisposable
 
 	internal string LoadSkin(Guid id, bool keepSize = true, bool confirm = true, bool showPanel = true)
 	{
-		if (!AppState.DataService.Hb9tmk3OsJ7())
-		{
-			throw new NotSupportedException("需要专业版");
-		}
 		bool bool_ = false;
 		int num;
 		if (!qqVtqwLBvth.Contains(id))

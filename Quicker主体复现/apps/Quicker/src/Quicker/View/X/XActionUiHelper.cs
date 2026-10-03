@@ -477,7 +477,6 @@ public static class XActionUiHelper
 
 	public static void ExportSubProgram(Window owner, SubProgram subProgram)
 	{
-		if (AppState.DataService.IKjtbU9GGtP() && !AppState.DataService.BV9tm7kpqII())
 		{
 			(bool, string) tuple = AppHelper.ShowSaveFileDialog("*.qka|*.qka", ".qka", "子程序_" + AppHelper.RemoveInvalidCharsFromFileName(subProgram.Name) + "_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".qka", "", "导出子程序定义-" + subProgram.Name);
 			if (tuple.Item1)
@@ -491,10 +490,6 @@ public static class XActionUiHelper
 					AppHelper.ShowWarning("导出出错：" + ex.Message);
 				}
 			}
-		}
-		else
-		{
-			AppHelper.ShowVersionLimitInfo(owner, "了解 “动作历史版本” 功能", "https://getquicker.net/KC/Help/Doc/action-history");
 		}
 	}
 

@@ -74,16 +74,11 @@ public static class FloatTriggerButtonHelper
 
 	public static void ShowPanelFloatButton()
 	{
-		if (AppState.DataService.Hb9tmk3OsJ7())
 		{
 			Sprite sprite = Sprite.Show(new QuickerTriggerButton());
 			sprite.Tag = $"PANEL_FLOAT_{AppHelper.fLiLTj0x4QY()}";
 			sprite.SetValue(BlockQuickerHWndBehavior.IsEnabledProperty, true);
 			IHNRIiikxBwJdYmHpM3.p1AvvooEqum(sprite, ShowWindowLocation.WithMouse2);
-		}
-		else
-		{
-			AppHelper.ShowInformation("无法启动面板浮标功能：需要购买专业版。");
 		}
 	}
 

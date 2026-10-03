@@ -88,7 +88,6 @@ public class SubActionMangeControl : UserControl, IComponentConnector, IStyleCon
 					_003C_003E1__state = -1;
 					goto IL_00f3;
 				}
-				if (AppState.DataService.Hb9tmk3OsJ7() || subActionMangeControl.SubActions.Count < 2)
 				{
 					_003Cdlg_003E5__2 = new SubActionEditWindow(subActionMangeControl.SubActions, null);
 					int num2 = 1;
@@ -122,7 +121,6 @@ public class SubActionMangeControl : UserControl, IComponentConnector, IStyleCon
 					}
 					goto IL_00f3;
 				}
-				AppHelper.ShowWarning("免费版支持创建2条按键触发规则，当前已达到限额。\n如您已购买专业版，请重启软件生效。");
 				goto end_IL_0010;
 				IL_00f3:
 				if (awaiter.GetResult() == true)

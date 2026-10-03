@@ -2782,12 +2782,6 @@ internal class UIy1pYiDsLcf2l4joSP
 			item.Priority = 2;
 		}
 		List<Quicker.Domain.PowerMouse.MouseAction> list2 = SL0vvwD6HYI.FnrtmLxNViE().Where(_003C_003Ec.sX520VLOQBe ?? (_003C_003Ec.sX520VLOQBe = _003C_003Ec.Arm20RCQ7us.LGI20J9qOfF)).ToList();
-		if (!AppState.DataService.Hb9tmk3OsJ7() && list2.Count > 5)
-		{
-			AppHelper.ShowWarning("高级鼠标触发：规则条数超过免费版限制(5条)。");
-			list.AddRange(list2.Take(5));
-		}
-		else
 		{
 			list.AddRange(list2);
 		}
@@ -4568,7 +4562,6 @@ internal class UIy1pYiDsLcf2l4joSP
 				return false;
 			}
 		}
-		if (AppState.DataService.Hb9tmk3OsJ7())
 		{
 			goto IL_00d8;
 		}
@@ -4620,11 +4613,6 @@ internal class UIy1pYiDsLcf2l4joSP
 		flag2 = true;
 		goto IL_01c1;
 		IL_0138:
-		if (SL0vvwD6HYI.Y0Etm2L8Pto().Count > 8)
-		{
-			AppHelper.ShowVersionLimitInfo(null, $"您的专业版已过期。\n请续费专业版或将手势轨迹减少至{8}后继续使用手势功能。", null, SettingPageId.GesturesManagePage);
-			return false;
-		}
 		goto IL_00d8;
 		IL_01c1:
 		v45vvBRpIiS.BXZL76quEQh();

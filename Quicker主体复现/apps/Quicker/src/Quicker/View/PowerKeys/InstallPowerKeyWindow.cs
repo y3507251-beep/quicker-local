@@ -293,7 +293,6 @@ public class InstallPowerKeyWindow : Window, IComponentConnector
 		}
 		Key = (int)KeyEditor.Hotkey.Key;
 		Actions = LvActions.SelectedItems.Cast<PowerKeyActionItem>().ToList();
-		if (AppState.DataService.wDPt6vvKvtA(Actions.Count))
 		{
 			base.DialogResult = true;
 		}

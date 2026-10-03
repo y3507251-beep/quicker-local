@@ -729,7 +729,6 @@ public class SubProgramEditor : UserControl, IComponentConnector, IStyleConnecto
 
 	private void fWILk7pJFC2(object sender, RoutedEventArgs e)
 	{
-		if (AppState.DataService.IKjtbU9GGtP() && !AppState.DataService.BV9tm7kpqII())
 		{
 			(bool, string) tuple = AppHelper.ShowSelectFileDialog("*.qka|*.qka", ".qka", "", "", "导入动作定义");
 			if (!tuple.Item1)
@@ -767,7 +766,7 @@ public class SubProgramEditor : UserControl, IComponentConnector, IStyleConnecto
 				return;
 			}
 		}
-		AppHelper.ShowVersionLimitInfo(Window.GetWindow(this), "了解 “动作历史版本” 功能", "https://getquicker.net/KC/Help/Doc/action-history");
+
 	}
 
 	private void ActionStepsWrapper_OnStepChanged(object sender, EventArgs e)

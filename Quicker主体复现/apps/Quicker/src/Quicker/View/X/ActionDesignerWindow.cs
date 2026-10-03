@@ -1696,15 +1696,6 @@ public class ActionDesignerWindow : HandyControl.Controls.Window, IComponentConn
 				}
 				else
 				{
-					if (!AppState.DataService.IKjtbU9GGtP())
-					{
-						num2 = 1;
-						if (x1B74oWhaAHgqpIw6ZwR != null)
-						{
-							goto IL_0061;
-						}
-						goto IL_0065;
-					}
 					if (actionDesignerWindow.IsReadonly)
 					{
 						num2 = 0;
@@ -1741,7 +1732,7 @@ public class ActionDesignerWindow : HandyControl.Controls.Window, IComponentConn
 					AppHelper.ShowWarning("目前为只读状态，不支持保存。");
 					break;
 				case 1:
-					AppHelper.ShowVersionLimitInfo(actionDesignerWindow, "了解 “动作历史版本” 功能", "https://getquicker.net/KC/Help/Doc/action-history");
+
 					break;
 				}
 				goto end_IL_0010;
@@ -4798,7 +4789,7 @@ public class ActionDesignerWindow : HandyControl.Controls.Window, IComponentConn
 
 	private void T6KLeRoG8TW(object sender, RoutedEventArgs e)
 	{
-		while (AppState.DataService.IKjtbU9GGtP())
+		while (true)
 		{
 			int num = 0;
 			if (!FDCl2ZFOEAbTn1aciuNR())
@@ -4855,7 +4846,7 @@ public class ActionDesignerWindow : HandyControl.Controls.Window, IComponentConn
 			}
 			goto IL_00df;
 		}
-		AppHelper.ShowVersionLimitInfo(this, "了解 “动作历史版本” 功能", "https://getquicker.net/KC/Help/Doc/action-history");
+
 	}
 
 	private void JlOLeqx4Mkh(object sender, RoutedEventArgs e)

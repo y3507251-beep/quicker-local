@@ -39,11 +39,6 @@ public class CloudDataStep : IStepRunner, IStepRunningInfo
 					if (textParamValue == "saveGlobalState")
 					{
 						string textParamValue3 = XActionHelper.GetTextParamValue(hSMtT38ja2f, pVSv3R1xSJa, syfv3q65Mab);
-						int num = AppState.DataService.LgXtbzAujUF();
-						if (textParamValue3.Length > num)
-						{
-							return (isSuccess: false, message: $"内容超过了允许的长度（{num}字节）", failReason: ActionStopFlag.OperationFailed);
-						}
 						oHyR5LX5l5qeapYlxI6.PmftHLHo6Ui(textParamValue2, textParamValue3, double_, syfv3q65Mab).Wait();
 					}
 				}

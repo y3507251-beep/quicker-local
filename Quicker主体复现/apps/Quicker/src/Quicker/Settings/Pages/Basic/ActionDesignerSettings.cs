@@ -97,13 +97,6 @@ public class ActionDesignerSettings : SettingPage, IComponentConnector
 		CbSearchImeState.ItemsSource = AppImeHelper.SelectionItems;
 		CbActionMenuLayout.ItemsSource = cccThJWAJO;
 		CbOperationOfRunningAction.ItemsSource = hwqT9c2p5t;
-		if (!AppState.DataService.Hb9tmk3OsJ7())
-		{
-			ToggleAutoBackupActionState.IsChecked = false;
-			ToggleAutoBackupActionState.IsEnabled = false;
-			ToggleAutoBackupAction.IsChecked = false;
-			ToggleAutoBackupAction.IsEnabled = false;
-		}
 	}
 
 	protected override void LoadDataToUi(UserSettings settings)

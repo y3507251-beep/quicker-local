@@ -51,15 +51,6 @@ public class UISettingsPage : SettingPage, IComponentConnector
 			{
 				if ((uint)num > 1u)
 				{
-					if (AppState.DataService.BV9tm7kpqII())
-					{
-						AppHelper.ShowWarning("演示帐号不支持此功能。");
-					}
-					else if (!AppState.DataService.Hb9tmk3OsJ7())
-					{
-						AppHelper.ShowWarning("免费版不支持此功能。");
-					}
-					else
 					{
 						UiSettings uiSettings = (uISettingsPage.IsShouldShareDarkUiSettings() ? uISettingsPage.o554w18RLo.DarkUiSettings : uISettingsPage.o554w18RLo.UiSettings);
 						if (!string.IsNullOrEmpty(uiSettings.BackgroundImage) && !uiSettings.BackgroundImage.StartsWith("http", StringComparison.OrdinalIgnoreCase))
@@ -268,7 +259,7 @@ public class UISettingsPage : SettingPage, IComponentConnector
 	{
 		InitializeComponent();
 		k93nQZgq24();
-		BtnShare.IsEnabled = (ChkSwitchUiSettingsBasedOnTheme.IsEnabled = AppState.DataService.FjftbTOtevj());
+		BtnShare.IsEnabled = (ChkSwitchUiSettingsBasedOnTheme.IsEnabled = true);
 	}
 
 	[SpecialName]
@@ -411,14 +402,8 @@ public class UISettingsPage : SettingPage, IComponentConnector
 		o554w18RLo = settings;
 		y17nfb7XZr = JsonConvert.DeserializeObject<UiSettings>(JsonConvert.SerializeObject(settings.UiSettings));
 		DefaultColorSettingsControl.SetData(settings.UiSettings);
-		if (!AppState.DataService.Hb9tmk3OsJ7())
 		{
-			ChkSwitchUiSettingsBasedOnTheme.Visibility = Visibility.Collapsed;
-			(TabColors.Items[1] as TabItem).Visibility = Visibility.Collapsed;
-		}
-		else
-		{
-			ChkSwitchUiSettingsBasedOnTheme.IsChecked = AppState.DataService.Hb9tmk3OsJ7() && settings.SwitchUiSettingsBasedOnTheme;
+			ChkSwitchUiSettingsBasedOnTheme.IsChecked = settings.SwitchUiSettingsBasedOnTheme;
 			if (IEDnzp6o6Q == null)
 			{
 				IEDnzp6o6Q = ((settings.DarkUiSettings == null) ? AppHelper.Clone(settings.UiSettings) : AppHelper.Clone(settings.DarkUiSettings));
@@ -445,7 +430,7 @@ public class UISettingsPage : SettingPage, IComponentConnector
 	{
 		if (EOTn3144cw)
 		{
-			settings.SwitchUiSettingsBasedOnTheme = ChkSwitchUiSettingsBasedOnTheme.IsChecked == true && AppState.DataService.Hb9tmk3OsJ7();
+			settings.SwitchUiSettingsBasedOnTheme = ChkSwitchUiSettingsBasedOnTheme.IsChecked == true;
 			DefaultColorSettingsControl.SaveData(settings.UiSettings);
 			if (settings.DarkUiSettings == null)
 			{

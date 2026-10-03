@@ -211,7 +211,6 @@ public class ShareActionWindow : System.Windows.Window, IComponentConnector
 				{
 					goto IL_02b0;
 				}
-				if (!AppState.DataService.BV9tm7kpqII() && !AppState.DataService.JTftmqIPFYx())
 				{
 					bool? isChecked = shareActionWindow.RbSharePublic.IsChecked;
 					int num3 = default(int);
@@ -310,10 +309,6 @@ public class ShareActionWindow : System.Windows.Window, IComponentConnector
 						shareActionWindow.BtnOk.IsEnabled = false;
 						goto IL_02b0;
 					}
-				}
-				else
-				{
-					AppHelper.ShowInformation("体验帐号不支持此功能。");
 				}
 				goto end_IL_000e;
 				IL_02b0:

@@ -9,7 +9,6 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using eGw6fHYzCMTEO3Dvtqx;
 using IgQBbvXMVdsN7GVNUxX;
 using log4net;
 using Newtonsoft.Json;
@@ -24,7 +23,6 @@ internal class IIQBbr2FgGR5ONc4nck
 
 
 
-	private static HohpaZYaB62F359dDI0 Ib9tySk1iWO;
 
 	private static readonly ILog eSpty2tYtHZ;
 
@@ -60,7 +58,6 @@ internal class IIQBbr2FgGR5ONc4nck
 
 	static IIQBbr2FgGR5ONc4nck()
 	{
-		Ib9tySk1iWO = new HohpaZYaB62F359dDI0(10, 2, 200, 1000);
 		eSpty2tYtHZ = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 	}
 

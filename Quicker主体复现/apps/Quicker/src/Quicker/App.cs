@@ -547,7 +547,6 @@ public class App : System.Windows.Application
 					DateTime? dateTime = dDh7g7Xw7JyQPUTbYwJ.LastStartupTime;
 					AppState.IsFirstStartInSameDay = !dateTime.HasValue || dateTime.Value.Date != DateTime.Now.Date;
 					dDh7g7Xw7JyQPUTbYwJ.LastStartupTime = DateTime.Now;
-					if (_003C_003Ec__DisplayClass17_.jDwvqt8UKG8.Hb9tmk3OsJ7())
 					{
 						FMP9ONqzXcgZ6r3WmZZ.sXXH7ZuLTN();
 					}
@@ -1387,11 +1386,6 @@ public class App : System.Windows.Application
 	internal void DKC12DNm22(SkinType skinType_0)
 	{
 		DataService dataService = AppState.DataService;
-		if (dataService != null && !dataService.Hb9tmk3OsJ7())
-		{
-			PoF17Zov9T.Warn("切换主题为专业版功能，当前不可用。");
-			return;
-		}
 		SkinType? skinType = Brm1CjxFTF();
 		if (skinType == skinType_0)
 		{

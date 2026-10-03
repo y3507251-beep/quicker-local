@@ -210,16 +210,6 @@ public class BasicSettings : SettingPage, IComponentConnector
 				ToggleSyncIgnoreNetworkState.IsChecked = settings.SyncIgnoreNetworkState;
 				ToggleRestoreOriginEventIfMouseDownTimeout.IsChecked = settings.RestoreOriginEventIfMouseDownTimeout;
 				CbTrayIconType.SelectedIndex = settings.TrayIconType;
-				if (!AppState.DataService.Hb9tmk3OsJ7())
-				{
-					CbTrayIconType.SelectedIndex = 0;
-					num = 0;
-					if (I2wGvYwPSoqK9w0boRo())
-					{
-						goto IL_0265_2;
-					}
-					break;
-				}
 				goto case 1;
 			case 2:
 				ToggleShowNewExeSettingTips.IsChecked = settings.ShowNewExeSettingTips;
@@ -246,8 +236,8 @@ public class BasicSettings : SettingPage, IComponentConnector
 				ToggleShowRunningCountOnTrayIcon.IsChecked = settings.ShowRunningCountOnTrayIcon;
 				return;
 			}
-			CbTrayIconType.ToolTip = "此功能为专业版功能";
-			CbTrayIconType.IsEnabled = false;
+			CbTrayIconType.ToolTip = null;
+			CbTrayIconType.IsEnabled = true;
 			num = 1;
 		}
 		while (I2wGvYwPSoqK9w0boRo());

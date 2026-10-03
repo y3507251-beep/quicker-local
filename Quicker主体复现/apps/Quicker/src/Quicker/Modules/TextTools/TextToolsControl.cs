@@ -258,15 +258,6 @@ public class TextToolsControl : Control
 						goto end_IL_019a;
 					case 2:
 						text2 = ((!textToolsControl.DiPtvvkZT9Y) ? "$$" : "$=");
-						if (!AppState.DataService.Hb9tmk3OsJ7())
-						{
-							if (Keyboard.Modifiers == ModifierKeys.Control)
-							{
-								textToolsControl.ijHtLHGnQhX("$=" + _003Ctext_003E5__2, true);
-								goto end_IL_019a;
-							}
-							goto case 3;
-						}
 						textToolsControl.ijHtLHGnQhX(text2 + _003Ctext_003E5__2, true);
 						goto end_IL_019a;
 					case 1:

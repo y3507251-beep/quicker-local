@@ -528,18 +528,7 @@ internal class KJ2KZno7dbEJwGDRv9u : IStepRunner, IStepRunningInfo
 		_003C_003Ec__DisplayClass56_.TFtSY6wBwTf = new AppSettings();
 		if (string.IsNullOrEmpty(textParamValue))
 		{
-			if (!AppState.DataService.Hb9tmk3OsJ7())
-			{
-				return (isSuccess: false, message: "免费版需填写服务商账号", failReason: ActionStopFlag.OperationFailed);
-			}
-			ApiResult<SpeechAuthDto> result = aFIptTXYsUoTUF4v33R.lDstbmARhdW().GetAwaiter().GetResult();
-			if (!result.IsSuccess)
-			{
-				return (isSuccess: false, message: "认证失败：" + result.Message, failReason: ActionStopFlag.OperationFailed);
-			}
-			_003C_003Ec__DisplayClass56_.TFtSY6wBwTf.AppID = "3e2c9c06";
-			_003C_003Ec__DisplayClass56_.TFtSY6wBwTf.QuickerAuthTime = result.Data.Now;
-			_003C_003Ec__DisplayClass56_.TFtSY6wBwTf.QuickerAuthSign = result.Data.Authorization;
+			return (isSuccess: false, message: "请填写所选语音服务商的账号配置。本地版不提供原厂语音授权。", failReason: ActionStopFlag.OperationFailed);
 		}
 		else
 		{
@@ -779,7 +768,7 @@ internal class KJ2KZno7dbEJwGDRv9u : IStepRunner, IStepRunningInfo
 		{
 			Key = "vendorAccount",
 			Name = "服务商账号",
-			Description = "专业版用户可不填。格式要求请参考模块文档",
+			Description = "填写用户自行配置的服务商账号；格式要求请参考模块文档",
 			Type = VarType.Text,
 			DefaultValue = "",
 			VariableMode = ParamVariableMode.Input,

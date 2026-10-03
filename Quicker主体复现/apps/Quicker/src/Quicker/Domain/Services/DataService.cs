@@ -2515,175 +2515,6 @@ public class DataService : IDisposable
 		}
 	}
 
-	[SpecialName]
-	internal bool fSQtXjeZ8gw()
-	{
-		if (Hb9tmk3OsJ7())
-		{
-			return true;
-		}
-		return uT4WJujEfNmOl8aWJJC.k25tkYhXNMI().Lk4tBnVvI08() < YlotKS5VEVl;
-	}
-
-	internal bool FjftbTOtevj()
-	{
-		return Hb9tmk3OsJ7();
-	}
-
-	internal bool FQDtbMSLp7P()
-	{
-		return true;
-	}
-
-	internal bool hfGtbAvJrRQ(bool bool_2 = true)
-	{
-        return ryktm9SXvqd().EnableFloatButton;
-    }
-
-	internal void yWvtbOS6Nbe()
-	{
-		AppHelper.ShowVersionLimitInfo(null, "悬浮按钮为专业版功能。免费版可悬浮1个按钮以便临时使用。\n如果未发现其它悬浮按钮，可能是之前的悬浮绑定了进程，可以在托盘菜单中将其关闭。", "");
-	}
-
-	[SpecialName]
-	internal int p5LtX4pt458()
-	{
-        return ryktm9SXvqd().EnableActionHotKey ? int.MaxValue : 0;
-    }
-
-	internal bool QUotbFwOhur()
-	{
-        return ryktm9SXvqd().EnableActionHotKey;
-    }
-
-	internal bool IKjtbU9GGtP()
-	{
-        return ryktm9SXvqd().EnableActionHistory;
-    }
-
-	internal bool vrNtblRW6WJ()
-	{
-		return Hb9tmk3OsJ7();
-	}
-
-	internal bool dKCtbiO64GK()
-	{
-        return ryktm9SXvqd().EnableStarter;
-    }
-
-	internal bool aAbtb3PL093(string string_0)
-	{
-        int limit = ryktm9SXvqd().MaxPagePerExe;
-        return limit <= 0 || mP6tXA8VyNP().Values.Count(p =>
-            string.Equals(p.ExeFile, string_0, StringComparison.OrdinalIgnoreCase)) < limit;
-    }
-
-	internal bool ructbfXlqnJ()
-	{
-        int limit = ryktm9SXvqd().MaxExeCount;
-        return limit <= 0 || mP6tXA8VyNP().Values
-            .Where(p => !string.IsNullOrEmpty(p.ExeFile) && p.ExeFile != "_global" && p.ExeFile != "common")
-            .Select(p => p.ExeFile).Distinct(StringComparer.OrdinalIgnoreCase).Count() < limit;
-    }
-
-	internal int LgXtbzAujUF()
-	{
-		if (!Hb9tmk3OsJ7())
-		{
-			return 100000;
-		}
-		return 1000000;
-	}
-
-	internal int phyt6wLqU0M()
-	{
-        int limit = ryktm9SXvqd().MaxPagePerExe;
-        return limit <= 0 ? int.MaxValue : limit;
-    }
-
-	internal bool jLBt6tCcE7p(int int_1 = 1, bool bool_2 = true)
-	{
-		if (Hb9tmk3OsJ7())
-		{
-			return true;
-		}
-		if (int_1 + neZtXfcGsie().Count <= 10)
-		{
-			return true;
-		}
-		if (bool_2)
-		{
-			AppHelper.ShowVersionLimitInfo(null, $"免费版支持创建 {10} 条文本指令规则，\n当前余量不足，请购买专业版。", null, SettingPageId.TextCommandManagePage);
-		}
-		return false;
-	}
-
-	internal bool c4Kt6gVDJcx(bool bool_2)
-	{
-		if (Hb9tmk3OsJ7())
-		{
-			return true;
-		}
-		if (neZtXfcGsie().Count > 10)
-		{
-			if (bool_2)
-			{
-				AppHelper.ShowVersionLimitInfo(null, $"文本指令数量超过了免费版限制。\n免费版支持创建 {10} 条文本指令规则，当前共有 {neZtXfcGsie().Count} 条。\n请购买专业版或删除多余规则后使用此功能。", null, SettingPageId.TextCommandManagePage);
-			}
-			return false;
-		}
-		return true;
-	}
-
-	private int nNKt6LUNCNv()
-	{
-		if (!syctmxFqb6j().HasData())
-		{
-			return 0;
-		}
-		int num = 0;
-		foreach (PowerKey value in syctmxFqb6j().Values)
-		{
-			num += value.KeyActions?.Count ?? 0;
-		}
-		return num;
-	}
-
-	internal bool wDPt6vvKvtA(int int_1 = 1, bool bool_2 = true)
-	{
-		if (Hb9tmk3OsJ7())
-		{
-			return true;
-		}
-		if (int_1 + nNKt6LUNCNv() > 10)
-		{
-			if (bool_2)
-			{
-				AppHelper.ShowVersionLimitInfo(null, $"免费版支持创建 {10} 条扩展热键规则，\n当前余量不足，请购买专业版。", null, SettingPageId.PowerKeysManagementPage);
-			}
-			return false;
-		}
-		return true;
-	}
-
-	internal bool Nrut6SrGm6p(bool bool_2)
-	{
-		if (Hb9tmk3OsJ7())
-		{
-			return true;
-		}
-		int num = nNKt6LUNCNv();
-		if (num > 10)
-		{
-			if (bool_2)
-			{
-				AppHelper.ShowVersionLimitInfo(null, $"扩展热键规则数量超过了免费版限制。\n免费版支持创建 {10} 条扩展热键规则，当前共有 {num} 条。\n请购买专业版或删除多余规则后使用此功能。", null, SettingPageId.PowerKeysManagementPage);
-			}
-			return false;
-		}
-		return true;
-	}
-
 	private void YFwt62i1oPu(bool bool_2, string string_0, SyncVm3 syncVm3_0 = null, SyncResult3 syncResult3_0 = null)
 	{
 		Vc4tmAUDTP1.LiZtrIojbbm(bool_2, string_0, syncVm3_0, syncResult3_0);
@@ -2988,7 +2819,6 @@ public class DataService : IDisposable
 
 	private (bool isSuccess, string message) ODet6a6DBMQ(bool bool_2)
 	{
-		if (!JTftmqIPFYx() && !BV9tm7kpqII())
 		{
 			StringBuilder stringBuilder = new StringBuilder();
 			if (!CpItmVISR7P().SyncIgnoreNetworkState && !IsNetworkConnected())
@@ -3034,7 +2864,7 @@ public class DataService : IDisposable
 						}
 						if (syncResult.UserInfo != null)
 						{
-							kpvt6kI0Hio(syncResult);
+							;
 						}
 						int num = 0;
 						while (flag2)
@@ -3079,7 +2909,6 @@ public class DataService : IDisposable
 
 	private (bool isSuccess, string message, SyncResult4 result, bool needAnotherSync) Nc1t672cVD3()
 	{
-		if (!JTftmqIPFYx() && !BV9tm7kpqII())
 		{
 			StringBuilder stringBuilder = new StringBuilder();
 			SyncVm4 syncVm = Mopt6hFfKUp();
@@ -3346,7 +3175,6 @@ public class DataService : IDisposable
 			LastUserMessageId = null,
 			MachineName = Environment.MachineName,
 			SoftVersion = AppHelper.GetSoftVersion(),
-			IsProNow = Hb9tmk3OsJ7(),
 			LocalTimeUtc = DateTime.UtcNow,
 			LastTextCommandSyncTime = null,
 			TxBaffetId = uT4WJujEfNmOl8aWJJC.k25tkYhXNMI().phhtBlHX8M1()
@@ -3505,30 +3333,6 @@ public class DataService : IDisposable
 		return XFXt6eiLsUt(profileDataEntity_);
 	}
 
-	private static void kpvt6kI0Hio(SyncResult4 syncResult4_0)
-	{
-		if (syncResult4_0.UserInfo.MemberLevel < MemberLevel.Basic || !(syncResult4_0.UserInfo.MemberExpireTimeUtc < DateTime.UtcNow.AddDays(15.0)))
-		{
-			return;
-		}
-		TimeSpan timeSpan = (syncResult4_0.UserInfo.MemberExpireTimeUtc ?? DateTime.MaxValue) - DateTime.UtcNow;
-		if (KRg6iMQrFIxATWQ640kL != null)
-		{
-			switch (0)
-			{
-			}
-		}
-		int num = (int)timeSpan.TotalDays;
-		if (num > 0)
-		{
-			AppHelper.ShowWarning($"您的专业版会员还剩余 {num} 天。");
-		}
-		else if (num > -7)
-		{
-			AppHelper.ShowWarning("您的专业版已过期，软件功能已降为免费版（过期7天后不再提醒）。");
-		}
-	}
-
 	
 	public Task LoadActionBlockListAsync()
 	{
@@ -3548,11 +3352,6 @@ public class DataService : IDisposable
 	private void XTptXTpHkas(UserSettings value)
 	{
 		vIitmO9co2d = value;
-	}
-
-	internal bool i0Ut6GjHZAN()
-	{
-		return !string.IsNullOrEmpty(uT4WJujEfNmOl8aWJJC.k25tkYhXNMI()?.phhtBlHX8M1());
 	}
 
 	[SpecialName]
@@ -3677,18 +3476,6 @@ public class DataService : IDisposable
 	}
 
 	[SpecialName]
-	internal bool BV9tm7kpqII()
-	{
-		return uT4WJujEfNmOl8aWJJC.k25tkYhXNMI().dT3tVwT8gUV();
-	}
-
-	[SpecialName]
-	internal bool JTftmqIPFYx()
-	{
-		return uT4WJujEfNmOl8aWJJC.k25tkYhXNMI().g0Ttcz7UIVD();
-	}
-
-	[SpecialName]
 	internal UserSettings CpItmVISR7P()
 	{
 		if (nYitXohYTns() == null)
@@ -3696,35 +3483,6 @@ public class DataService : IDisposable
 			XTptXTpHkas(new UserSettings());
 		}
 		return nYitXohYTns();
-	}
-
-	[SpecialName]
-	private UserLimitation ryktm9SXvqd()
-	{
-        // 配置只取当前 Common 源码中的本地默认值，不使用云端账号覆盖值。
-        return UserLimitation.Free;
-    }
-
-	[SpecialName]
-	internal MemberLevel i5UtmeRR9vT()
-	{
-		return uT4WJujEfNmOl8aWJJC.k25tkYhXNMI().NmXtBxt4Suu();
-	}
-
-	[SpecialName]
-	internal DateTime? cROtmIgHSGI()
-	{
-		return uT4WJujEfNmOl8aWJJC.k25tkYhXNMI().kkXtBBVYRAM();
-	}
-
-	[SpecialName]
-	internal bool Hb9tmk3OsJ7()
-	{
-		if (i5UtmeRR9vT() == MemberLevel.Pro)
-		{
-			return uT4WJujEfNmOl8aWJJC.k25tkYhXNMI().kkXtBBVYRAM() > DateTime.UtcNow;
-		}
-		return false;
 	}
 
 	[SpecialName]
@@ -3738,11 +3496,6 @@ public class DataService : IDisposable
 	{
 		return uT4WJujEfNmOl8aWJJC.k25tkYhXNMI().rUStBD4WdHC();
 	}
-
-	internal bool Gont6sBnlpf(int int_1)
-	{
-        return ryktm9SXvqd().LockButton && int_1 == 3;
-    }
 
 	[SpecialName]
 	internal int w8Qtm66XINE()
@@ -4862,19 +4615,6 @@ public class DataService : IDisposable
 	{
 		Vc4tmAUDTP1.gBCtrCXUYyB(UserPreference);
 		xdNt6mQNakh(false);
-	}
-
-	internal bool HnJtXqHvdn3()
-	{
-		if (!Hb9tmk3OsJ7())
-		{
-			if (uT4WJujEfNmOl8aWJJC.k25tkYhXNMI().Lk4tBnVvI08().HasValue)
-			{
-				return DateTime.Now < uT4WJujEfNmOl8aWJJC.k25tkYhXNMI().Lk4tBnVvI08().Value.AddDays(90.0);
-			}
-			return false;
-		}
-		return true;
 	}
 
 	[SpecialName]

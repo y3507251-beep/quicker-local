@@ -54,11 +54,6 @@ public class ActionHotkeysSettingPage : SettingPage, IComponentConnector, IStyle
 	public ActionHotkeysSettingPage()
 	{
 		InitializeComponent();
-		if (!AppState.DataService.Hb9tmk3OsJ7())
-		{
-			LblLimit.Visibility = Visibility.Visible;
-		}
-		else
 		{
 			LblLimit.Visibility = Visibility.Collapsed;
 		}
@@ -97,11 +92,6 @@ public class ActionHotkeysSettingPage : SettingPage, IComponentConnector, IStyle
 
 	private void bAqoJ7PwcR(object sender, RoutedEventArgs e)
 	{
-		if (!AppState.DataService.Hb9tmk3OsJ7() && _list.Count >= AppState.DataService.p5LtX4pt458())
-		{
-			AppHelper.ShowHotkeyLimitInfo(Window.GetWindow(this));
-			return;
-		}
 		ActionHotkeyEditorWindow actionHotkeyEditorWindow = new ActionHotkeyEditorWindow
 		{
 			Owner = Window.GetWindow(this)

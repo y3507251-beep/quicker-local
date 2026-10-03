@@ -215,10 +215,6 @@ public class AutoRunService
 	public void Start(bool isQuickerStartup)
 	{
 		StopAll();
-		if (!AppState.DataService.Hb9tmk3OsJ7())
-		{
-			return;
-		}
 		rCZtx6aniiP?.Cancel(false);
 		rCZtx6aniiP = new CancellationTokenSource();
 		foreach (AutoRunTask item in BZvtxIxdpB8(isQuickerStartup))

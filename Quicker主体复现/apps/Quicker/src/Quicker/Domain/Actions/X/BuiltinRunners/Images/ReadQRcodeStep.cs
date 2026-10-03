@@ -413,7 +413,7 @@ public class ReadQRcodeStep : IStepRunner, IStepRunningInfo
 			Key = "tryNetwork",
 			Name = "本地识别失败后尝试在线识别服务",
 			DefaultValue = false,
-			Description = "在线服务拥有更强识别能力（频率限制2秒/次，仅专业版提供）。",
+			Description = "保留旧动作参数兼容性；当前使用本地二维码识别，不请求原厂在线服务。",
 			Type = VarType.Boolean,
 			VariableMode = ParamVariableMode.Input
 		};

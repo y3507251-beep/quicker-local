@@ -272,20 +272,7 @@ internal class XJZ7kpoan1Uhg3yEL2v
 					ExpireTimeUtc = DateTime.UtcNow.AddDays(isAuto ? 30 : 365)
 				};
 				string text = JsonConvert.SerializeObject(state);
-				if (text.Length <= 1048576)
-				{
-					backupItemVm.Data = StringCipher.EncryptWithGzip(text, AppState.DataService.PZTtmCY0ah7());
-					goto IL_013e;
-				}
-				if (Y3YO05Wl64LXW27aeytU())
-				{
-					switch (0)
-					{
-					}
-				}
-				pjVgQk9hAmq.Info("状态文件过大，不支持备份。动作ID：" + actionId);
-				result = (false, "状态文件过大");
-				goto end_IL_0007;
+				backupItemVm.Data = StringCipher.EncryptWithGzip(text, AppState.DataService.PZTtmCY0ah7());
 				IL_013e:
 				try
 				{
@@ -337,7 +324,7 @@ internal class XJZ7kpoan1Uhg3yEL2v
 						goto end_IL_013e;
 					}
 					pjVgQk9hAmq.Warn("备份状态" + actionId + "失败：" + result2.Message);
-					result = (false, "服务器返回失败：" + result2.Message);
+					result = (false, "本地保存失败：" + result2.Message);
 					goto end_IL_0007;
 					IL_0194:
 					int num3 = default(int);
@@ -347,7 +334,7 @@ internal class XJZ7kpoan1Uhg3yEL2v
 				}
 				catch (Exception ex)
 				{
-					pjVgQk9hAmq.Warn("网络备份异常！" + ex.Message, ex);
+					pjVgQk9hAmq.Warn("本地备份异常！" + ex.Message, ex);
 					result = (false, "备份异常：" + ex.Message);
 					goto end_IL_0007;
 				}
@@ -573,7 +560,7 @@ internal class XJZ7kpoan1Uhg3yEL2v
 
 	private void FCHgQVHhLZU(object object_0, long long_1)
 	{
-		if (AppState.DataService.Hb9tmk3OsJ7() && AppState.HHxtaMaoqJr().EnableActionStateBackup == true)
+		if (AppState.HHxtaMaoqJr().EnableActionStateBackup == true)
 		{
 			long num = AppHelper.fLiLTj0x4QY();
 			if (num - n8TgQs1ryFJ > 3600000L)

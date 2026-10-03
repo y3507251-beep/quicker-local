@@ -62,7 +62,7 @@ public class SystemEventsWatcher
 			}
 			AppState.IsComputerSuspended = false;
 			DataService dataService = AppState.DataService;
-			if (dataService != null && dataService.Hb9tmk3OsJ7())
+			if (dataService != null)
 			{
 				int num = 0;
 				if (EI5BpkQLQiXJhpQpaU2d != null)
@@ -158,7 +158,7 @@ public class SystemEventsWatcher
 			}
 			AppState.IsWindowsLocked = false;
 			DataService dataService = AppState.DataService;
-			if (dataService != null && dataService.Hb9tmk3OsJ7())
+			if (dataService != null)
 			{
 				AppState.DataService.xdNt6mQNakh(false);
 			}

@@ -393,7 +393,7 @@ public class TextFloatPanelWindow : Window, IComponentConnector
 	private void WVjg51uhoJ8()
 	{
 		UiSettings uiSettings = FMP9ONqzXcgZ6r3WmZZ.A4qHeQImJ6();
-		bool flag = EkLgDLknVdE.FjftbTOtevj();
+		bool flag = true;
 		UIHelper.UpdateUiSkinCommon(this, uiSettings, flag);
 		ImageBrush imageBrush = default(ImageBrush);
 		int num;

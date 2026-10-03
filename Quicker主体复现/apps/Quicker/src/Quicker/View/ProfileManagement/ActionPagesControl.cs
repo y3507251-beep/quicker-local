@@ -501,7 +501,7 @@ public class ActionPagesControl : UserControl, IComponentConnector, IStyleConnec
 		CurrentExeSettings = exeSettings;
 		AAtLueKxHPn();
 		DebugHelper.LogExecuteTime(yYQLurny1dW, "列表更新耗时");
-		BtnAttachProfile.IsEnabled = !string.Equals(CurrentExeSettings.Exe, "common", StringComparison.OrdinalIgnoreCase) && !string.Equals(CurrentExeSettings.Exe, "_global", StringComparison.OrdinalIgnoreCase) && !CurrentExeSettings.Exe.StartsWithAny(false, "@_", "#_") && QhgLuBAMd0W.fSQtXjeZ8gw();
+		BtnAttachProfile.IsEnabled = !string.Equals(CurrentExeSettings.Exe, "common", StringComparison.OrdinalIgnoreCase) && !string.Equals(CurrentExeSettings.Exe, "_global", StringComparison.OrdinalIgnoreCase) && !CurrentExeSettings.Exe.StartsWithAny(false, "@_", "#_");
 	}
 
 	private void op1LuPHujgL()
@@ -699,11 +699,6 @@ public class ActionPagesControl : UserControl, IComponentConnector, IStyleConnec
 	{
 		_003C_003Ec__DisplayClass35_0 _003C_003Ec__DisplayClass35_ = new _003C_003Ec__DisplayClass35_0();
 		_003C_003Ec__DisplayClass35_.msGSjp6UGOU = actionButtonEventArgs_0;
-		if (_003C_003Ec__DisplayClass35_.msGSjp6UGOU.Profile.IsGlobalProfile() && QhgLuBAMd0W.Gont6sBnlpf(_003C_003Ec__DisplayClass35_.msGSjp6UGOU.ButtonIndex))
-		{
-			AppHelper.ShowVersionLimitInfo("编辑右上角按钮");
-			return;
-		}
 		ActionItem originAction = _003C_003Ec__DisplayClass35_.msGSjp6UGOU.OriginAction;
 		if (originAction == null || originAction.ActionType != ActionType.GoParent)
 		{

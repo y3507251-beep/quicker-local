@@ -697,25 +697,6 @@ public class ExeGesturesSettingsControl : UserControl, IComponentConnector, ISty
 	private void YEFLNFeEO3K(object sender, RoutedEventArgs e)
 	{
 		int num = 1;
-		while (!AppState.DataService.Hb9tmk3OsJ7())
-		{
-			int num2 = 0;
-			if (!UgFlk3FDKOY7PQf0RS3r())
-			{
-				num2 = num;
-			}
-			switch (num2)
-			{
-			case 1:
-				continue;
-			}
-			if (RVkLJ01FH7H.Count < 8)
-			{
-				break;
-			}
-			AppHelper.ShowVersionLimitInfo(Window.GetWindow(this), $"免费版支持{8}个手势轨迹，如需更多请购买专业版。", "");
-			return;
-		}
 		AddGestureWindow addGestureWindow = new AddGestureWindow(pCuLJJDQfb6);
 		addGestureWindow.Owner = Window.GetWindow(this);
 		if (addGestureWindow.ShowDialog() != true)
@@ -725,7 +706,6 @@ public class ExeGesturesSettingsControl : UserControl, IComponentConnector, ISty
 		foreach (Gesture item in addGestureWindow.Result)
 		{
 			pCuLJJDQfb6.Y0Etm2L8Pto().Add(item);
-			if (AppState.DataService.Hb9tmk3OsJ7() || RVkLJ01FH7H.Count < 8)
 			{
 				RVkLJ01FH7H.Add(new GestureItem
 				{
@@ -735,7 +715,6 @@ public class ExeGesturesSettingsControl : UserControl, IComponentConnector, ISty
 				});
 				continue;
 			}
-			AppHelper.ShowWarning($"免费版最多可添加{8}个手势轨迹。");
 			break;
 		}
 		LbGestures.Items.Refresh();

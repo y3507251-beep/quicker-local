@@ -384,7 +384,7 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 			}
 			else
 			{
-				if (e.SystemGesture != SystemGesture.RightDrag || !f1ESKPSKmxL.g7OgTVU3nuu.hfGtbAvJrRQ(true))
+				if (e.SystemGesture != SystemGesture.RightDrag)
 				{
 					return;
 				}
@@ -878,7 +878,6 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 					}
 					else
 					{
-						if (popupWindow.g7OgTVU3nuu.Hb9tmk3OsJ7() || popupWindow.g7OgTVU3nuu.LDPtXifl4Ca() < 10)
 						{
 							newExeSettingsWindow = new NewExeSettingsWindow(popupWindow.g7OgTVU3nuu.mP6tXA8VyNP().Values.Select(_003C_003Ec.OMcSmoK4VMD ?? (_003C_003Ec.OMcSmoK4VMD = _003C_003Ec.WwOSm6GOS4m.th9Sm1aw1di)).Distinct().ToList(), popupWindow.g7OgTVU3nuu, _003CfilePathName_003E5__2)
 							{
@@ -900,7 +899,6 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 							}
 							goto IL_02fe;
 						}
-						AppHelper.ShowWarning("免费版可创建10个应用程序场景，已达到限额。请购买专业版后再使用此功能。");
 					}
 				}
 				goto end_IL_000e;
@@ -1457,7 +1455,7 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 				IL_0035:
 				popupWindow.UpdateUIAppearence(AppState.DataService.CpItmVISR7P());
 				popupWindow.ShowCreateActionIcon = AppState.HHxtaMaoqJr().ShowMenuWhenLeftClickEmptyButton;
-				popupWindow.MenuSyncNow.Visibility = (popupWindow.g7OgTVU3nuu.JTftmqIPFYx() ? Visibility.Collapsed : Visibility.Visible);
+				popupWindow.MenuSyncNow.Visibility = (Visibility.Visible);
 				popupWindow.OCHgdTAct0q();
 				popupWindow.dkRgTIAHVjG.loDt8lkCi0B();
 				popupWindow.sIXgd7d5gV3();
@@ -2107,7 +2105,7 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 		{
 			K0NgDAeAv08((ActionButton)sender);
 		}
-		else if (Keyboard.Modifiers == ModifierKeys.Control && g7OgTVU3nuu.hfGtbAvJrRQ(true))
+		else if (Keyboard.Modifiers == ModifierKeys.Control)
 		{
 			RequestHide();
 			FloatPanelWindow floatPanelWindow = new FloatPanelWindow(kNxgT9fV6dX.GetProfileByButtonIndex(btnIndex), null, zhBgThuh0yr, Q2GgTZX1xMq, bmIgTGywI3A, g7OgTVU3nuu, NWFgTfXdknO);
@@ -2198,10 +2196,10 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 					if (System.Windows.Input.Mouse.RightButton == MouseButtonState.Pressed && !jE6gTjBld5Z.KxCtqDqNIbU())
 					{
 						System.Windows.Point position = e.GetPosition(actionButton);
-						if (x8TgTAbpce6.X > 0.0 && (Math.Abs(position.X - x8TgTAbpce6.X) > SystemParameters.MinimumHorizontalDragDistance * 2.0 || Math.Abs(position.Y - x8TgTAbpce6.Y) > SystemParameters.MinimumVerticalDragDistance * 2.0) && g7OgTVU3nuu.hfGtbAvJrRQ(true))
+						if (x8TgTAbpce6.X > 0.0 && (Math.Abs(position.X - x8TgTAbpce6.X) > SystemParameters.MinimumHorizontalDragDistance * 2.0 || Math.Abs(position.Y - x8TgTAbpce6.Y) > SystemParameters.MinimumVerticalDragDistance * 2.0))
 						{
 							int int_ = (int)actionButton.Tag;
-							if (!g7OgTVU3nuu.Gont6sBnlpf(int_) && Keyboard.Modifiers == ModifierKeys.None && !jE6gTjBld5Z.KxCtqDqNIbU())
+							if (Keyboard.Modifiers == ModifierKeys.None && !jE6gTjBld5Z.KxCtqDqNIbU())
 							{
 								goto case 3;
 							}
@@ -2241,7 +2239,7 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 			{
 				if (Keyboard.Modifiers == ModifierKeys.None)
 				{
-					if (g7OgTVU3nuu.hfGtbAvJrRQ(true) && !jE6gTjBld5Z.KxCtqDqNIbU() && action != null && action.XBttcfC2xjC())
+					if (!jE6gTjBld5Z.KxCtqDqNIbU() && action != null && action.XBttcfC2xjC())
 					{
 						num2 = 6;
 						if (!fWVT2mFF1RiQemAUASaA())
@@ -2252,7 +2250,7 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 					}
 					return;
 				}
-				if (g7OgTVU3nuu.Gont6sBnlpf(num) || actionButton.IsSelected)
+				if (actionButton.IsSelected)
 				{
 					return;
 				}
@@ -2274,11 +2272,7 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 				}
 				return;
 			}
-			if (g7OgTVU3nuu.Gont6sBnlpf(num))
-			{
-				return;
-			}
-			if (g7OgTVU3nuu.hfGtbAvJrRQ(false) && Keyboard.Modifiers == ModifierKeys.Alt && !jE6gTjBld5Z.KxCtqDqNIbU())
+			if (Keyboard.Modifiers == ModifierKeys.Alt && !jE6gTjBld5Z.KxCtqDqNIbU())
 			{
 				if (action != null && action.XBttcfC2xjC())
 				{
@@ -2407,11 +2401,6 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 				}
 			}
 			break;
-		}
-		if (g7OgTVU3nuu.Gont6sBnlpf(num))
-		{
-			AppHelper.ShowVersionLimitInfo("编辑右上角按钮");
-			return;
 		}
 		ActionItem action = kNxgT9fV6dX.GetAction(num);
 		if (action == null || action.ActionType != ActionType.GoParent)
@@ -3229,7 +3218,7 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 			goto IL_027e;
 			IL_0162:
 			uiSettings = FMP9ONqzXcgZ6r3WmZZ.A4qHeQImJ6();
-			flag = AppState.DataService.FjftbTOtevj();
+			flag = true;
 			if (NativeMethods.IsOnWindows10OrLater())
 			{
 				num = 0;
@@ -3792,11 +3781,6 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 	public void ShowSearch(ActionItem startSearchWithAction = null, string searchText = "")
 	{
 		RequestHide();
-		if (!g7OgTVU3nuu.FQDtbMSLp7P() && startSearchWithAction == null)
-		{
-			AppHelper.ShowVersionLimitInfo(null, "了解 “搜索” 功能", "https://getquicker.net/KC/Help/Doc/searching");
-			return;
-		}
 		if (wYegT3agQwi == null)
 		{
 			wYegT3agQwi = new SearchWindow(g7OgTVU3nuu, Q2GgTZX1xMq, bmIgTGywI3A);
@@ -4378,11 +4362,6 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 
 	private void BWAgoxq0TJI(object sender, RoutedEventArgs e)
 	{
-		if (!g7OgTVU3nuu.IKjtbU9GGtP())
-		{
-			AppHelper.ShowVersionLimitInfo(null, "了解 “动作回收站” 功能", "https://getquicker.net/KC/Help/Doc/action-recyclebin");
-			return;
-		}
 		RequestHide();
 		AppWindowManager.ShowSettingsWindow(SettingPageId.ActionRecycleBinSettingPage);
 	}

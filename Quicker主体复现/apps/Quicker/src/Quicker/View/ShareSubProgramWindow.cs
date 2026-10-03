@@ -200,7 +200,6 @@ public class ShareSubProgramWindow : Window, IComponentConnector
 					{
 						goto IL_0390;
 					}
-					if (!AppState.DataService.BV9tm7kpqII() && !AppState.DataService.JTftmqIPFYx())
 					{
 						sharedSubProgramListItemDto = shareSubProgramWindow.JWEgj30y6iR();
 						if (shareSubProgramWindow.RbUpdate.IsChecked != true)

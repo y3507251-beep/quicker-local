@@ -254,32 +254,6 @@ public static class AppHelper
 	}
 
 	[CompilerGenerated]
-	internal sealed class _003C_003Ec__DisplayClass111_0
-	{
-		public string EQn2tWIPj7f;
-
-		public string Ada2tkuZTaJ;
-
-		public SettingPageId? Kfc2tGhjL08;
-
-		public System.Windows.Window hkS2tsIRvc6;
-
-		private static _003C_003Ec__DisplayClass111_0 ibsNgdyeuW3Rwrv1IHla;
-
-		internal void Ybm2tIQVXnZ()
-		{
-			BuyQuickerWindow buyQuickerWindow = new BuyQuickerWindow(EQn2tWIPj7f, Ada2tkuZTaJ, Kfc2tGhjL08);
-			buyQuickerWindow.Owner = hkS2tsIRvc6;
-			buyQuickerWindow.ShowDialog();
-		}
-
-		internal static bool bSixGRyeoF5Euc9g8jOq()
-		{
-			return ibsNgdyeuW3Rwrv1IHla == null;
-		}
-	}
-
-	[CompilerGenerated]
 	internal sealed class _003C_003Ec__DisplayClass117_0
 	{
 		public Action fTY2tbfEBOs;
@@ -2807,17 +2781,6 @@ public static class AppHelper
 		return (isSuccess: false, pathName: string.Empty);
 	}
 
-	public static string GetMemberLevelName(MemberLevel level)
-	{
-		return level switch
-		{
-			MemberLevel.Free => "免费版", 
-			MemberLevel.OldFree => "免费版(老用户)", 
-			MemberLevel.Basic => "基础版", 
-			MemberLevel.Pro => "专业版", 
-			_ => level.ToString(), 
-		};
-	}
 
 	public static bool WaitClipboardChange(int oldNum, int maxMs)
 	{
@@ -2857,25 +2820,8 @@ public static class AppHelper
 		return new _003CFindRootWindows_003Ed__109<T>(-2);
 	}
 
-	public static void ShowHotkeyLimitInfo(System.Windows.Window window)
-	{
-		ShowVersionLimitInfo(window, $"动作快捷键为专业版功能，免费版可设置 {AppState.DataService.p5LtX4pt458()} 个以便测试使用。", "");
-	}
 
-	public static void ShowVersionLimitInfo(System.Windows.Window parent, string linkText, string linkUrl, SettingPageId? settingPageId = null)
-	{
-		_003C_003Ec__DisplayClass111_0 _003C_003Ec__DisplayClass111_ = new _003C_003Ec__DisplayClass111_0();
-		_003C_003Ec__DisplayClass111_.EQn2tWIPj7f = linkText;
-		_003C_003Ec__DisplayClass111_.Ada2tkuZTaJ = linkUrl;
-		_003C_003Ec__DisplayClass111_.Kfc2tGhjL08 = settingPageId;
-		_003C_003Ec__DisplayClass111_.hkS2tsIRvc6 = parent;
-		RunOnUiThread(false, _003C_003Ec__DisplayClass111_.Ybm2tIQVXnZ);
-	}
 
-	public static void ShowVersionLimitInfo(string functionName)
-	{
-		ShowWarning("“" + functionName + "” 为专业版功能，需购买后使用。\n如果您已购买专业版，请重启软件激活。");
-	}
 
 	public static void ExitApplication()
 	{

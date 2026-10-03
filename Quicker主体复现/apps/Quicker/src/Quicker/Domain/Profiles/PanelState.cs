@@ -303,10 +303,6 @@ public class PanelState
 			}
 			bool flag;
 			(flag, _003C_003Ec__DisplayClass47_.LImvmNcL3je, _003C_003Ec__DisplayClass47_.YcQvmJT7tDq) = buttonLocation;
-			if (AppState.DataService.Gont6sBnlpf(btnIndex))
-			{
-				return AppState.DataService.oiEtm1YGfcm();
-			}
 			if (flag)
 			{
 				return GlobalActions.FirstOrDefault(_003C_003Ec__DisplayClass47_.f6Lvm2pM7TA);

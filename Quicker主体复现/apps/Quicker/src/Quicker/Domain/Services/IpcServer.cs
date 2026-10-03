@@ -838,24 +838,17 @@ public class IpcServer
 	[CompilerGenerated]
 	private string RVYtB2WXgbC(string string_0)
 	{
-		if (a1vtBPHqmsO.dKCtbiO64GK())
 		{
 			string string_1 = string_0.Substring("runaction:".Length);
 			AppState.Lista4qx2wK()?.CountExternalLaunch();
 			return bbNtp3141IB(string_1, false);
 		}
-		AppHelper.ShowWarning("免费版不支持外部启动功能。");
-		return Error("免费版不支持外部启动动作功能。");
+
 	}
 
 	[CompilerGenerated]
 	private string r5btBuilJBe(string string_0)
 	{
-		if (!a1vtBPHqmsO.dKCtbiO64GK())
-		{
-			AppHelper.ShowWarning("免费版不支持外部启动功能。");
-			return Error("免费版不支持外部启动动作功能。");
-		}
 		string string_1 = string_0.Substring("debugaction:".Length);
 		return bbNtp3141IB(string_1, true);
 	}
@@ -863,25 +856,21 @@ public class IpcServer
 	[CompilerGenerated]
 	private string hxhtBNyKHVH(string string_0)
 	{
-		if (a1vtBPHqmsO.dKCtbiO64GK())
 		{
 			dhStBLieneR(string_0.Substring("installskin:".Length));
 			return "OK";
 		}
-		AppHelper.ShowWarning("免费版不支持外观下载功能。");
-		return Error("免费版不支持外观下载功能。");
+
 	}
 
 	[CompilerGenerated]
 	private string MA3tBJ0lQPk(string string_0)
 	{
-		if (a1vtBPHqmsO.dKCtbiO64GK())
 		{
 			AppState.AppServer.sAstRQZr0uL();
 			return "OK";
 		}
-		AppHelper.ShowWarning("免费版不支持外观下载功能。");
-		return Error("免费版不支持外观下载功能。");
+
 	}
 
 	[CompilerGenerated]

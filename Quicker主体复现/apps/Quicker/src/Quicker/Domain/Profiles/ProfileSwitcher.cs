@@ -472,7 +472,7 @@ public class ProfileSwitcher
 		int num = V28tqELSNS2.IndexOf(JtUtqy97nho) - 1;
 		if (num < 0)
 		{
-			if (!l9Dtq0kZ7wl.CpItmVISR7P().EnableCyclePaging || !AppState.DataService.Hb9tmk3OsJ7())
+			if (!l9Dtq0kZ7wl.CpItmVISR7P().EnableCyclePaging)
 			{
 				return false;
 			}
@@ -480,15 +480,6 @@ public class ProfileSwitcher
 		}
 		hHotqLM9SkL(V28tqELSNS2[num], V28tqELSNS2.Count, num);
 		return true;
-	}
-
-	private void OpctqSNb6pR()
-	{
-		if (AppHelper.fLiLTj0x4QY() - qqstqR12U32 > 5000L)
-		{
-			qqstqR12U32 = AppHelper.fLiLTj0x4QY();
-			AppHelper.ShowWarning("您需要购买专业版才能使用翻页功能，谢谢理解！");
-		}
 	}
 
 	public bool GoRight()
@@ -499,11 +490,6 @@ public class ProfileSwitcher
 		}
 		int num = V28tqELSNS2.IndexOf(JtUtqy97nho);
 		int num2 = num + 1;
-		if (!l9Dtq0kZ7wl.fSQtXjeZ8gw())
-		{
-			OpctqSNb6pR();
-			return false;
-		}
 		if (num >= 0)
 		{
 			if (num2 < V28tqELSNS2.Count)
@@ -547,7 +533,7 @@ public class ProfileSwitcher
 		int num = DSotq8utwFW.IndexOf(UehtqaPvfcZ) - 1;
 		if (num < 0)
 		{
-			if (!l9Dtq0kZ7wl.CpItmVISR7P().EnableCyclePaging || !l9Dtq0kZ7wl.Hb9tmk3OsJ7())
+			if (!l9Dtq0kZ7wl.CpItmVISR7P().EnableCyclePaging)
 			{
 				return false;
 			}
@@ -575,11 +561,6 @@ public class ProfileSwitcher
 		if (DSotq8utwFW.HasData())
 		{
 			int num = DSotq8utwFW.IndexOf(UehtqaPvfcZ) + 1;
-			if (!l9Dtq0kZ7wl.fSQtXjeZ8gw())
-			{
-				OpctqSNb6pR();
-				return false;
-			}
 			if (num < 0 || num > DSotq8utwFW.Count - 1)
 			{
 				if (!l9Dtq0kZ7wl.CpItmVISR7P().EnableCyclePaging)

@@ -592,7 +592,7 @@ public class FloatPanelWindow : Window, IComponentConnector, IFloatItemWindow
 	public void UpdateUiSkin()
 	{
 		UiSettings uiSettings = FMP9ONqzXcgZ6r3WmZZ.A4qHeQImJ6();
-		bool flag = AppState.DataService.FjftbTOtevj();
+		bool flag = true;
 		UIHelper.UpdateUiSkinCommon(this, uiSettings, flag);
 		ImageBrush imageBrush = default(ImageBrush);
 		int num;

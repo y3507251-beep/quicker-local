@@ -357,3 +357,97 @@
 - **发布目录：**工作区 `GitHub发布/quicker-local` 是独立的源码发布仓库。包含主 EXE、Common 的主体源码、项目文件及必要资源、固定 `build.cmd`、公开公钥、许可范围说明和本修改记录。发布根 `README.md` 描述当前行为、依赖准备、构建方法和未完成边界；`.gitignore` 排除构建产物、原版依赖留样、数据库、私人备份及凭据文件。公开版 `OPEN_SOURCE.md` 使用相对许可链接。
 - **来源与范围：**保留原有 MIT/NOTICE 的范围说明，没有把从原版恢复的内容和第三方资源统一宣称为本项目原创 MIT 内容。没有上传用户运行目录、私人账号导出包、原始备份或安装依赖二进制；发布仓库不是自包含安装包，尚未恢复的 DLL 仍需按 README 在本机准备。
 - **构建与运行：**发布的是 EXE-018 本轮构建对应的源码，0 个错误、5,954 个警告。发布准备没有改变业务源码或构建方式，没有新增测试、验证框架或文档生成器；没有实际运行网站导入，也没有替换当前安装目录。GitHub 源码发布成功不表示此前列出的运行问题或本地替代功能均已完成。
+
+### EXE-020｜2026-10-04｜删除本地会员分级、功能限制与数量配额
+
+- **原因：**用户实际使用仍遇到翻页、右上角按钮编辑限制，进一步明确本地版无会员，并要求同时移除其它同类限制、保留业务联网、同步 GitHub 与 README。
+- **修改方式：**直接修改恢复的 C# 主体源码和 WPF 资源；不修改安装目录中的原版 EXE，不修改构建脚本。删除 DataService 的 Hb9tmk3OsJ7（等级与到期）、fSQtXjeZ8gw（翻页）、Gont6sBnlpf（右上角锁）、HnJtXqHvdn3（轮盘试用）、FjftbTOtevj / vrNtblRW6WJ（外观等）、aAbtb3PL093 / ructbfXlqnJ / phyt6wLqU0M（页面/场景）、jLBt6tCcE7p / c4Kt6gVDJcx（文本指令）、wDPt6vvKvtA / Nrut6SrGm6p（热键）、p5LtX4pt458 / LgXtbzAujUF（配额）、hfGtbAvJrRQ / QUotbFwOhur / IKjtbU9GGtP / dKCtbiO64GK / FQDtbMSLp7P（功能开关）及会员日期、旧体验账号和到期提示方法；对应调用方直接走本地业务分支。
+- **全部源码与资源文件及关键变化：**下表路径相对主项目根目录。
+
+| 文件 | 改动 |
+|---|---|
+| `apps/Quicker/src/Ci3RULiH5a8Cgg0fIS5/UIy1pYiDsLcf2l4joSP.cs` | 鼠标/手势执行：不再截取前 5 条鼠标规则；删除手势数量及到期检查。 |
+| `apps/Quicker/src/EMu6sFoissmin2fOAST/KJ2KZno7dbEJwGDRv9u.cs` | 语音输入：删除会员分支和原厂语音授权回退；自配服务商账号继续使用，缺配置明确报错。 |
+| `apps/Quicker/src/HMdjedXPwaug8yh9mEq/brgW8EX9ZVfZExh7q9t.cs` | 快捷键执行：删除 jgJtpIN0xXg 数量检查及超额阻断。 |
+| `apps/Quicker/src/Quicker.g.resources` | 移除购买窗口和旧账号关于页 BAML；删除定价链接，清理功能付费提示，备份说明改为本地。 |
+| `apps/Quicker/src/Quicker/App.cs` | 启动主题初始化、切换主题：删除会员判断。 |
+| `apps/Quicker/src/Quicker/Domain/Actions/X/BuiltinRunners/CloudDataStep.cs` | 已本地化的状态存储：删除按版本区分的内容长度配额。 |
+| `apps/Quicker/src/Quicker/Domain/Actions/X/BuiltinRunners/GetSysInfoStep.cs` | 旧 IsPro 输出键兼容已有动作，显示名改为“本地完整功能可用”，恒为 true；不表示付费身份。 |
+| `apps/Quicker/src/Quicker/Domain/Actions/X/BuiltinRunners/Images/ReadQRcodeStep.cs` | 二维码参数说明改为当前本地识别行为，去掉专业版服务宣传。 |
+| `apps/Quicker/src/Quicker/Domain/Actions/X/BuiltinRunners/Network/OcrStep.cs` | 删除免费用户离线 OCR 完成后额外等待的分支。 |
+| `apps/Quicker/src/Quicker/Domain/Actions/X/BuiltinRunners/QuickerOperationStep.cs` | 加载外观、悬浮动作、切换悬浮按钮：删除会员拦截与选项中的专业版标记。 |
+| `apps/Quicker/src/Quicker/Domain/Actions/X/BuiltinRunners/SearchBmpStep.cs` | 删除找图成功后针对免费用户额外 Sleep 的分支。 |
+| `apps/Quicker/src/Quicker/Domain/Actions/X/XActionHelper.cs` | HasProOnlyStep 不再按步骤检查会员模块；保留兼容入口并删除递归权限扫描。 |
+| `apps/Quicker/src/Quicker/Domain/AppServer.cs` | 加载皮肤及相关动作操作不再检查本地会员/体验账号。 |
+| `apps/Quicker/src/Quicker/Domain/IconManager.cs` | 图标处理不再因旧体验账号类型跳过。 |
+| `apps/Quicker/src/Quicker/Domain/PowerKeys/PowerKeysService.cs` | 扩展热键运行阶段不再因规则条数拒绝执行。 |
+| `apps/Quicker/src/Quicker/Domain/Profiles/PanelState.cs` | GetAction 不再用账号固定动作覆盖右上角格子的本地动作。 |
+| `apps/Quicker/src/Quicker/Domain/Profiles/ProfileSwitcher.cs` | GoLeft、GoRight、GlobalGoLeft、GlobalGoRight 删除会员翻页限制与购买提示，保留循环翻页用户设置。 |
+| `apps/Quicker/src/Quicker/Domain/Services/ActionEditMgr.cs` | 编辑/粘贴右上角按钮、文本悬浮窗、动作快捷键、悬浮按钮、自动本地备份取消会员限制；菜单改称保存本地版本。 |
+| `apps/Quicker/src/Quicker/Domain/Services/AutoRunService.cs` | Start 不再因非会员直接退出，按用户配置启动自动运行任务。 |
+| `apps/Quicker/src/Quicker/Domain/Services/DataService.cs` | 删除会员等级/到期、旧账号类型、翻页、锁定按钮、文本规则、热键、皮肤、历史、启动器、轮盘试用及场景/页面配额判断方法；删除到期提示。 |
+| `apps/Quicker/src/Quicker/Domain/Services/FloatTriggerButtonHelper.cs` | ShowPanelFloatButton 直接创建面板浮标，删除购买提示。 |
+| `apps/Quicker/src/Quicker/Domain/Services/IpcServer.cs` | 外部启动动作及皮肤操作不再以免费版身份拒绝；保持现有业务实现。 |
+| `apps/Quicker/src/Quicker/Domain/Services/LocalDataStore.cs` | AddIcon 保留去重与保存，删除图标数量配额。 |
+| `apps/Quicker/src/Quicker/Domain/Services/LocalWorkspaceInfo.cs` | ToLegacyView 使用 Unrestricted 兼容配置，不再主动设置会员等级。 |
+| `apps/Quicker/src/Quicker/Domain/Services/SystemEventsWatcher.cs` | 恢复/解锁事件的本地处理不再按会员分级，保留对象存在检查。 |
+| `apps/Quicker/src/Quicker/Modules/Gestures/Manage/SubActionMangeControl.cs` | 删除手势子动作 2 条规则限制及购买提示。 |
+| `apps/Quicker/src/Quicker/Modules/TextTools/TextToolsControl.cs` | 文本工具操作删除专业版判断，继续按实际业务输入执行。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/About/AboutSettingPage.cs` | 用 C# 重写关于页：删除 Email、注册时间、会员等级、到期与购买区域；显示本地版说明、源码入口、组件许可。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/Basic/ActionDesignerSettings.cs` | 动作及状态自动备份设置不再按会员禁用。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/Basic/AutoRunSettings.cs` | 自动运行设置、规则粘贴删除版本禁用和 2 条限制。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/Basic/EventTriggersSettingPage.cs` | 事件触发创建、导入、编辑删除 2 条限制。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/Basic/UI/UiColorSettingsControl.cs` | 高级外观设置与背景图操作删除会员判断。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/BasicSettings.cs` | 托盘图标类型不再被强制重置/禁用，删除专业版工具提示。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/Tools/PowerKeysManagementPage.cs` | 扩展热键编辑、新增不再按 10 条配额限制，清理版本提示。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/Tools/TextCommandManagePage.cs` | 文本指令编辑、新增不再按 10 条配额限制，清理版本提示。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/Triggers/ActionHotkeysSettingPage.cs` | 动作快捷键设置删除数量和版本拦截。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/Triggers/CircleMenuSettingPage.cs` | 轮盘扩展圈 16 项选项开放；颜色主题按用户设置保存，不再按会员降回 8 项。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/Triggers/HotkeyWatchersSettingPage.cs` | 热键监听规则删除 1 条配额。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/Triggers/KeyActionsSettingPage.cs` | 按键触发规则删除 1 条配额。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/Triggers/LeftButtonPlusSettingPage.cs` | 鼠标左键增强设置不再按版本禁用。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/Triggers/MouseActionManagePage.cs` | 新增和粘贴鼠标规则删除 5 条配额。 |
+| `apps/Quicker/src/Quicker/Settings/Pages/UISettingsPage.cs` | 主题切换、深色外观和现有皮肤操作移除会员/体验账号判断。 |
+| `apps/Quicker/src/Quicker/Utilities/AppHelper.cs` | 删除 ShowVersionLimitInfo、ShowHotkeyLimitInfo、GetMemberLevelName 及打开购买窗口的闭包。 |
+| `apps/Quicker/src/Quicker/Utilities/UI/NotifyIconWrapper.cs` | 托盘菜单中的主题切换入口不再只对会员开放。 |
+| `apps/Quicker/src/Quicker/View/BuyQuickerWindow.cs` | 删除会员购买窗口源码，文件送入回收站。 |
+| `apps/Quicker/src/Quicker/View/CircleMenu/CircleMenuWindow.cs` | 轮盘扩展圈删除 90 天试用和会员检查，按轮盘与外观设置运行。 |
+| `apps/Quicker/src/Quicker/View/Controls/ActionButton.cs` | 移除旧体验账号判断；动作更新仍由已移除的更新链路保持关闭。 |
+| `apps/Quicker/src/Quicker/View/Controls/OpenProfileActionParamEditor.cs` | “某程序全部动作页”选项不再仅向会员提供。 |
+| `apps/Quicker/src/Quicker/View/DashboardWindow.cs` | 仪表盘外观初始化不再要求会员。 |
+| `apps/Quicker/src/Quicker/View/EditProfileWindow.cs` | 删除因页面配额为 1 而隐藏页面相关设置的分支。 |
+| `apps/Quicker/src/Quicker/View/ExeSettingControls/ExeCircleMenuSettingsControl.cs` | 清理轮盘扩展圈版本提示。 |
+| `apps/Quicker/src/Quicker/View/FloatButtonWindow.cs` | 悬浮按钮可使用本地皮肤，不再读取会员权限。 |
+| `apps/Quicker/src/Quicker/View/FloatPanelWindow.cs` | 悬浮面板可使用本地皮肤，不再读取会员权限。 |
+| `apps/Quicker/src/Quicker/View/IconSelectorWindow.cs` | 图标操作移除会员购买拦截。 |
+| `apps/Quicker/src/Quicker/View/NewExeSettingsWindow.cs` | 新建场景不再检查场景总数配额。 |
+| `apps/Quicker/src/Quicker/View/NewProfileWindow.cs` | 新建动作页不再检查每程序页数或会员身份。 |
+| `apps/Quicker/src/Quicker/View/PopupWindow.cs` | 面板新建场景、右上角编辑、拖拽悬浮、搜索、回收站及外观调用删除权限门槛。 |
+| `apps/Quicker/src/Quicker/View/PowerKeys/InstallPowerKeyWindow.cs` | 安装扩展热键不再检查剩余配额。 |
+| `apps/Quicker/src/Quicker/View/ProfileManagement/ActionPagesControl.cs` | 关联页面、编辑右上角按钮删除会员判断。 |
+| `apps/Quicker/src/Quicker/View/ProfileManagement/ExeListControl.cs` | 新增应用程序场景删除 10 个配额。 |
+| `apps/Quicker/src/Quicker/View/ProfileManagement/ExeSettingControls/ExeGesturesSettingsControl.cs` | 创建及添加手势删除 8 条轨迹限制。 |
+| `apps/Quicker/src/Quicker/View/ProfileManagement/ExeSettingsWindow.cs` | 场景左键增强与动作使用信息操作删除会员拦截。 |
+| `apps/Quicker/src/Quicker/View/SearchWindow.cs` | 搜索结果悬浮动作不再检查会员许可。 |
+| `apps/Quicker/src/Quicker/View/ShareActionWindow.cs` | 删除旧体验账号入口判断；未实现的原厂云发布仍明确报错。 |
+| `apps/Quicker/src/Quicker/View/ShareSubProgramWindow.cs` | 删除旧体验账号入口判断；未实现的原厂云发布仍明确报错。 |
+| `apps/Quicker/src/Quicker/View/TextCommands/InstallTextCommandWindow.cs` | 导入文本指令不再检查剩余配额。 |
+| `apps/Quicker/src/Quicker/View/TextFloatPanelWindow.cs` | 文本悬浮面板按本地外观设置运行。 |
+| `apps/Quicker/src/Quicker/View/X/ActionDesignerWindow.cs` | 动作版本保存、历史恢复删除会员检查与购买提示，保留动作类型和正文有效性检查。 |
+| `apps/Quicker/src/Quicker/View/X/Controls/InternalSubProgramListControl.cs` | 子程序定义导入导出删除会员/体验账号限制，保留只读数据保护。 |
+| `apps/Quicker/src/Quicker/View/X/SubProgramEditor.cs` | 子程序导出和历史相关操作删除版本提示。 |
+| `apps/Quicker/src/Quicker/View/X/XActionUiHelper.cs` | ExportSubProgram 不再检查会员/体验账号。 |
+| `apps/Quicker/src/eGw6fHYzCMTEO3Dvtqx/HohpaZYaB62F359dDI0.cs` | 删除原厂 OCR 遗留的按会员区分频率/日额度限流类，文件送入回收站。 |
+| `apps/Quicker/src/jtYKvI2ve9aDjyxS5gf/IIQBbr2FgGR5ONc4nck.cs` | 移除上述已废弃限流器字段、初始化及引用；现有本机 OCR 路径保持使用。 |
+| `apps/Quicker/src/mnWqVeozkVAHIg6WJW1/XJZ7kpoan1Uhg3yEL2v.cs` | 状态自动备份删除会员判断及 1 MiB 内容配额；失败信息改为本地保存。 |
+| `apps/Quicker/src/wO0UogXeWxgnePQOF3R/we8kb6Xb9dOkNdooDpA.cs` | 文本指令运行阶段删除超额拒绝执行的分支。 |
+| `assemblies/Quicker.Common/src/Quicker/Common/Vm/Account/UserLimitation.cs` | 新增 Unrestricted；全部本地功能标记开放、LockButton=false；6 个数量/容量参数为 0（无产品配额），Free 仅为旧接口兼容别名。 |
+
+资源细节：`Quicker.g.resources` 删除 `view/account/buyquickerwindow.baml` 和 `settings/pages/about/aboutsettingpage.baml`。其余修改为轮盘、动作编辑器备份、热键监听、事件触发、场景轮盘、自动运行、功能快捷键、新建场景、鼠标规则、按键规则、新建页面、文本指令、动作快捷键、基础工具及左键增强设置中的定价链接、付费文字或本地备份说明。保留控件连接编号，关于页改用可直接编辑的 C# 界面源码。
+
+文档同步：仓库首页 `README.md`、主 EXE README、Common README 与持续修改记录同步说明本次变化；本机主项目 README 同步说明。项目署名按维护者最新要求简化为“本项目由 Codex 计划与执行”，删除整个贡献者与特别致谢段落。
+
+- **实际构建：**原命令 `dotnet build src/Quicker.csproj -c Release --nologo -v:q` 最终成功，0 个错误、5,963 个警告。清理旧方法时出现过重复 CompilerGenerated 特性导致的 1 个编译错误，已去除重复标注并重新构建成功。输出为 `artifacts/bin/Release/net472/Quicker.exe` 及配套 Common DLL，构建日志 `artifacts/build-local-features.log` 留在本机、不发布。
+- **实际运行与部署：**未自动运行测试、验证脚本或程序；未修改安装目录，未改动用户本地数据库及账号信息；未访问 Quicker原始备份、未操作 HAPP。两个删除的源码文件及发布副本均送入回收站。
+- **发布范围：**本轮源码、已修改的 WPF 资源与 README/记录同步到 `y3507251-beep/quicker-local` 的 main 分支；构建产物、账号数据、运行缓存及临时编辑工具不在上传范围。
+- **兼容与遗留：**旧序列化模型保留以读取已有数据，不再用于本地会员授权；固定 Free 别名不表示有付费版本。步骤接口的旧 IsProOnly 元数据保留，主程序不再据此划分权限。业务联网与主动网站导入沿用 EXE-018；自配外部服务仍按其自身权限工作。原厂表格/公式 OCR 等本地替代尚未完成，不能将删除限制表述为这些云服务已经实现。实际运行、各项功能及尚未恢复源码的依赖仍待后续处理。

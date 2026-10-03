@@ -141,10 +141,6 @@ public class HotkeyWatchersSettingPage : SettingPage, IComponentConnector, IStyl
 			{
 				if (num != 0)
 				{
-					if (!AppState.DataService.Hb9tmk3OsJ7())
-					{
-						goto IL_007f;
-					}
 					goto IL_008e;
 				}
 				TaskAwaiter<bool?> awaiter = _003C_003Eu__1;
@@ -175,12 +171,7 @@ public class HotkeyWatchersSettingPage : SettingPage, IComponentConnector, IStyl
 				}
 				goto end_IL_0010;
 				IL_007f:
-				if (hotkeyWatchersSettingPage._list.Count < 1)
-				{
-					goto IL_008e;
-				}
-				AppHelper.ShowWarning("免费版支持创建1条规则，当前已达到限额。\n如您已购买专业版，请重启软件生效。");
-				goto end_IL_0010;
+				goto IL_008e;
 				IL_008e:
 				_003Cdlg_003E5__2 = new EditHotkeyWatcherItemWindow(null);
 				_003Cdlg_003E5__2.Owner = Window.GetWindow(hotkeyWatchersSettingPage);
@@ -449,11 +440,6 @@ public class HotkeyWatchersSettingPage : SettingPage, IComponentConnector, IStyl
 	public HotkeyWatchersSettingPage()
 	{
 		InitializeComponent();
-		if (!AppState.DataService.Hb9tmk3OsJ7())
-		{
-			LblLimit.Visibility = Visibility.Visible;
-		}
-		else
 		{
 			LblLimit.Visibility = Visibility.Collapsed;
 		}

@@ -397,7 +397,7 @@ public class ExeCircleMenuSettingsControl : UserControl, IComponentConnector
 	public void Init(DataService dataService)
 	{
 		CekLvlcdrNW = dataService;
-		LblVersionTip.Visibility = (dataService.Hb9tmk3OsJ7() ? Visibility.Collapsed : Visibility.Visible);
+		LblVersionTip.Visibility = (Visibility.Collapsed);
 	}
 
 	public void SetExe(ExeSettings exeSettings, ExeSettings defaultSettings)

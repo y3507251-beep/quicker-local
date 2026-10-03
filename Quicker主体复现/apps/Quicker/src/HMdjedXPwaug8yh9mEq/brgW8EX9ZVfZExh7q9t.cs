@@ -699,7 +699,6 @@ internal class brgW8EX9ZVfZExh7q9t
 		default:
 			if (UastpnRFPJu.IsEnabled)
 			{
-				if (jgJtpIN0xXg())
 				{
 					num = 0;
 					if (!c4uKZ3Q9bEh5SfmhlSHN())
@@ -709,7 +708,7 @@ internal class brgW8EX9ZVfZExh7q9t
 					}
 					goto IL_0167;
 				}
-				AppHelper.ShowVersionLimitInfo(null, $"动作快捷键数量超过限制。\n免费版可设置 {AppState.DataService.p5LtX4pt458()} 个动作快捷键以便临时使用，您当前共设置了 {v3WtpMVtU1F.Count} 个。", "");
+
 				goto IL_017f;
 			}
 			return false;
@@ -771,15 +770,6 @@ internal class brgW8EX9ZVfZExh7q9t
 			return true;
 			end_IL_0007:
 			break;
-		}
-		return true;
-	}
-
-	private bool jgJtpIN0xXg()
-	{
-		if (!AppState.DataService.Hb9tmk3OsJ7() && v3WtpMVtU1F != null)
-		{
-			return v3WtpMVtU1F.Count <= AppState.DataService.p5LtX4pt458();
 		}
 		return true;
 	}

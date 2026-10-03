@@ -99,11 +99,6 @@ public class UiColorSettingsControl : UserControl, IComponentConnector
 			UiColorSettingsControl uiColorSettingsControl = _003C_003E4__this;
 			try
 			{
-				if (num != 0 && !AppState.DataService.Hb9tmk3OsJ7())
-				{
-					AppHelper.ShowWarning("上传背景图需专业版。");
-				}
-				else
 				{
 					try
 					{
@@ -343,7 +338,7 @@ public class UiColorSettingsControl : UserControl, IComponentConnector
 		CbFontEng.ItemsSource = x69AwFr9Eu;
 		CbFontChn.ItemsSource = x69AwFr9Eu;
 		CbFontWeight.ItemsSource = new List<int> { 100, 200, 300, 400, 500, 600, 700, 800, 900 };
-		PnlAdvanced.IsEnabled = AppState.DataService.FjftbTOtevj();
+		PnlAdvanced.IsEnabled = true;
 	}
 
 	public void SetData(UiSettings settings)

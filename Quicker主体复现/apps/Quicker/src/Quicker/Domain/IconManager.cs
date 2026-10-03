@@ -54,7 +54,6 @@ public class IconManager
 					goto IL_00eb;
 				}
 				awaiter = default(ConfiguredTaskAwaitable<string>.ConfiguredTaskAwaiter);
-				if (!AppState.DataService.JTftmqIPFYx())
 				{
 					if (fileOrFodlerPath.StartsWith("StoreApp:", StringComparison.OrdinalIgnoreCase))
 					{

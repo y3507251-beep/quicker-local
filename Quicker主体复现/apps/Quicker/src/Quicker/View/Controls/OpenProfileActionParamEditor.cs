@@ -82,7 +82,6 @@ public class OpenProfileActionParamEditor : BaseActionParamEditor, IComponentCon
 		base.Loaded += vnALnAA4r1X;
 		List<ProfileConfigItem> list = (List<ProfileConfigItem>)(CWuLnFtT2qR = AppState.B2BtasP38AU().GetProfiles(true).Select(_003C_003Ec.GXXS3Y1bwSU ?? (_003C_003Ec.GXXS3Y1bwSU = _003C_003Ec.lWaS3elN8YK.vI3S3he7pHR))
 			.ToList());
-		if (AppState.DataService.Hb9tmk3OsJ7())
 		{
 			Dictionary<string, string> dictionary = new Dictionary<string, string>();
 			foreach (ProfileConfigItem item2 in list)

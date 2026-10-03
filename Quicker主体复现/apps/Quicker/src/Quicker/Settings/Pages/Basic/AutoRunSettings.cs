@@ -81,11 +81,6 @@ public class AutoRunSettings : SettingPage, IComponentConnector, IStyleConnector
 				C1iTjHS65P.Reset(settings.AutoRunTaskList);
 			}
 			LvActions.ItemsSource = C1iTjHS65P;
-			if (!AppState.DataService.Hb9tmk3OsJ7())
-			{
-				LblVersionInfo.Visibility = Visibility.Visible;
-				PnlButtons.IsEnabled = false;
-			}
 			return;
 		}
 	}
@@ -289,11 +284,6 @@ public class AutoRunSettings : SettingPage, IComponentConnector, IStyleConnector
 				}
 				else
 				{
-					if (!AppState.DataService.Hb9tmk3OsJ7() && C1iTjHS65P.Count + list.Count > 2)
-					{
-						AppHelper.ShowWarning("免费版最多可创建2条规则，粘贴的规则数量过多。");
-						return;
-					}
 					foreach (AutoRunTask item in list)
 					{
 						C1iTjHS65P.Add(item);

@@ -107,7 +107,7 @@ public class CircleMenuSettingPage : SettingPage, IComponentConnector
 		ChkShowExternalWhenPopup.IsChecked = settings.CircleMenuShowExternalWhenPopup;
 		URCoWSHopC = settings.CirclemMenuCircle2ActionCount;
 		KeyEditorForRepeat.SetSingleKey(settings.CircleMenuRepeatKey);
-		ChkEnableOutCircle16Actions.IsEnabled = AppState.DataService.Hb9tmk3OsJ7();
+		ChkEnableOutCircle16Actions.IsEnabled = true;
 		ChkPenButton1.IsChecked = settings.PenButton1Action > 0;
 		ChkPenButton2.IsChecked = settings.PenButton2Action > 0;
 		EjFoVgcWt8(settings);
@@ -152,7 +152,7 @@ public class CircleMenuSettingPage : SettingPage, IComponentConnector
 					userSettings.CircleMenuLimitInScreen = ChkLimitInScreen.IsChecked == true;
 					userSettings.CircleMenuAutoMoveCursor = ChkAutoMoveCursor.IsChecked == true;
 					userSettings.CircleMenuShowExternalWhenPopup = ChkShowExternalWhenPopup.IsChecked == true;
-					int num2 = ((ChkEnableOutCircle16Actions.IsChecked != true || !AppState.DataService.Hb9tmk3OsJ7()) ? 8 : 16);
+					int num2 = ((ChkEnableOutCircle16Actions.IsChecked != true) ? 8 : 16);
 					if (userSettings.CirclemMenuCircle2ActionCount != num2)
 					{
 						AppState.v5FtaQ4hQfg().G1XvtA8WXBn();
@@ -174,11 +174,10 @@ public class CircleMenuSettingPage : SettingPage, IComponentConnector
 	{
 		UiSettings uiSettings = userSettings_0.UiSettings;
 		DefaultColorSettingsControl.SetData(uiSettings);
-		mOAokYb7bl = AppState.DataService.Hb9tmk3OsJ7() && AppState.HHxtaMaoqJr().SwitchUiSettingsBasedOnTheme;
+		mOAokYb7bl = AppState.HHxtaMaoqJr().SwitchUiSettingsBasedOnTheme;
 		if (!mOAokYb7bl)
 		{
 			(TabColors.Items[1] as TabItem).Visibility = Visibility.Collapsed;
-			if (AppState.DataService.Hb9tmk3OsJ7())
 			{
 				ChkThemeColorHint.Visibility = Visibility.Visible;
 				int num = 0;

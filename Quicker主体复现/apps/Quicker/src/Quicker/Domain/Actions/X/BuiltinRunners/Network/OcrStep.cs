@@ -469,10 +469,6 @@ public class OcrStep : IStepRunner, IStepRunningInfo
 				}
 				_003C_003Ec__DisplayClass69_.OwDSygHA2oe = bfmVNpoIh0N1MPAqJ5v.HwrgQwck4JH(ocrResult.Data);
 				long elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
-				if (!AppState.DataService.Hb9tmk3OsJ7())
-				{
-					Thread.Sleep((int)elapsedMilliseconds);
-				}
 			}
 			catch (Exception ex)
 			{

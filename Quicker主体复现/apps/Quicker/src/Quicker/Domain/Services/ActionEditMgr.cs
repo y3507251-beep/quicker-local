@@ -1826,12 +1826,10 @@ public class ActionEditMgr
 					{
 						goto IL_0043;
 					}
-					if (_003C_003Ec__DisplayClass57_.mTAvdKmAvM2.kB4tpwTmVen.Hb9tmk3OsJ7())
 					{
 						AppState.HS2taepcAbc().RequestHide();
 						goto IL_0043;
 					}
-					AppHelper.ShowWarning("本功能需要专业版。");
 					goto end_IL_0010;
 					IL_0043:
 					try
@@ -2399,7 +2397,6 @@ public class ActionEditMgr
 
 		internal void ajGvDiSiSVr(object sender, RoutedEventArgs e)
 		{
-			if (mTAvdKmAvM2.kB4tpwTmVen.hfGtbAvJrRQ(true))
 			{
 				FloatPanelWindow floatPanelWindow = new FloatPanelWindow(VDxvdx9L8v4, null, mTAvdKmAvM2.orltrlKx8rp, mTAvdKmAvM2.Kfitrf6DTx6, mTAvdKmAvM2, mTAvdKmAvM2.kB4tpwTmVen, mTAvdKmAvM2.mNttpLTwBmW, null, (aq7vdXTvn14 is SearchWindow searchWindow) ? searchWindow.ActiveProcessBeforeShow : null);
 				floatPanelWindow.Show();
@@ -2410,13 +2407,8 @@ public class ActionEditMgr
 
 		internal void dLLvD3iX8sf(object sender, RoutedEventArgs e)
 		{
-			if (mTAvdKmAvM2.kB4tpwTmVen.Hb9tmk3OsJ7())
 			{
 				mTAvdKmAvM2.qoYtpv5p7Bo.AddProfile(VDxvdx9L8v4);
-			}
-			else
-			{
-				AppHelper.ShowVersionLimitInfo(null, "了解 “添加到文本悬浮窗” 功能", "https://getquicker.net/KC/Help/Doc/text-select-float-panel");
 			}
 		}
 
@@ -2762,11 +2754,6 @@ public class ActionEditMgr
 
 		internal void ub6vdHU8nlM(object sender, RoutedEventArgs e)
 		{
-			if (VDxvdx9L8v4.IsGlobalProfile() && AppState.DataService.Gont6sBnlpf(AppHelper.GetButtonIndex(true, gDtvdBaBq0w, py0vdQSLHa6)))
-			{
-				AppHelper.ShowVersionLimitInfo("编辑右上角按钮");
-				return;
-			}
 			if (!string.IsNullOrEmpty(FXyvdpLR6nB.Id))
 			{
 				mTAvdKmAvM2.EditActionById(FXyvdpLR6nB.Id, null, JrJWiKYIEBcPm8FFZOl.Modifiers == ModifierKeys.Control);
@@ -5071,12 +5058,11 @@ public class ActionEditMgr
 				}
 				else
 				{
-					if (!targetProfile.IsGlobalProfile() || !AppState.DataService.Gont6sBnlpf(AppHelper.GetButtonIndex(true, targetRow, targetCol)))
 					{
 						actionItem = targetProfile.FindActionByLocation(targetRow, targetCol);
 						goto IL_00b1;
 					}
-					AppHelper.ShowVersionLimitInfo("编辑右上角按钮");
+
 					int num2 = 0;
 					if (!deGF2JWyWLLKHy8jCwBd())
 					{
@@ -6069,7 +6055,6 @@ public class ActionEditMgr
 				num2 = num3;
 				goto IL_01c1;
 				IL_0055:
-				if (!AppState.DataService.BV9tm7kpqII() && !AppState.DataService.JTftmqIPFYx())
 				{
 					if (!actionEditMgr.kr8tp2sZD2W.Any(_003C_003E8__1.SkYvDyaPv9Y))
 					{
@@ -6117,10 +6102,6 @@ public class ActionEditMgr
 					{
 						result = (false, "动作正在编辑中，不能分享动作。");
 					}
-				}
-				else
-				{
-					result = (false, "需要登录到帐号后方可使用此功能。");
 				}
 				goto end_IL_0010;
 				IL_024c:
@@ -6344,11 +6325,6 @@ public class ActionEditMgr
 			int num = _003C_003E1__state;
 			try
 			{
-				if (num != 0 && (AppState.DataService.BV9tm7kpqII() || AppState.DataService.JTftmqIPFYx()))
-				{
-					AppHelper.ShowInformation("登录您的帐号后方可使用此功能。");
-				}
-				else
 				{
 					try
 					{
@@ -6745,7 +6721,7 @@ public class ActionEditMgr
 		_003C_003Ec__DisplayClass22_.m0Sv5zT0toW = actionItem_0;
 		_003C_003Ec__DisplayClass22_.H4kvDwYw3Tq = string_0;
 		_003C_003Ec__DisplayClass22_.rFdvDtwDtKh = int_0;
-		if (kB4tpwTmVen.Hb9tmk3OsJ7() && kB4tpwTmVen.CpItmVISR7P().EnableAutoBackupActions)
+		if (kB4tpwTmVen.CpItmVISR7P().EnableAutoBackupActions)
 		{
 			Task.Run((Func<Task>)_003C_003Ec__DisplayClass22_.wN1v5f1q70m);
 		}
@@ -6796,7 +6772,6 @@ public class ActionEditMgr
 		}
 		_003C_003Ec__DisplayClass26_.IUcvDCK7pdx = this;
 		_003C_003Ec__DisplayClass26_.aJPvDPjNLUx = profile;
-		if (!AppState.DataService.BV9tm7kpqII() && !AppState.DataService.JTftmqIPFYx())
 		{
 			if (!kr8tp2sZD2W.Any(_003C_003Ec__DisplayClass26_.Ee9vD21jkhk))
 			{
@@ -6836,10 +6811,6 @@ public class ActionEditMgr
 				}
 			}
 			AppHelper.ShowWarning("动作正在编辑中，不能分享动作。");
-		}
-		else
-		{
-			AppHelper.ShowInformation("需要登录到帐号后方可使用此功能。");
 		}
 	}
 
@@ -6927,11 +6898,6 @@ public class ActionEditMgr
 			}
 			goto IL_0092;
 			IL_0098:
-			if (!AppState.DataService.QUotbFwOhur())
-			{
-				AppHelper.ShowHotkeyLimitInfo(null);
-				return;
-			}
 			goto IL_00af;
 			IL_0092:
 			if (actionHotKeyItem == null)
@@ -6993,11 +6959,7 @@ public class ActionEditMgr
 
 	public void CreateAction(ActionProfile profile, int row, int col, ActionType? actionType)
 	{
-		if (profile.IsGlobalProfile() && AppState.DataService.Gont6sBnlpf(AppHelper.GetButtonIndex(true, row, col)))
-		{
-			AppHelper.ShowVersionLimitInfo("编辑右上角按钮");
-		}
-		else if (aoWtrpBsaBq(profile, row, col))
+		if (aoWtrpBsaBq(profile, row, col))
 		{
 			AppHelper.ShowWarning("正在编辑此按钮动作。");
 			ShowEditor(profile, row, col);
@@ -7741,7 +7703,7 @@ public class ActionEditMgr
 					AppHelper.AddMenuItem(menuItem2.Items, "导出动作", "导出动作定义到文件", string.Format("fa:{0}:{1}", EFontAwesomeIcon.Light_FileExport, "#1296db"), _003C_003Ec__DisplayClass57_.KxFvdy7ivYk);
 					if (_003C_003Ec__DisplayClass57_.FXyvdpLR6nB.ActionType == ActionType.XAction || _003C_003Ec__DisplayClass57_.FXyvdpLR6nB.ActionType == ActionType.XSubProgram)
 					{
-						AppHelper.AddMenuItem(menuItem2.Items, "备份版本到服务器", "备份动作的当前版本到服务器", string.Format("fa:{0}:{1}", EFontAwesomeIcon.Light_CloudUpload, "#1296db"), _003C_003Ec__DisplayClass57_.jGXvd85ZNSq).IsEnabled = AppState.DataService.Hb9tmk3OsJ7();
+						AppHelper.AddMenuItem(menuItem2.Items, "保存本地版本", "保存动作的当前版本到本地", string.Format("fa:{0}:{1}", EFontAwesomeIcon.Light_CloudUpload, "#1296db"), _003C_003Ec__DisplayClass57_.jGXvd85ZNSq).IsEnabled = true;
 					}
 					if (_003C_003Ec__DisplayClass57_.FXyvdpLR6nB.ActionType == ActionType.XAction && !string.IsNullOrEmpty(_003C_003Ec__DisplayClass57_.FXyvdpLR6nB.Id) && _003C_003Ec__DisplayClass57_.FXyvdpLR6nB.Id != Guid.Empty.ToString())
 					{
@@ -7796,7 +7758,6 @@ public class ActionEditMgr
 
 	public void FloatAction(ActionItem action, Window ownerWindow)
 	{
-		if (kB4tpwTmVen.hfGtbAvJrRQ(true))
 		{
 			khuggB2ZntAfW2CDU1r.FloatAction(action, AppHelper.GetTopLeftScreenPositionBasedOnMouseAndVisualOffset(ownerWindow, new System.Windows.Point(40.0, 40.0)), orltrlKx8rp, Kfitrf6DTx6, this, kB4tpwTmVen, mNttpLTwBmW, null, (ownerWindow is SearchWindow searchWindow) ? searchWindow.ActiveProcessBeforeShow : null);
 		}
@@ -7804,7 +7765,6 @@ public class ActionEditMgr
 
 	public FloatButtonWindow RestoreFloatAction(FloatItemState itemState)
 	{
-		if (kB4tpwTmVen.hfGtbAvJrRQ(false))
 		{
 			(ActionItem, ActionProfile) actionById = kB4tpwTmVen.GetActionById(itemState.ItemId);
 			if (actionById.Item1 != null)
@@ -7815,10 +7775,6 @@ public class ActionEditMgr
 				}
 				return khuggB2ZntAfW2CDU1r.FloatAction(actionById.Item1, new System.Drawing.Point((int)itemState.Left, (int)itemState.Top), orltrlKx8rp, Kfitrf6DTx6, this, kB4tpwTmVen, mNttpLTwBmW, itemState, "", true);
 			}
-		}
-		else
-		{
-			qiytpSkwiIN.Warn("无法恢复悬浮动作。当前用户不支持悬浮动作。");
 		}
 		return null;
 	}

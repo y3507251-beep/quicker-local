@@ -108,10 +108,6 @@ public class QuickerOperationStep : IStepRunner, IStepRunningInfo
 			case "LoadSkin":
 			{
 				_003C_003Ec__DisplayClass82_6 _003C_003Ec__DisplayClass82_5 = new _003C_003Ec__DisplayClass82_6();
-				if (!AppState.DataService.FjftbTOtevj())
-				{
-					return (isSuccess: false, message: "加载外观功能需要专业版。", failReason: ActionStopFlag.OperationFailed);
-				}
 				_003C_003Ec__DisplayClass82_5.WNdv3lRTSe6 = XActionHelper.GetTextParamValue(ej4tMfIf1UN, iSov3xNELvc, Gd6v3r6Bj6u);
 				if (!string.IsNullOrEmpty(_003C_003Ec__DisplayClass82_5.WNdv3lRTSe6))
 				{
@@ -168,10 +164,6 @@ public class QuickerOperationStep : IStepRunner, IStepRunningInfo
 			case "FloatAction":
 			{
 				_003C_003Ec__DisplayClass82_4 _003C_003Ec__DisplayClass82_4 = new _003C_003Ec__DisplayClass82_4();
-				if (!AppState.DataService.Hb9tmk3OsJ7())
-				{
-					return (isSuccess: false, message: "此功能需要专业版", failReason: ActionStopFlag.OperationFailed);
-				}
 				string textParamValue3 = XActionHelper.GetTextParamValue(rqEtMl8Hl1O, iSov3xNELvc, Gd6v3r6Bj6u);
 				if (string.IsNullOrEmpty(textParamValue3))
 				{
@@ -284,10 +276,6 @@ public class QuickerOperationStep : IStepRunner, IStepRunningInfo
 				goto IL_0d65;
 			case "ToggleFloatButtons":
 			{
-				if (!AppState.DataService.Hb9tmk3OsJ7())
-				{
-					return (isSuccess: false, message: "此功能需要专业版", failReason: ActionStopFlag.OperationFailed);
-				}
 				string textParamValue10 = XActionHelper.GetTextParamValue(Tf3tMzG8FCI, iSov3xNELvc, Gd6v3r6Bj6u);
 				if (string.IsNullOrEmpty(textParamValue10))
 				{
@@ -880,9 +868,9 @@ public class QuickerOperationStep : IStepRunner, IStepRunningInfo
 				new SelectionItem("StartSearchWithAction", "使用当前动作进行实时搜索"),
 				new SelectionItem("SearchWithCertainAction", "使用指定动作进行实时搜索"),
 				new SelectionItem("operation_show_context_menu", "显示剪贴板上下文菜单"),
-				new SelectionItem("LoadSkin", "加载外观/切换主题(专业版功能)"),
+				new SelectionItem("LoadSkin", "加载外观/切换主题"),
 				new SelectionItem("ExitQuicker", "退出Quicker"),
-				new SelectionItem("FloatAction", "悬浮动作(专业版功能)"),
+				new SelectionItem("FloatAction", "悬浮动作"),
 				new SelectionItem("ToggleFloatButtons", "切换所有悬浮按钮显示"),
 				new SelectionItem("ShowHideImageWindows", "显示或隐藏所有图片窗口"),
 				new SelectionItem("RemoveAction", "删除当前动作"),

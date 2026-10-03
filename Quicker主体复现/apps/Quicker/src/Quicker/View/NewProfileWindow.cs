@@ -192,10 +192,6 @@ public class NewProfileWindow : Window, IComponentConnector
 	{
         ICollectionView defaultView = default;
 		FcEg3LSXXEM(JxFg32E9V1D.GetProfiles(true));
-		if (!jsEg3SyMuri.vrNtblRW6WJ())
-		{
-			goto IL_0040;
-		}
 		LblValidForMachines.Visibility = Visibility.Collapsed;
 		int num = 1;
 		if (CHAiGxFp34RlP45txNqm != null)
@@ -230,19 +226,9 @@ public class NewProfileWindow : Window, IComponentConnector
 		default:
 			LbProfiles.ItemsSource = defaultView;
 			kiMgiO6xi4n();
-			if (!jsEg3SyMuri.aAbtb3PL093(V5Wg3uAlvgZ.Exe))
-			{
-				PnlNoMore.Visibility = Visibility.Visible;
-				BtnOk.IsEnabled = false;
-			}
-			else
 			{
 				PnlNoMore.Visibility = Visibility.Collapsed;
 				BtnOk.IsEnabled = true;
-			}
-			if (!AppState.DataService.Hb9tmk3OsJ7())
-			{
-				PnlValidForMachines.IsEnabled = false;
 			}
 			return;
 		}

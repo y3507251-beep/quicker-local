@@ -187,8 +187,6 @@ internal static class LocalDataStore
     {
         var icons = ReadList<IconFileDto>("local_icons");
         if (icons.Any(icon => icon.Url == source)) return source;
-        int limit = UserLimitation.Free.MaxIconCount;
-        if (limit > 0 && icons.Count >= limit) throw new InvalidOperationException("已达到本地图标数量设置。");
         icons.Add(new IconFileDto(source, Path.GetFileName(name), Guid.NewGuid()));
         Save("local_icons", icons);
         return source;

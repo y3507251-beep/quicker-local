@@ -274,10 +274,6 @@ public class SearchBmpStep : IStepRunner, IStepRunningInfo
 							}
 						}
 						long elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
-						if (list.HasData() && !AppState.DataService.Hb9tmk3OsJ7())
-						{
-							Thread.Sleep((int)elapsedMilliseconds);
-						}
 						if (!list.HasData())
 						{
 							XActionHelper.OutputResult(_firstPointOutput, RG3vf89LxlU, CkdvfacdQl5, "", eNDvf7ObGj9);
@@ -312,10 +308,6 @@ public class SearchBmpStep : IStepRunner, IStepRunningInfo
 							}
 						}
 						long elapsedMilliseconds2 = stopwatch2.ElapsedMilliseconds;
-						if (point.HasValue && !AppState.DataService.Hb9tmk3OsJ7())
-						{
-							Thread.Sleep((int)elapsedMilliseconds2);
-						}
 						if (!point.HasValue)
 						{
 							XActionHelper.OutputResult(_firstPointOutput, RG3vf89LxlU, CkdvfacdQl5, "", eNDvf7ObGj9);

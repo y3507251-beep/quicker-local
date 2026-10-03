@@ -553,7 +553,6 @@ public class NotifyIconWrapper : IDisposable
 		AppHelper.AddMenuItem(contextMenu.Items, "重置键盘状态", "", "fa:Light_Keyboard:" + text, _003C_003Ec.Q782ygYWwD1 ?? (_003C_003Ec.Q782ygYWwD1 = _003C_003Ec.Uxv2Eo8SJJo.DS42EjIO3qE));
 		System.Windows.Controls.MenuItem menuItem_ = AppHelper.AddMenuItem(contextMenu.Items, "中止动作", "", "fa:Light_MousePointer:#F03333", null);
 		qlFv2KM450M(menuItem_);
-		if (AppState.DataService.Hb9tmk3OsJ7())
 		{
 			System.Windows.Controls.MenuItem menuItem2 = AppHelper.AddMenuItem(contextMenu.Items, "切换主题模式", "", "fa:Light_Moon:" + text, null);
 			string text2 = AO7eLUM7kJyEdiOQu2O.ThemeMode;

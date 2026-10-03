@@ -208,10 +208,6 @@ public class ExeSettingsWindow : Window, IComponentConnector
 						exeSettingsWindow.TabLeftButtonPlus.Visibility = Visibility.Collapsed;
 						goto IL_0244;
 						IL_0200:
-						if (!exeSettingsWindow.RGrLNZHRFiA.Hb9tmk3OsJ7())
-						{
-							goto IL_0237;
-						}
 						exeSettingsWindow.TabLeftButtonPlus.Visibility = Visibility.Visible;
 						exeSettingsWindow.LeftButtonPlusSettingsControl.SetExe(exeSettingsWindow.z29LNGdDw5X, exeSettingsWindow.KcaLNk3irXk);
 						goto IL_0244;
@@ -295,7 +291,6 @@ public class ExeSettingsWindow : Window, IComponentConnector
 				{
 					goto IL_0064;
 				}
-				if (AppState.DataService.Hb9tmk3OsJ7())
 				{
 					if (exeSettingsWindow.ActionUseCounts == null)
 					{
@@ -309,10 +304,6 @@ public class ExeSettingsWindow : Window, IComponentConnector
 						{
 						}
 					}
-				}
-				else
-				{
-					AppHelper.ShowVersionLimitInfo("免费版暂不支持此功能。");
 				}
 				goto end_IL_000e;
 				IL_0064:

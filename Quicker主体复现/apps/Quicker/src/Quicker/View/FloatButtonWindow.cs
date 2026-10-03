@@ -453,7 +453,7 @@ public class FloatButtonWindow : Window, IComponentConnector, IFloatItemWindow
 	public void UpdateUiSkin()
 	{
 		UiSettings uiSettings = FMP9ONqzXcgZ6r3WmZZ.A4qHeQImJ6();
-		bool canUseSkin = AppState.DataService.FjftbTOtevj();
+		bool canUseSkin = true;
 		UIHelper.UpdateUiSkinCommon(this, uiSettings, canUseSkin);
 		if (!string.IsNullOrEmpty(uiSettings.BackgroundColor))
 		{
