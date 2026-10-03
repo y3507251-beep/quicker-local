@@ -7397,6 +7397,16 @@ public class ActionEditMgr
 
 	public void CreateContextMenuForActionButton(ContextMenu menu, ActionItem action, ActionProfile profile, int row, int col, Window ownerWindow, ActionTrigger actionTrigger, bool showFloat, bool showDelete, bool onlyCustomMenu)
 	{
+		// 菜单对象必须在整个构建流程中保留，不能在跳转到填充子菜单时清空。
+		MenuItem menuItem = null;
+		MenuItem menuItem2 = null;
+		MenuItem menuItem3 = null;
+		MenuItem menuItem4 = null;
+		_003C_003Ec__DisplayClass57_1 _003C_003Ec__DisplayClass57_4 = null;
+		ActionUserLimitation? userLimitation = null;
+		ActionUserLimitation actionUserLimitation = default;
+		bool flag = false;
+		int num2 = 0;
         _003C_003Ec__DisplayClass57_3 _003C_003Ec__DisplayClass57_3 = default;
 		_003C_003Ec__DisplayClass57_0 _003C_003Ec__DisplayClass57_ = new _003C_003Ec__DisplayClass57_0();
 		_003C_003Ec__DisplayClass57_.aq7vdXTvn14 = ownerWindow;
@@ -7412,7 +7422,6 @@ public class ActionEditMgr
 		}
 		goto IL_1453;
 		IL_0e5d:
-		MenuItem menuItem = default(MenuItem);
 		AppHelper.AddMenuItem(menuItem.Items, "动作ID", "复制动作的ID文字", string.Format("fa:{0}:{1}", EFontAwesomeIcon.Light_Copy, "#1296db"), _003C_003Ec__DisplayClass57_.kA1vdWwZifv);
 		AppHelper.AddMenuItem(menuItem.Items, "动作名称", "复制动作的名称文字", string.Format("fa:{0}:{1}", EFontAwesomeIcon.Light_Copy, "#1296db"), _003C_003Ec__DisplayClass57_.zdxvdkEjkjD);
 		AppHelper.AddMenuItem(menuItem.Items, "动作URI", "URI可以用于在其他软件中启动动作", string.Format("fa:{0}:{1}", EFontAwesomeIcon.Light_Copy, "#1296db"), _003C_003Ec__DisplayClass57_.SEFvdGOV2xU);
@@ -7451,14 +7460,6 @@ public class ActionEditMgr
 		}
 		goto IL_14ee;
 		IL_1453:
-		MenuItem menuItem3 = default(MenuItem);
-		MenuItem menuItem4 = default(MenuItem);
-		_003C_003Ec__DisplayClass57_1 _003C_003Ec__DisplayClass57_4 = default(_003C_003Ec__DisplayClass57_1);
-		ActionUserLimitation? userLimitation = default(ActionUserLimitation?);
-		ActionUserLimitation actionUserLimitation = default(ActionUserLimitation);
-		MenuItem menuItem2 = default(MenuItem);
-		bool flag = default(bool);
-		int num2 = default(int);
 		while (true)
 		{
 			int num3;

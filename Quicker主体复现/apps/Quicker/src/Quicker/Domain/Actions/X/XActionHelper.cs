@@ -306,7 +306,7 @@ public static class XActionHelper
 				{
 					throw new InvalidDataException("变量未定义：" + _003C_003Ec__DisplayClass2_2.AoZvFry8H7f.hVVvF6ySRVh.VarKey);
 				}
-				_003C_003Ec__DisplayClass2_2.KPkvFKv9uZq = (string)r16vFsa2ewe.GetVarValue(_003C_003Ec__DisplayClass2_2.AoZvFry8H7f.hVVvF6ySRVh.VarKey);
+				_003C_003Ec__DisplayClass2_2.KPkvFKv9uZq = r16vFsa2ewe.GetVarValue(_003C_003Ec__DisplayClass2_2.AoZvFry8H7f.hVVvF6ySRVh.VarKey);
 				if (!Uy4vFGBpnkU.SkipEval)
 				{
 					int num2 = default(int);
@@ -340,7 +340,7 @@ public static class XActionHelper
 							IZlvFHtIbpG = _003C_003Ec__DisplayClass2_2.DGqvFxghHKT;
 							if (!fH0tD9flSpf(_003C_003Ec__DisplayClass2_2.DGqvFxghHKT))
 							{
-								_003C_003Ec__DisplayClass2_2.KPkvFKv9uZq = (string)GetValueFromExpression2(_003C_003Ec__DisplayClass2_2.DGqvFxghHKT.Substring(2), r16vFsa2ewe);
+								_003C_003Ec__DisplayClass2_2.KPkvFKv9uZq = GetValueFromExpression2(_003C_003Ec__DisplayClass2_2.DGqvFxghHKT.Substring(2), r16vFsa2ewe);
 								break;
 							}
 							num = 1;
@@ -471,7 +471,8 @@ public static class XActionHelper
 	[CompilerGenerated]
 	internal sealed class _003C_003Ec__DisplayClass2_2
 	{
-		public string KPkvFKv9uZq;
+		// 保留变量或表达式的实际类型；需要转换时由参数定义决定。
+		public object KPkvFKv9uZq;
 
 		public string DGqvFxghHKT;
 
@@ -481,7 +482,7 @@ public static class XActionHelper
 
 		internal void ryTvFmIR5rD()
 		{
-			KPkvFKv9uZq = (string)GetValueFromExpression2(DGqvFxghHKT.Substring(2), AoZvFry8H7f.KluvFXWiEn0.r16vFsa2ewe);
+			KPkvFKv9uZq = GetValueFromExpression2(DGqvFxghHKT.Substring(2), AoZvFry8H7f.KluvFXWiEn0.r16vFsa2ewe);
 			Thread.Sleep(20);
 		}
 

@@ -451,3 +451,25 @@
 - **实际运行与部署：**未自动运行测试、验证脚本或程序；未修改安装目录，未改动用户本地数据库及账号信息；未访问 Quicker原始备份、未操作 HAPP。两个删除的源码文件及发布副本均送入回收站。
 - **发布范围：**本轮源码、已修改的 WPF 资源与 README/记录同步到 `y3507251-beep/quicker-local` 的 main 分支；构建产物、账号数据、运行缓存及临时编辑工具不在上传范围。
 - **兼容与遗留：**旧序列化模型保留以读取已有数据，不再用于本地会员授权；固定 Free 别名不表示有付费版本。步骤接口的旧 IsProOnly 元数据保留，主程序不再据此划分权限。业务联网与主动网站导入沿用 EXE-018；自配外部服务仍按其自身权限工作。原厂表格/公式 OCR 等本地替代尚未完成，不能将删除限制表述为这些云服务已经实现。实际运行、各项功能及尚未恢复源码的依赖仍待后续处理。
+
+### EXE-021｜2026-10-04｜修复动作参数类型、截图等待与右键菜单空引用
+
+- **原因与证据：**用户反馈 EVER重命名、截图OCR、EVER智识、剪贴板、置顶动作异常，以及打开动作右键菜单准备删除时主界面崩溃。只读查看本地 quicker.log，定位到 List<string>、Int64、Double、Dictionary<string,object> 被强制转换为 string 的错误；右键堆栈位于 ActionEditMgr.CreateContextMenuForActionButton，发生在删除操作之前。当前安装目录仍运行 2026-10-03 22:05 构建的 EXE，未使用 EXE-020 产物；本次定位的问题在修改前的工作源码中同样存在。此前“可构建”不能作为这些功能可用的结论。
+- **全部源码修改（相对主 EXE 的 src）：**
+  - `Quicker/Domain/Actions/X/XActionHelper.cs`：`GetParamValue` 的 `_003C_003Ec__DisplayClass2_2.KPkvFKv9uZq` 从 string 改为 object；`lI0vFW6fJe2` 中读取变量、表达式求值及 `ryTvFmIR5rD` 中 UI 线程求值移除三处强制字符串转换。保留值的实际类型，并继续由 SkipEval、skipConvert、变量/参数类型和 VariableHelper 决定是否求值与转换。列表、数字、字典和图片不再在转换前被强制当成文本；子程序参数共用此路径。
+  - `Quicker/Domain/Services/ActionEditMgr.cs`：完整参数重载 `CreateContextMenuForActionButton` 中的 menuItem、menuItem2/3/4 及相关局部状态改为在方法入口初始化。去掉 IL_0e5d 和 IL_1453 标签处的重置，保留已经创建的“信息/复制”等菜单对象，再添加子项。没有用吞掉异常或禁用删除入口代替修复；删除动作本身的处理流程未改动。
+  - `Quicker/Domain/Actions/X/BuiltinRunners/Images/CaptureStep.cs`：`KUFgaVPecxk` 的 dateTime/escCounter 初始化移到入口，IL_0157 等待循环不再清空已设置的 20 秒截止时间与 Esc 计数；内置选区判断同时检查宽和高，拒绝空选区。
+- **取图链路调查：**只读打开本机 SQLite 的动作页及 LocalSharedAction 中相关动作正文，确认截图OCR使用“截图→截图转imgBase64→sys:screenCapture→sys:imgToBase64”，未编辑动作定义、配置或数据库。日志同时记录该动作访问自身外部 HTTP 服务时被拒绝连接；这是与源码类型错误并存的问题，未宣称外部服务已恢复。
+- **实际构建：**使用现有 `dotnet build src\Quicker.csproj -c Release --nologo -v:q` 构建成功，0 个错误、5,963 个警告。产物位于 `artifacts/bin/Release/net472/Quicker.exe` 和配套 Common DLL，日志为本机 `artifacts/build-action-runtime.log`。没有修改 build.cmd、项目引用或工程配置，没有增加辅助构建/验证脚本。
+- **实际运行与部署：**按项目约定未自动运行测试、程序或替换测试；未退出正在运行的 Quicker，未改动 C:\Program Files\Quicker，未改动账号信息、本地动作及数据库。未访问 Quicker原始备份，未操作 HAPP 或其他项目。修正版需要后续实际运行反馈，不能表述为上述所有动作已经通过。
+- **文档与公开源码：**按此前持续同步要求，将以上三处源码、本记录及 GitHub 首页 README 的修复说明同步到公开仓库。用户数据库、日志、凭据和构建产物不纳入提交；不复制整个工作目录。
+- **遗留边界：**外部服务的连接、动作依赖程序是否安装、动作私有配置及尚未实现的原厂云服务本地替代需要分别处理。此次未改变主动网站导入、自配服务访问、账号免登录、后台同步及更新移除的既定方向；编译警告和其它运行问题仍可能存在。
+
+### EXE-022｜2026-10-04｜按用户后续要求直接替换安装目录
+
+- **授权与范围：**用户在 EXE-021 构建完成后明确要求“你编译完直接替换”。本条记录该后续部署，不覆盖 EXE-021 在当时尚未部署的历史状态；没有再次修改源码或构建脚本。
+- **替换内容：**将 EXE-021 输出目录 `artifacts/bin/Release/net472` 的 `Quicker.exe`、`Quicker.Common.dll` 复制到 `C:\Program Files\Quicker`。配套 Common 包含 EXE-020 的本地无限额配置。
+- **回退文件：**替换前的两个文件保存到 `artifacts/deploy-backups/20261004-003241-before-action-runtime-fix`。该目录属于构建留档，不发布到 GitHub，不涉及 Quicker原始备份。
+- **实际过程：**操作时 Quicker 已退出，无须终止进程。普通权限复制因安装目录访问权限被拒绝；随后通过 Windows UAC 启动管理员复制进程，退出码 0，`replacement-result.txt` 记录两文件复制成功，时间 2026-10-04 00:33:22。未更改系统权限设置。
+- **运行状态：**未自动启动软件、执行动作或运行验证；由用户启动安装目录里的 EXE 检查实际效果。本条只确认替换完成，不表示重命名、OCR、剪贴板、置顶或右键操作已经运行通过。
+- **公开说明：**GitHub 首页 README 同步本次三处源码修复和实际替换状态，源码与修改记录一起提交；回退文件、构建产物、部署结果和用户数据保持本机留存。

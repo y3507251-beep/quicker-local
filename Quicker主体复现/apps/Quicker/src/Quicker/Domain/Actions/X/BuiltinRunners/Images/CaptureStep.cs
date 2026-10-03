@@ -391,6 +391,9 @@ public class CaptureStep : IStepRunner, IStepRunningInfo
 
 	private void KUFgaVPecxk(ActionStep actionStep_0, ActionExecuteContext actionExecuteContext_0, XAction xaction_0, out Bitmap bitmap_0, out Rectangle rectangle_0)
 	{
+		// 等待循环保留同一次截图的截止时间和取消计数。
+		DateTime dateTime = default;
+		int escCounter = 0;
 		_003C_003Ec__DisplayClass56_0 _003C_003Ec__DisplayClass56_ = new _003C_003Ec__DisplayClass56_0();
 		Bitmap bitmap = null;
 		Rectangle rectangle = Rectangle.Empty;
@@ -419,8 +422,6 @@ public class CaptureStep : IStepRunner, IStepRunningInfo
 		}
 		goto IL_01ac;
 		IL_0157:
-		DateTime dateTime = default(DateTime);
-		int escCounter = default(int);
 		int num;
 		if (clipboardSequenceNumber == AppState.ClipboardSequenceNumber && DateTime.Now < dateTime && escCounter == AppState.EscCounter)
 		{
@@ -444,7 +445,7 @@ public class CaptureStep : IStepRunner, IStepRunningInfo
 		rectangle = _003C_003Ec__DisplayClass56_.vciSRUPoM6u.tyEmRRGGv3();
 		goto IL_0244;
 		IL_01d5:
-		if (_003C_003Ec__DisplayClass56_.vciSRUPoM6u.tyEmRRGGv3().Height < 1)
+		if (_003C_003Ec__DisplayClass56_.vciSRUPoM6u.tyEmRRGGv3().Width < 1 || _003C_003Ec__DisplayClass56_.vciSRUPoM6u.tyEmRRGGv3().Height < 1)
 		{
 			throw new Exception("截取的图片太小。");
 		}
@@ -476,7 +477,7 @@ public class CaptureStep : IStepRunner, IStepRunningInfo
 		AppHelper.RunOnUiThread(true, _003C_003Ec__DisplayClass56_.uEPSRO8usT2);
 		if (_003C_003Ec__DisplayClass56_.vciSRUPoM6u != null && _003C_003Ec__DisplayClass56_.vciSRUPoM6u.IsSuccess)
 		{
-			if (_003C_003Ec__DisplayClass56_.vciSRUPoM6u.tyEmRRGGv3().Width < 1)
+			if (_003C_003Ec__DisplayClass56_.vciSRUPoM6u.tyEmRRGGv3().Width < 1 || _003C_003Ec__DisplayClass56_.vciSRUPoM6u.tyEmRRGGv3().Height < 1)
 			{
 				num = 1;
 				if (!KCRHk8QIRRiioWyrfr97())
