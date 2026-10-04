@@ -1013,6 +1013,15 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 
 	internal static UpdateActionsPage V3EMaKm4mZ4GoW6mKe1;
 
+	private readonly TextBlock _manualUpdateStatus = new TextBlock
+	{
+		Text = "尚未检查。点击“检查动作更新”查询网站版本，再选择要下载到本地的动作。",
+		TextWrapping = TextWrapping.Wrap,
+		Margin = new Thickness(0, 0, 0, 10)
+	};
+
+	private bool _hasCheckedUpdates;
+
 	[SpecialName]
 	[CompilerGenerated]
 	private bool SpdDbKdXLE()
@@ -1032,7 +1041,6 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 		InitializeComponent();
 		gX1DmhEk5y = AppState.DataService;
 		WUKDKqxkcS = AppState.lWutartRfUY();
-		InitializeComponent();
 		uUpDrAl9GN = CollectionViewSource.GetDefaultView(YCqDx38xbP);
 		uUpDrAl9GN.Filter = BlaD13alZ2;
 		LvItems.ItemsSource = uUpDrAl9GN;
@@ -1040,6 +1048,17 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 		ChkSkipConfirm.IsChecked = AppState.UserPreference.SkipConfirmationWhenBatchUpdateActions;
 		BtnSetAutoUpdate.Content = "检查动作更新";
 		BtnSetAutoUpdate.ToolTip = "手动查询网站上的动作版本；选择动作后下载到本地。";
+		ChkShowSkippedActions.IsChecked = true;
+		ChkShowSkippedActions.ToolTip = "显示此前标记为忽略的动作，仍由你选择是否更新。";
+		if (Content is UIElement originalContent)
+		{
+			Content = null;
+			var layout = new DockPanel();
+			DockPanel.SetDock(_manualUpdateStatus, Dock.Top);
+			layout.Children.Add(_manualUpdateStatus);
+			layout.Children.Add(originalContent);
+			Content = layout;
+		}
 	}
 
 	private void ghLD8JkPcn(object sender, RoutedEventArgs e)
@@ -1065,7 +1084,10 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 	{
 		if (SpdDbKdXLE()) return;
 		Nx9D6gsoDf(true);
-		BtnSetAutoUpdate.IsEnabled = false;
+		_hasCheckedUpdates = false;
+		YCqDx38xbP.Clear();
+		_manualUpdateStatus.Text = "正在检查网站上的动作版本……";
+		XKQDYgYWbQ();
 		try
 		{
 			var ids = new HashSet<Guid>();
@@ -1073,25 +1095,31 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 			{
 				if (profile?.ActionItems == null) continue;
 				foreach (var action in profile.ActionItems)
-					if (Guid.TryParse(action?.TemplateId, out var id)) ids.Add(id);
+					if (Guid.TryParse(action?.TemplateId, out var id) && id != Guid.Empty) ids.Add(id);
+			}
+			if (ids.Count == 0)
+			{
+				_manualUpdateStatus.Text = "没有带网站来源编号的动作。自行新建的动作没有网站版本可供比较。";
+				return;
 			}
 			var result = await SharedActionImportService.CheckUpdatesAsync(ids);
-			if (!result.IsSuccess)
+			if (!result.IsSuccess || result.Data == null)
 			{
-				AppHelper.ShowWarning(result.Message);
+				_manualUpdateStatus.Text = "检查未完成：" + (result.Message ?? "网站没有返回有效版本信息。");
+				AppHelper.ShowWarning(_manualUpdateStatus.Text);
 				return;
 			}
 			n4fD7ZMWyO(result.Data.SharedActions ?? new List<CheckActionUpdatesDto.SharedActionInfo>());
-			if (YCqDx38xbP.Count == 0) AppHelper.ShowInformation("没有可更新的动作。");
+			_hasCheckedUpdates = true;
 		}
 		catch (Exception error)
 		{
-			AppHelper.ShowWarning("检查动作更新异常：" + error.Message);
+			_manualUpdateStatus.Text = "检查动作更新异常：" + error.Message;
+			AppHelper.ShowWarning(_manualUpdateStatus.Text);
 		}
 		finally
 		{
 			Nx9D6gsoDf(false);
-			BtnSetAutoUpdate.IsEnabled = true;
 			XKQDYgYWbQ();
 		}
 	}
@@ -1101,6 +1129,7 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 		List<SharedActionUpdateListItem> list = new List<SharedActionUpdateListItem>();
 		foreach (ActionProfile value in gX1DmhEk5y.mP6tXA8VyNP().Values)
 		{
+			if (value == null) continue;
 			foreach (ActionItem actionItem in value.ActionItems ?? new List<ActionItem>())
 			{
 				if (actionItem != null && Guid.TryParse(actionItem.TemplateId, out var templateId))
@@ -1256,6 +1285,21 @@ public class UpdateActionsPage : SettingPage, IComponentConnector, IStyleConnect
 
 	private void XKQDYgYWbQ()
 	{
+		bool busy = SpdDbKdXLE();
+		BtnSetAutoUpdate.IsEnabled = !busy;
+		BtnUpdateSelected.IsEnabled = !busy && LvItems.SelectedItems.Count > 0;
+		BtnAddToSkipList.IsEnabled = !busy;
+		BtnRemoveFromSkipList.IsEnabled = !busy;
+		if (_hasCheckedUpdates && !busy)
+		{
+			int ignored = YCqDx38xbP.Count(item => item.Action.SkipCheckUpdate);
+			if (YCqDx38xbP.Count == 0)
+				_manualUpdateStatus.Text = "检查完成，没有待更新的动作。";
+			else if (uUpDrAl9GN.IsEmpty)
+				_manualUpdateStatus.Text = $"有 {YCqDx38xbP.Count} 个动作存在新版本，当前被忽略设置隐藏。勾选“显示已忽略动作”即可查看。";
+			else
+				_manualUpdateStatus.Text = $"有 {YCqDx38xbP.Count} 个动作存在新版本（其中 {ignored} 个已标记忽略）。选择后点击“更新所选”；下载新版会替换对应的本地动作。";
+		}
 		ChkShowSkippedActions.Visibility = ((!YCqDx38xbP.Any(_003C_003Ec.crpv9gXa2K9 ?? (_003C_003Ec.crpv9gXa2K9 = _003C_003Ec.ukJvZzm9p8M.blgvZi49Zss))) ? Visibility.Collapsed : Visibility.Visible);
 		BtnSetAutoUpdate.Visibility = Visibility.Visible;
 		Visibility visibility = (BtnAddToSkipList.Visibility = ((!LvItems.SelectedItems.Cast<SharedActionUpdateListItem>().Any(_003C_003Ec.Tpfv9LAGNcB ?? (_003C_003Ec.Tpfv9LAGNcB = _003C_003Ec.ukJvZzm9p8M.ip1vZ3HT4t0))) ? Visibility.Collapsed : Visibility.Visible));

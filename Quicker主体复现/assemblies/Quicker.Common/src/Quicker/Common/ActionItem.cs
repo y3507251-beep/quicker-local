@@ -53,14 +53,10 @@ public class ActionItem
 
 	public bool SkipWhenStopRunningActions { get; set; }
 
-	// 本地版不检查动作更新；旧配置中的 false 不会重新开启检查。
-	public bool SkipCheckUpdate
-	{
-		get => true;
-		set { }
-	}
+	// 保留用户对手动动作更新的忽略设置；后台检查由主程序独立禁用。
+	public bool SkipCheckUpdate { get; set; }
 
-	// 动作更新通过本地导入，保留属性以兼容旧配置，不接受自动更新开关。
+	// 动作仅在用户主动导入或手动更新时替换；不接受后台自动更新开关。
 	public bool AutoUpdate
 	{
 		get => false;
