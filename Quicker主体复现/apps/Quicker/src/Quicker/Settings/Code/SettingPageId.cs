@@ -26,8 +26,8 @@ public enum SettingPageId
 	ActionRecycleBinSettingPage,
 	UpdateActionsPage,
 	AboutSettingPage,
-	UsageStatisticsInfoPage,
-	HelperFunctionsSettingPage,
+	// 保持既有页面编号，避免移除统计页后改变旧的页面引用。
+	HelperFunctionsSettingPage = 25,
 	SyncSettingPage,
 	LeftButtonPlusSettingPage,
 	CircleMenuSettingPage,

@@ -226,7 +226,7 @@ public class SQLDataMgr
 
 	private static void Mwjtx4BXhVm(IList<KeyValuePair<int, IList<string>>> ilist_0)
 	{
-		IList<string> value = new List<string> { "\r\nCREATE TABLE \"Profiles\" (\r\n\t\"Id\"\tTEXT NOT NULL UNIQUE,\r\n\t\"Data\"\tTEXT NOT NULL,\r\n\t\"LastUpdateTimeUtc\"\tTEXT,\r\n\t\"IsDeleted\"\tINTEGER NOT NULL DEFAULT 0,\r\n\t\"DeleteTimeUtc\"\tTEXT,\r\n\t\"SyncState\"\tINTEGER NOT NULL DEFAULT 0,\r\n    \"SyncErrorMessage\"\tTEXT,\r\n\tPRIMARY KEY(\"Id\")\r\n)", "CREATE UNIQUE INDEX \"idx_profiles_id\" ON \"Profiles\" (\r\n\t\"Id\"\r\n)\r\n", "CREATE TABLE \"CommonData\" (\r\n\t\"Id\"\tTEXT NOT NULL UNIQUE,\r\n\t\"Data\"\tTEXT,\r\n\t\"LastUpdateTimeUtc\"\tTEXT,\r\n\t\"SyncState\"\tINTEGER NOT NULL DEFAULT 0,\r\n    \"SyncErrorMessage\"\tTEXT,\r\n    \"LocalOnly\"\tINTEGER NOT NULL DEFAULT 0,\r\n\tPRIMARY KEY(\"Id\")\r\n)", "CREATE UNIQUE INDEX \"idx_commondata_id\" ON \"CommonData\" (\r\n\t\"Id\"\tASC\r\n)", "CREATE TABLE \"SyncLog\" (\r\n\t\"SyncTimeUtc\"\tText ,\r\n\t\"IsSuccess\"\tINTEGER NOT NULL DEFAULT 0,\r\n\t\"Message\"\tTEXT,\r\n\t\"Vm\"\tTEXT,\r\n    \"Result\"\tTEXT\r\n)", "CREATE TABLE \"ActionHistory\" (\r\n    \"ActionId\"\tTEXT,\r\n\t\"BackupTimeUtc\"\tTEXT NOT NULL,\r\n\t\"ExpireTimeUtc\"\tTEXT,\r\n\t\"BackupType\"\tINTEGER NOT NULL DEFAULT 0,\r\n\t\"Note\"\tTEXT,\r\n\t\"Data\"\tTEXT\r\n);", "CREATE INDEX \"idx_ActionHistory_ActionId\" ON \"ActionHistory\" (\r\n\t\"ActionId\"\tASC\r\n);", "CREATE TABLE \"LocalActionInfo\" (\r\n\t\"ActionId\"\tTEXT NOT NULL UNIQUE,\r\n\t\"ClickCount\"\tINTEGER NOT NULL DEFAULT 0,\r\n\t\"LastClickTimeUtc\"\tTEXT,\r\n\t\"SyncState\"\tINTEGER NOT NULL DEFAULT 0,\r\n\tPRIMARY KEY(\"ActionId\")\r\n);", "CREATE TABLE \"LocalSharedAction\" (\r\n\t\"SharedActionId\"\tTEXT NOT NULL UNIQUE,\r\n\t\"Revision\"\tNUMERIC NOT NULL,\r\n\t\"Data\"\tTEXT,\r\n\t\"InstallTimeUtc\"\tTEXT,\r\n\tPRIMARY KEY(\"SharedActionId\")\r\n);" };
+		IList<string> value = new List<string> { "\r\nCREATE TABLE \"Profiles\" (\r\n\t\"Id\"\tTEXT NOT NULL UNIQUE,\r\n\t\"Data\"\tTEXT NOT NULL,\r\n\t\"LastUpdateTimeUtc\"\tTEXT,\r\n\t\"IsDeleted\"\tINTEGER NOT NULL DEFAULT 0,\r\n\t\"DeleteTimeUtc\"\tTEXT,\r\n\t\"SyncState\"\tINTEGER NOT NULL DEFAULT 0,\r\n    \"SyncErrorMessage\"\tTEXT,\r\n\tPRIMARY KEY(\"Id\")\r\n)", "CREATE UNIQUE INDEX \"idx_profiles_id\" ON \"Profiles\" (\r\n\t\"Id\"\r\n)\r\n", "CREATE TABLE \"CommonData\" (\r\n\t\"Id\"\tTEXT NOT NULL UNIQUE,\r\n\t\"Data\"\tTEXT,\r\n\t\"LastUpdateTimeUtc\"\tTEXT,\r\n\t\"SyncState\"\tINTEGER NOT NULL DEFAULT 0,\r\n    \"SyncErrorMessage\"\tTEXT,\r\n    \"LocalOnly\"\tINTEGER NOT NULL DEFAULT 0,\r\n\tPRIMARY KEY(\"Id\")\r\n)", "CREATE UNIQUE INDEX \"idx_commondata_id\" ON \"CommonData\" (\r\n\t\"Id\"\tASC\r\n)", "CREATE TABLE \"SyncLog\" (\r\n\t\"SyncTimeUtc\"\tText ,\r\n\t\"IsSuccess\"\tINTEGER NOT NULL DEFAULT 0,\r\n\t\"Message\"\tTEXT,\r\n\t\"Vm\"\tTEXT,\r\n    \"Result\"\tTEXT\r\n)", "CREATE TABLE \"ActionHistory\" (\r\n    \"ActionId\"\tTEXT,\r\n\t\"BackupTimeUtc\"\tTEXT NOT NULL,\r\n\t\"ExpireTimeUtc\"\tTEXT,\r\n\t\"BackupType\"\tINTEGER NOT NULL DEFAULT 0,\r\n\t\"Note\"\tTEXT,\r\n\t\"Data\"\tTEXT\r\n);", "CREATE INDEX \"idx_ActionHistory_ActionId\" ON \"ActionHistory\" (\r\n\t\"ActionId\"\tASC\r\n);", "CREATE TABLE \"LocalSharedAction\" (\r\n\t\"SharedActionId\"\tTEXT NOT NULL UNIQUE,\r\n\t\"Revision\"\tNUMERIC NOT NULL,\r\n\t\"Data\"\tTEXT,\r\n\t\"InstallTimeUtc\"\tTEXT,\r\n\tPRIMARY KEY(\"SharedActionId\")\r\n);" };
 		ilist_0.Add(new KeyValuePair<int, IList<string>>(1, value));
 	}
 
@@ -451,18 +451,7 @@ public class SQLDataMgr
 		SaveCommonDataObjectFromLocal("user_txtFloatPanelState", state, true);
 	}
 
-	internal void wcDtrLXGlFA(UsageSession usageSession_0)
-	{
-		if (!IsReadonly && usageSession_0 != null)
-		{
-			SaveCommonDataObjectFromLocal("user_usageSesion", usageSession_0, true);
-		}
-	}
 
-	internal UsageSession Q5DtrvtDtLD()
-	{
-		return PP6trtaO3SY<UsageSession>("user_usageSesion");
-	}
 
 	internal void joVtrSyM3yO(string string_2, UserInfo userInfo_0)
 	{
@@ -822,24 +811,6 @@ public class SQLDataMgr
 		}
 	}
 
-	public void CountActionClick(string actionId)
-	{
-		if (IsReadonly)
-		{
-			return;
-		}
-		string sql = "\r\nINSERT OR REPLACE INTO LocalActionInfo (ActionId, ClickCount, LastClickTimeUtc, SyncState)\r\nVALUES (@ActionId, \r\nCOALESCE(\r\n    (Select ClickCount FROM LocalActionInfo WHERE ActionId=@ActionId),\r\n    0) + 1,\r\n@LastClickTimeUtc,\r\n@SyncState)\r\n";
-		try
-		{
-			using SQLiteConnection cnn = uqDtxMWNJPB();
-			cnn.Execute(sql, new _003C_003Ef__AnonymousType42<string, DateTime, QuickerSyncState>(actionId, AppHelper.GetUtcNowForDb(), QuickerSyncState.Pending));
-		}
-		catch (Exception ex)
-		{
-			pIytrmrRhkp.Warn("打开数据库出错：" + ex.Message, ex);
-			AppHelper.ShowWarning("打开数据库出错，请重试。" + ex.Message);
-		}
-	}
 
 	public int GetPendingSyncItemCount()
 	{

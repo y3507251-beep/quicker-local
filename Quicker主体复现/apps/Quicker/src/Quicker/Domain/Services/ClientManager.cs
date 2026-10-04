@@ -137,7 +137,6 @@ public class ClientManager : IDisposable, IMessageProcessor
 
 	private readonly DataService lFAtQBMSmP0;
 
-	private readonly UsageCounter mVatQQiklRU;
 
 	private readonly ConcurrentDictionary<StateObject, StateObject> ndDtQjnAFg0 = new ConcurrentDictionary<StateObject, StateObject>();
 
@@ -151,12 +150,11 @@ public class ClientManager : IDisposable, IMessageProcessor
 
 	internal static ClientManager QmbEnyQLeADV9k5t7Ap5;
 
-	public ClientManager(ITinyMessengerHub hub, PanelState panelState, DataService dataService, UsageCounter usageCounter)
+	public ClientManager(ITinyMessengerHub hub, PanelState panelState, DataService dataService)
 	{
 		coktQrewvWN = hub;
 		UlutQpZ01JG = panelState;
 		lFAtQBMSmP0 = dataService;
-		mVatQQiklRU = usageCounter;
 		coktQrewvWN.Subscribe<PanelUpdateMessage>(epntQkJNjgw);
 		coktQrewvWN.Subscribe<UserSettingsChangedMessage>(wD8tQW4hEO1);
 		coktQrewvWN.Subscribe<AppCommandMessage>(LXrtQIMWy3R);
@@ -256,7 +254,6 @@ public class ClientManager : IDisposable, IMessageProcessor
 	{
 		_003C_003Ec__DisplayClass16_0 _003C_003Ec__DisplayClass16_ = new _003C_003Ec__DisplayClass16_0();
 		_003C_003Ec__DisplayClass16_.sxovTlkNgip = this;
-		mVatQQiklRU.CountMobileMessage(message.MessageType);
 		int num;
 		UpdateVolumeMessage updateVolumeMessage = default(UpdateVolumeMessage);
 		if (client != null && !client.IsLoggedIn && !(message is DeviceLoginMessage))

@@ -311,15 +311,6 @@ public static class SettingsMenuProvider
 					IsAdvanced = false,
 					EditControl = typeof(PrivacyPolicy)
 				},
-				new SettingPageInfo
-				{
-					Id = SettingPageId.UsageStatisticsInfoPage,
-					Title = "用量统计",
-					Icon = EFontAwesomeIcon.Light_Calculator,
-					Description = "用量统计",
-					IsAdvanced = false,
-					EditControl = typeof(UsageStatisticsInfoPage)
-				}
 			}
 		});
 		ay4j9Qhhmp.Add(new SettingMenuItem

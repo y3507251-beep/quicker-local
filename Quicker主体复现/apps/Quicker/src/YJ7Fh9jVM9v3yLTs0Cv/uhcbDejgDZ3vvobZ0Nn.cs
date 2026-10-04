@@ -190,7 +190,6 @@ internal static class uhcbDejgDZ3vvobZ0Nn
 		{
 			QuickActionRunner.RunQuickActionAsync(AppState.HS2taepcAbc(), _003C_003Ec__DisplayClass9_.nvNvQEVKSSV, AppState.Y2RtaqSv0AQ(), AppState.AppServer, false, ActionTrigger.HotkeyWatcher, "");
 		}
-		AppState.Lista4qx2wK().CountHotkeyWatcher();
 	}
 
 	private static void NdctWlgbJk1()

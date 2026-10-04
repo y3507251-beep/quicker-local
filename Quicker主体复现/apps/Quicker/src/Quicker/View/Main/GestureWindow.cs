@@ -628,7 +628,6 @@ public class GestureWindow : Window, IComponentConnector
 	{
 		if (ilist_1.Count != 0)
 		{
-			AppState.Lista4qx2wK().CountGesture();
 			PointTargetInfo = pointTargetInfo_1;
 			aL8LR7AXJDK = ilist_3;
 			A5yLR83rDx9 = false;

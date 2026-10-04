@@ -365,7 +365,6 @@ public class FloatPanelWindow : Window, IComponentConnector, IFloatItemWindow
 		if (e.OriginAction != null && e.OriginAction.AllowScrollTrigger)
 		{
 			O9QgDk1KmmC.NotifyRunAction(this, e.OriginAction.Id, false, false, ActionTrigger.ScrollOnButton, true, null, ActionHelper.GetScrollActionParam(e.OriginArgs.Delta));
-			AppState.Lista4qx2wK().CountFloatProfile();
 		}
 	}
 

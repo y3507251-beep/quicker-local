@@ -250,25 +250,6 @@ internal abstract class kWjRPcwItwkeAamARyg : oXLGvbwTuCxD9pGrbDD
 					}
 					goto end_IL_000f;
 					IL_0100:
-					UsageCounter usageCounter = AppState.Lista4qx2wK();
-					if (usageCounter == null)
-					{
-						if (!FDJ8OQcZm4AriWmZUYXe())
-						{
-							goto IL_01c2;
-						}
-						switch (1)
-						{
-						case 2:
-							break;
-						default:
-							goto IL_01c2;
-						case 1:
-							goto IL_01fd;
-						}
-						goto IL_0134;
-					}
-					usageCounter.CountEventTrigger();
 					goto IL_01fd;
 					IL_00f9:
 					awaiter.GetResult();

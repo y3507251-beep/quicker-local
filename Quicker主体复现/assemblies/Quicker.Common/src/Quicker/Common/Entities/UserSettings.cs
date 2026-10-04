@@ -104,7 +104,6 @@ public class UserSettings
 
 	public string RemapKeyPrintScreen { get; set; }
 
-	public bool EnableWinAppUsageCounter { get; set; }
 
 	[Obsolete("不再支持切换桌面功能")]
 	public bool EnableSwitchDesk { get; set; } = true;

@@ -863,7 +863,6 @@ public class CircleMenuWindow : Window, IComponentConnector
 		ShowExternalCircle = forClick && AppState.HHxtaMaoqJr().CircleMenuShowExternalWhenPopup;
 		usUL9WWw4Nk = forClick;
 		KluL9hrBtcu = 0;
-		AppState.Lista4qx2wK().CountCircleMenu();
 		int num;
 		if (ShowExternalCircle)
 		{

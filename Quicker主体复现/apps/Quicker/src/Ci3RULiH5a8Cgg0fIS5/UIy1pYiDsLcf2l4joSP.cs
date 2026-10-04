@@ -839,7 +839,6 @@ internal class UIy1pYiDsLcf2l4joSP
 
 		internal void xkZ2C9EVAwX()
 		{
-			AppState.Lista4qx2wK()?.CountAdvancedMouseAction();
 			QuickActionRunner.RunQuickActionAsync(hwO2CIAByJE, nFc2CY3uP8u, hwO2CIAByJE.jYVvvvEEUEj, hwO2CIAByJE.UorvvNUXimI, true, ActionTrigger.AdvancedMouseAction, "", null, null, false, AnO2CGiXw1d, false);
 		}
 

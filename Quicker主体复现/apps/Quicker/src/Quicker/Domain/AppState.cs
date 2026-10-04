@@ -165,8 +165,6 @@ public static class AppState
 
 	private static long Hast7F24KW3;
 
-	[CompilerGenerated]
-	private static UsageCounter Opot7UUrqTI;
 
 	private static int qast7lt0IQR;
 
@@ -1007,19 +1005,7 @@ public static class AppState
 		lyLt7AXxWnE = value;
 	}
 
-	[SpecialName]
-	[CompilerGenerated]
-	internal static UsageCounter Lista4qx2wK()
-	{
-		return Opot7UUrqTI;
-	}
 
-	[SpecialName]
-	[CompilerGenerated]
-	internal static void U1Lta5Cv1Ft(UsageCounter value)
-	{
-		Opot7UUrqTI = value;
-	}
 
 	[SpecialName]
 	[CompilerGenerated]

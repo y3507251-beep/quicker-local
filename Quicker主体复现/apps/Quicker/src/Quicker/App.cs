@@ -1095,7 +1095,6 @@ public class App : System.Windows.Application
 				ylH1RlKQtr.Bind<ProfileSwitcher>().ToSelf().InSingletonScope();
 				ylH1RlKQtr.Bind<ActiveWindowHook>().ToSelf().InSingletonScope();
 				ylH1RlKQtr.Bind<AppServer>().ToSelf().InSingletonScope();
-				ylH1RlKQtr.Bind<UsageCounter>().ToSelf().InSingletonScope();
 				ylH1RlKQtr.Bind<UIy1pYiDsLcf2l4joSP>().ToSelf().InSingletonScope();
 				ylH1RlKQtr.Bind<PopupState>().ToSelf().InSingletonScope();
 				ylH1RlKQtr.Bind<IconManager>().ToSelf().InSingletonScope();

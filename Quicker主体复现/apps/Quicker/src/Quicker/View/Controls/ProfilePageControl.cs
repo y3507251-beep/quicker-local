@@ -488,7 +488,6 @@ public class ProfilePageControl : Canvas
 	public void RefreshUi()
 	{
 		var profile = ActionProfile;
-		var counts = GetValue(ExeSettingsWindow.ActionUseCountsProperty) as IDictionary<Guid, int>;
 		bool isGlobal = profile != null && profile.IsGlobalProfile();
 		Height = isGlobal ? qF0Lxr4fTCv * 3 + 4 * I9ALxprMaRa : qF0Lxr4fTCv * 4 + 5 * I9ALxprMaRa;
 		for (int row = 0; row < 4; row++)
@@ -501,11 +500,6 @@ public class ProfilePageControl : Canvas
 				button.ActionItem = action;
 				button.ShowKeyTip = false;
 				button.KeyTip = "";
-				if (counts != null && Guid.TryParse(action?.Id, out var id))
-				{
-					button.ShowKeyTip = true;
-					button.KeyTip = counts.TryGetValue(id, out int count) ? count.ToString() : "<5";
-				}
 			}
 		}
 	}

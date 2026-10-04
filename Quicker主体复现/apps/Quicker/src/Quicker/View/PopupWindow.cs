@@ -558,7 +558,6 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 			lpISKWmtqy9.yDTgd9BT63o(true, true);
 			lpISKWmtqy9.ShowActivated = false;
 			lpISKWmtqy9.Show();
-			lpISKWmtqy9.dkRgTIAHVjG.CountPopup();
 			lpISKWmtqy9._isFirstShow = false;
 		}
 
@@ -1457,7 +1456,6 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 				popupWindow.ShowCreateActionIcon = AppState.HHxtaMaoqJr().ShowMenuWhenLeftClickEmptyButton;
 				popupWindow.MenuSyncNow.Visibility = (Visibility.Visible);
 				popupWindow.OCHgdTAct0q();
-				popupWindow.dkRgTIAHVjG.loDt8lkCi0B();
 				popupWindow.sIXgd7d5gV3();
 				num2 = 0;
 				if (Qo7R4qWYmRbc7bNktTFQ != null)
@@ -1572,7 +1570,6 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 
 	private readonly ProfileManager NgEgTYG5V1w;
 
-	private readonly UsageCounter dkRgTIAHVjG;
 
 	private readonly PopupState RYsgTWmiFr7;
 
@@ -1724,7 +1721,6 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 
 	internal System.Windows.Controls.MenuItem MenuSendFeedback;
 
-	internal System.Windows.Controls.MenuItem MenuViewUsage;
 
 	internal System.Windows.Controls.MenuItem MenuUpdateVersion;
 
@@ -2773,7 +2769,7 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 		zyagTQA9eBD?.ClearMessages(new ClearAll());
 	}
 
-	public PopupWindow(IKernel container, DataService dataService, ITinyMessengerHub hub, PanelState panelState, AppServer appServer, ActiveWindowHook activeWindowWatcher, ProfileManager profileManager, UsageCounter usageCounter, PopupState popupState, IconManager iconManager, ActionEditMgr actionEditMgr, RunningActionMgr runningActionMgr, SQLDataMgr sqlDataMgr, ProfileSwitcher profileSwitcher, AutoRunService autoRunService, FloatButtonAndPanelManager floatButtonAndPanelManager, TextFloatPanelMgr textFloatPanelMgr, PushClient pushClient)
+	public PopupWindow(IKernel container, DataService dataService, ITinyMessengerHub hub, PanelState panelState, AppServer appServer, ActiveWindowHook activeWindowWatcher, ProfileManager profileManager, PopupState popupState, IconManager iconManager, ActionEditMgr actionEditMgr, RunningActionMgr runningActionMgr, SQLDataMgr sqlDataMgr, ProfileSwitcher profileSwitcher, AutoRunService autoRunService, FloatButtonAndPanelManager floatButtonAndPanelManager, TextFloatPanelMgr textFloatPanelMgr, PushClient pushClient)
 	{
 		ItFgTcDUDd5 = container;
 		g7OgTVU3nuu = dataService;
@@ -2782,7 +2778,6 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 		zhBgThuh0yr = appServer;
 		PhNgTejR2Z6 = activeWindowWatcher;
 		NgEgTYG5V1w = profileManager;
-		dkRgTIAHVjG = usageCounter;
 		RYsgTWmiFr7 = popupState;
 		vYrgTkN08tx = iconManager;
 		bmIgTGywI3A = actionEditMgr;
@@ -4300,11 +4295,6 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 		AppWindowManager.ShowSettingsWindow(SettingPageId.AboutSettingPage);
 	}
 
-	private void eCSgoGOCncF(object sender, RoutedEventArgs e)
-	{
-		RequestHide();
-		AppWindowManager.ShowSettingsWindow(SettingPageId.UsageStatisticsInfoPage);
-	}
 
 	private void TJ9gosjXidx(object sender, RoutedEventArgs e)
 	{
@@ -4680,10 +4670,6 @@ public class PopupWindow : Window, IComponentConnector, IDisposable
 		case 46:
 			MenuSendFeedback = (System.Windows.Controls.MenuItem)target;
 			MenuSendFeedback.Click += pdVgoZ0C0H3;
-			break;
-		case 47:
-			MenuViewUsage = (System.Windows.Controls.MenuItem)target;
-			MenuViewUsage.Click += eCSgoGOCncF;
 			break;
 		case 48:
 			((System.Windows.Controls.MenuItem)target).Click += Cc6gokD9Svf;

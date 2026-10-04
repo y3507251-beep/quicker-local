@@ -524,3 +524,69 @@
 - **实际替换：**按用户此前直接替换及允许强制结束 Quicker 的授权，于 **2026-10-04 14:36:57** 将本次生成的 `Quicker.exe` 和 `Quicker.Common.dll` 复制到 `C:\Program Files\Quicker`。提升权限后的部署结果为 `Completed`，两文件复制成功；执行替换时匹配安装路径的运行进程列表为空，无须强制结束。替换前文件保存于 `artifacts/deploy-backups/20261004-143656-before-manual-action-updates`，部署结果同目录留存。没有访问 Quicker原始备份或操作其他项目。
 - **运行与遗留：**未自动启动程序、执行用户动作、进行联网更新、运行测试、接口对比或哈希验证。本条确认构建和替换成功，实际网站查询、列表交互及下载替换效果仍待用户使用反馈，不能据此宣称已运行通过。上述两处源码与本记录同步公开仓库，构建产物、备份、日志和个人数据留在本机。
 
+### EXE-027｜2026-10-04｜移除用量统计页面、计数及存储链路
+
+- **用户要求：**用户在手动更新动作后要求查看本地更新结果，并将用量统计相关代码全部移除。只读查看本地动作版本及正文缓存，确认本轮下载已写入本地，未再次执行更新或运行动作。本次不修改用户数据库、动作定义或账号信息，不清理原有历史数据。
+- **修改前后：**此前本地计数仍由动作、面板和各类触发方式调用，并定时保存使用会话；关于页及场景页的次数查询改造不完整。此次删除计数服务及所有调用、依赖注入、定时保存、会话模型、统计读写接口、统计页面和次数显示入口。主面板及场景设置保留原有动作功能，程序不再采集、累计、保存或查询这套用量统计。既有数据库里的历史统计记录不再由该功能读取；没有对用户数据库执行删除或迁移。
+
+**主链路与界面文件（相对 `apps/Quicker/src`）：**
+
+| 文件 | 关键方法与变化 |
+| --- | --- |
+| `Quicker/App.cs` | 删除 `UsageCounter` 的 Ninject 单例注册。 |
+| `Quicker/Domain/AppState.cs` | 删除统计实例字段 `Opot7UUrqTI` 及 `Lista4qx2wK`、`U1Lta5Cv1Ft` 访问方法。 |
+| `Quicker/Domain/AppServer.cs` | 构造函数删除统计依赖及字段；`AbevXe1ORWu` 删除动作次数累计，保留动作执行。 |
+| `Quicker/Domain/Services/ClientManager.cs` | 构造函数删除统计依赖及字段；`ProcessMessage` 删除移动端消息次数累计。 |
+| `Quicker/Domain/Services/SQLDataMgr.cs` | 删除 `wcDtrLXGlFA`、`Q5DtrvtDtLD` 使用会话保存/读取方法和 `CountActionClick` 写库方法；新建数据库语句移除不再使用的 `LocalActionInfo` 建表项，现存数据库不变。 |
+| `Quicker/Domain/Services/DataService.cs` | 删除仅供统计定时器使用的 `w8Qtm66XINE` 周期访问方法。 |
+| `IgQBbvXMVdsN7GVNUxX/aFIptTXYsUoTUF4v33R.cs` | 删除旧统计上传替代入口 `EAkt1FJmExJ` 及统计查询入口 `QNCtbECIxo5`。 |
+| `Quicker/Settings/SettingsMenuProvider.cs` | 删除关于页下的“用量统计”页面注册。 |
+| `Quicker/Settings/Code/SettingPageId.cs` | 删除统计页面枚举项；显式保持后续 `HelperFunctionsSettingPage = 25`，使其它既有页面编号不发生偏移。 |
+| `Quicker/View/PopupWindow.cs` | 构造函数移除统计依赖；删除 `QN0SKIuPgcQ` 的面板次数累计、启动状态机中的上次会话调用，以及 `MenuViewUsage`、`eCSgoGOCncF` 和连接编号 47 的事件绑定。 |
+| `Quicker/View/ProfileManagement/ExeSettingsWindow.cs` | 删除 `MenuShowUseCount` 异步状态机、`E5KLNqy1N0t`、连接编号 3 的绑定、统计缓存字段及 `ActionUseCounts` 附加属性/注册。 |
+| `Quicker/View/Controls/ProfilePageControl.cs` | `RefreshUi` 删除动作次数读取及次数角标显示。 |
+| `Quicker/View/Controls/ProfilePanelControl.cs` | `RefreshUi` 删除次数查询及角标分支，改为普通行列循环刷新动作；删除原刷新闭包 `DisplayClass42_0/1`。保留全局三行与场景四行布局、动作绑定及布局刷新。 |
+
+**触发位置的统计调用清理（相对 `apps/Quicker/src`）：**
+
+| 文件 | 删除的调用位置 |
+| --- | --- |
+| `aWEhsXjxWyCRXOavmGf/mX7qQhjtCi2Je746unO.cs` | `J7FvQ1SrJwa` 中的 `CountDbClick`。 |
+| `Ci3RULiH5a8Cgg0fIS5/UIy1pYiDsLcf2l4joSP.cs` | `xkZ2C9EVAwX` 中的 `CountAdvancedMouseAction`。 |
+| `HMdjedXPwaug8yh9mEq/brgW8EX9ZVfZExh7q9t.cs` | `X2WtpW1VL1A` 中的 `CountHotkey`。 |
+| `sBtxL6X8ZmkfRQWgUC5/GrZJHjXh9DrUnn7CH6P.cs` | `lTWv4dh7C1W` 中的 `CountSelectPlus`。 |
+| `wO0UogXeWxgnePQOF3R/we8kb6Xb9dOkNdooDpA.cs` | `VDNtxJDE4av` 中的 `CountTextCommand`。 |
+| `YJ7Fh9jVM9v3yLTs0Cv/uhcbDejgDZ3vvobZ0Nn.cs` | `DA4tWUR26XI` 中的 `CountHotkeyWatcher`。 |
+| `YDnFyFwG4PlN0Cedwny/kWjRPcwItwkeAamARyg.cs` | 事件触发状态机 `MoveNext` 的 `CountEventTrigger` 和统计实例空值分支，执行完成后直接进入原后续流程。 |
+| `Quicker/Domain/PowerKeys/PowerKeysService.cs` | `MIytZ0yNjTu` 中的 `CountPowerKey`。 |
+| `Quicker/Domain/Services/AutoRunService.cs` | `MT9v5yO9mFA`、`OTyv5qoXkXW` 中的 `CountAutoRun`。 |
+| `Quicker/Domain/Services/IpcServer.cs` | `RVYtB2WXgbC` 中的 `CountExternalLaunch`。 |
+| `Quicker/View/FloatButtonWindow.cs` | `TheButton_OnPreviewMouseUp` 中的 `CountFloatButton`。 |
+| `Quicker/View/FloatPanelWindow.cs` | `aLggD20Xd9E` 中的 `CountFloatProfile`。 |
+| `Quicker/View/SearchWindow.cs` | `RequestShow` 中的 `CountSearch`。 |
+| `Quicker/View/TextFloatPanelWindow.cs` | `Jxxg5Wf9DkZ` 中的 `CountTextFloater`。 |
+| `Quicker/View/CircleMenu/CircleMenuWindow.cs` | `TriggerShow` 中的 `CountCircleMenu`。 |
+| `Quicker/View/Main/GestureWindow.cs` | `hQlL7mZB1sL` 中的 `CountGesture`。 |
+
+**Common 与资源修改：**
+
+- `assemblies/Quicker.Common/src/Quicker/Common/Const/GlobalConstValues.cs`：删除 `CommonDataItem_UsageSession` 常量。
+- `assemblies/Quicker.Common/src/Quicker/Common/Entities/UserSettings.cs`：删除无调用的 `EnableWinAppUsageCounter` 统计开关。
+- `apps/Quicker/src/view/main/popupwindow.baml`：删除“用量统计”菜单元素，保留其它控件连接编号。
+- `apps/Quicker/src/view/profilemanagement/exesettingswindow.baml`：删除仅包含“显示/隐藏动作使用次数”的上下文菜单属性，保留场景编辑控件及其连接编号。
+- `apps/Quicker/src/Quicker.g.resources`：同步上述两个 BAML 修改，删除统计页 BAML 和统计图标条目。未改变工程、依赖或构建方式。
+
+**送入回收站的全部文件：**
+
+- `apps/Quicker/src/Quicker/Domain/UsageCounter.cs`：整个服务，包括动作/触发计数、定时器回调、会话保存及旧上传占位入口。
+- `apps/Quicker/src/Quicker/Settings/Pages/About/UsageStatisticsInfoPage.cs`：整个统计页面、查询状态机及展示逻辑。
+- `apps/Quicker/src/Quicker/Domain/SQL/Entities/LocalActionInfo.cs`：专用点击次数模型。
+- `apps/Quicker/src/--f__AnonymousType42.cs`：仅用于点击次数写库的参数类型。
+- `assemblies/Quicker.Common/src/Quicker/Common/Entities/UsageSession.cs`：使用会话统计模型。
+- `apps/Quicker/src/settings/pages/about/usagestatisticsinfopage.baml`：统计页资源。
+- `apps/Quicker/src/assets/usage.png`：统计图标。
+
+- **实际构建：**使用现有 `build.cmd` 构建 Release 成功，**0 个错误、5,950 个警告**，耗时 4.58 秒；日志为本机 `artifacts/build-remove-usage-statistics.log`。未新增辅助脚本、测试或验证框架。
+- **实际替换：**按既有授权强制结束安装目录 Quicker 进程 42944。首次复制遇到文件占用，未复制任何文件；随后重试于 **2026-10-04 15:02:51** 完成，将本次 `Quicker.exe` 和 `Quicker.Common.dll` 写入 `C:\Program Files\Quicker`，结果 `Completed`。替换前文件及两次结果保存在 `artifacts/deploy-backups/20261004-150045-before-remove-usage-statistics`。
+- **运行与发布：**未自动启动软件、执行动作或运行测试、接口对比、哈希对比及替换测试；构建与文件复制成功不等于所有运行交互均已确认。仅上述源码、资源和本记录同步公开仓库，删除项的发布副本同样送入回收站；动作数据库、查询结果、日志、备份及二进制产物不上传。未访问 Quicker原始备份，未操作其它项目。
+

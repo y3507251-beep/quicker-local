@@ -213,8 +213,6 @@ internal static class aFIptTXYsUoTUF4v33R
 	public static Task<ApiResult<ExeFileVersionDto>> DSUt1OgOGK3(ExeFileVersionVm exeFileVersionVm_0)
 	{ return LocalDataStore.Execute(() => LocalDataStore.SaveExeInfo(exeFileVersionVm_0)); }
 
-	public static Task EAkt1FJmExJ(UsageSession usageSession_0, bool bool_0)
-	{ AppState.SQLDataMgr.wcDtrLXGlFA(usageSession_0); return Task.CompletedTask; }
 
 	public static Task<ApiResult<string>> pJwt1U1S2b5()
 	{
@@ -282,10 +280,6 @@ internal static class aFIptTXYsUoTUF4v33R
 		return Task.FromResult(ApiResult<BasicOcrRtn>.Error("原厂云端接口已删除。请使用本地导入/导出；OCR、语音等功能需选择本地引擎或自行配置的服务。"));
 	}
 
-	internal static Task<ApiResult<IDictionary<Guid, int>>> QNCtbECIxo5(int int_0)
-	{
-		return LocalDataStore.Execute<IDictionary<Guid, int>>(() => AppState.SQLDataMgr.PP6trtaO3SY<Dictionary<Guid, int>>("local_action_usage") ?? new Dictionary<Guid, int>());
-	}
 
 	public static Task<ApiResult<SharedActionDto>> lo0tbyRalUe(string string_2)
 	{

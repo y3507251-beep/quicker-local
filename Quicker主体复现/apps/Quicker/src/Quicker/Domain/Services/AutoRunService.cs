@@ -139,7 +139,6 @@ public class AutoRunService
 
 		internal void MT9v5yO9mFA()
 		{
-			AppState.Lista4qx2wK()?.CountAutoRun();
 			evKtxbjB1eH.Info($"开始执行启动动作({r7Pv5aL7EUT.TaskType}): {r7Pv5aL7EUT.ActionIdOrName} 参数：{r7Pv5aL7EUT.ActionParam}");
 			rmLv57lFgPk.zRxtxHVku7a.NotifyRunAction(rmLv57lFgPk, r7Pv5aL7EUT.ActionIdOrName, false, true, ActionTrigger.AutoRun, false, null, r7Pv5aL7EUT.ActionParam);
 		}
@@ -172,7 +171,6 @@ public class AutoRunService
 
 		internal void OTyv5qoXkXW()
 		{
-			AppState.Lista4qx2wK()?.CountAutoRun();
 			evKtxbjB1eH.Info($"执行定时任务({Rwyv5cioGtI.TaskType}): {Rwyv5cioGtI.ActionIdOrName} 参数：{Rwyv5cioGtI.ActionParam}");
 			pvQv5V7HdaA.zRxtxHVku7a.NotifyRunAction(pvQv5V7HdaA, Rwyv5cioGtI.ActionIdOrName, false, true, ActionTrigger.AutoRun, false, null, Rwyv5cioGtI.ActionParam);
 		}

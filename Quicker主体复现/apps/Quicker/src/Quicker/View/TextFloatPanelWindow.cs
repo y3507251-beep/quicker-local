@@ -304,7 +304,6 @@ public class TextFloatPanelWindow : Window, IComponentConnector
 			{
 				agng5UwDyLs.NotifyRunAction(this, _003C_003Ec__DisplayClass24_.KBISXzNauR9.OriginAction.Id, false, false, ActionTrigger.FloatPanel, true);
 				DoHideWindow();
-				AppState.Lista4qx2wK().CountTextFloater();
 			}
 		}
 		else if (_003C_003Ec__DisplayClass24_.KBISXzNauR9.OriginArgs.ChangedButton == MouseButton.Middle)

@@ -835,7 +835,6 @@ public class PowerKeysService
 				{
 					string inputText = ((powerKeyActionItem.SecondaryKey != 261) ? "" : ((Keys?)_003C_003Ec__DisplayClass31_.XnZvKQMHN0t)?.ToString());
 					QuickActionRunner.RunQuickActionAsync(this, powerKeyActionItem, vEWtZ9iBR1H, emitZhfdFBr, false, ActionTrigger.PowerKeys, inputText);
-					AppState.Lista4qx2wK().CountPowerKey();
 					return true;
 				}
 			}

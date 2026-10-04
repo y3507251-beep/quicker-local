@@ -840,7 +840,6 @@ public class IpcServer
 	{
 		{
 			string string_1 = string_0.Substring("runaction:".Length);
-			AppState.Lista4qx2wK()?.CountExternalLaunch();
 			return bbNtp3141IB(string_1, false);
 		}
 

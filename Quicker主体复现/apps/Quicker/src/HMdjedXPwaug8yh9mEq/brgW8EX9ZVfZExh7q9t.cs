@@ -792,7 +792,6 @@ internal class brgW8EX9ZVfZExh7q9t
 			}
 			if (value != null && value.ActionHotKeyItems.HasData())
 			{
-				AppState.Lista4qx2wK().CountHotkey();
 				List<ActionHotKeyItem> list = value.ActionHotKeyItems.Where(_003C_003Ec.hFTvoXb0YYN ?? (_003C_003Ec.hFTvoXb0YYN = _003C_003Ec.pRCvo17HjD6.j0cvok7O8NP)).ToList();
 				if (list.Any())
 				{

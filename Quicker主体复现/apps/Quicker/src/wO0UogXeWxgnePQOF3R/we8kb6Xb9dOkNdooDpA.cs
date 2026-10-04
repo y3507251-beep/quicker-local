@@ -167,7 +167,6 @@ internal class we8kb6Xb9dOkNdooDpA
 						}
 					}
 					keyEventArgs_0.Handled = true;
-					AppState.Lista4qx2wK().CountTextCommand();
 					return;
 				}
 				if (keyEventArgs_0.KeyCode == Keys.Return)

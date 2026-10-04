@@ -61,7 +61,6 @@ internal static class mX7qQhjtCi2Je746unO
 			if (keyActionItem != null)
 			{
 				QuickActionRunner.RunQuickActionAsync(AppState.AppServer, keyActionItem.DoubleClickAction, AppState.Y2RtaqSv0AQ(), AppState.AppServer, false, ActionTrigger.TriggerKey, string.Empty);
-				AppState.Lista4qx2wK().CountDbClick();
 				AppState.v5FtaQ4hQfg().sVNvgq3htAy();
 			}
 		}

@@ -614,7 +614,6 @@ public class FloatButtonWindow : Window, IComponentConnector, IFloatItemWindow
 			{
 				fWggMMONObi.NotifyRunAction(this, ThmgMDrh8GA.Id, false, false, ActionTrigger.FloatButton, true);
 			}
-			AppState.Lista4qx2wK().CountFloatButton();
 		}
 		else if (e.ChangedButton == MouseButton.Middle)
 		{

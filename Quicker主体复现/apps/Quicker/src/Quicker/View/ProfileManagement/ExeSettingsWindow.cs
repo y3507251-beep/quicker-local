@@ -267,148 +267,6 @@ public class ExeSettingsWindow : Window, IComponentConnector
 		}
 	}
 
-	[StructLayout(LayoutKind.Auto)]
-	[CompilerGenerated]
-	private struct _003CMenuShowUseCount_OnClick_003Ed__26 : IAsyncStateMachine
-	{
-		public int _003C_003E1__state;
-
-		public AsyncVoidMethodBuilder _003C_003Et__builder;
-
-		public ExeSettingsWindow _003C_003E4__this;
-
-		private ConfiguredTaskAwaitable<ApiResult<IDictionary<Guid, int>>>.ConfiguredTaskAwaiter _003C_003Eu__1;
-
-		private static object mdV0QeW66Z40eA6kTsTR;
-
-		private void MoveNext()
-		{
-			int num = _003C_003E1__state;
-			ExeSettingsWindow exeSettingsWindow = _003C_003E4__this;
-			try
-			{
-				if (num == 0)
-				{
-					goto IL_0064;
-				}
-				{
-					if (exeSettingsWindow.ActionUseCounts == null)
-					{
-						goto IL_0064;
-					}
-					exeSettingsWindow.ActionUseCounts = null;
-					exeSettingsWindow.ActionPages.Refresh();
-					if (vZIWMjW6tww5Eqo3m8Fm())
-					{
-						switch (0)
-						{
-						}
-					}
-				}
-				goto end_IL_000e;
-				IL_0064:
-				try
-				{
-					int num2;
-					if (num != 0)
-					{
-						num2 = 0;
-						if (mdV0QeW66Z40eA6kTsTR != null)
-						{
-							goto IL_00bc;
-						}
-						goto IL_00bd;
-					}
-					ConfiguredTaskAwaitable<ApiResult<IDictionary<Guid, int>>>.ConfiguredTaskAwaiter awaiter = _003C_003Eu__1;
-					_003C_003Eu__1 = default(ConfiguredTaskAwaitable<ApiResult<IDictionary<Guid, int>>>.ConfiguredTaskAwaiter);
-					num = -1;
-					_003C_003E1__state = -1;
-					goto IL_00f1;
-					IL_00f1:
-					ApiResult<IDictionary<Guid, int>> result = awaiter.GetResult();
-					if (result.IsSuccess)
-					{
-						exeSettingsWindow.ActionUseCounts = result.Data;
-						exeSettingsWindow.XBZLNHojobR = result.Data;
-						num2 = 1;
-						if (!vZIWMjW6tww5Eqo3m8Fm())
-						{
-							goto IL_00bc;
-						}
-						goto IL_00bd;
-					}
-					AppHelper.ShowWarning("获取数据失败！" + result.Message);
-					goto end_IL_0064;
-					IL_00bd:
-					switch (num2)
-					{
-					default:
-						if (exeSettingsWindow.XBZLNHojobR == null)
-						{
-							awaiter = aFIptTXYsUoTUF4v33R.QNCtbECIxo5(-1).ConfigureAwait(true).GetAwaiter();
-							if (!awaiter.IsCompleted)
-							{
-								num = 0;
-								_003C_003E1__state = 0;
-								_003C_003Eu__1 = awaiter;
-								_003C_003Et__builder.AwaitUnsafeOnCompleted(ref awaiter, ref this);
-								return;
-							}
-							break;
-						}
-						exeSettingsWindow.ActionUseCounts = exeSettingsWindow.XBZLNHojobR;
-						exeSettingsWindow.ActionPages.Refresh();
-						goto end_IL_0064;
-					case 1:
-						exeSettingsWindow.ActionPages.Refresh();
-						goto end_IL_0064;
-					}
-					goto IL_00f1;
-					IL_00bc:
-					int num3 = default(int);
-					num2 = num3;
-					goto IL_00bd;
-					end_IL_0064:;
-				}
-				catch (Exception exception)
-				{
-					AppHelper.ShowWarning(exception.GetMessageWithInner());
-				}
-				end_IL_000e:;
-			}
-			catch (Exception exception2)
-			{
-				_003C_003E1__state = -2;
-				_003C_003Et__builder.SetException(exception2);
-				return;
-			}
-			_003C_003E1__state = -2;
-			_003C_003Et__builder.SetResult();
-		}
-
-		void IAsyncStateMachine.MoveNext()
-		{
-			//ILSpy generated this explicit interface implementation from .override directive in MoveNext
-			this.MoveNext();
-		}
-
-		[DebuggerHidden]
-		private void SetStateMachine(IAsyncStateMachine stateMachine)
-		{
-			_003C_003Et__builder.SetStateMachine(stateMachine);
-		}
-
-		void IAsyncStateMachine.SetStateMachine(IAsyncStateMachine stateMachine)
-		{
-			//ILSpy generated this explicit interface implementation from .override directive in SetStateMachine
-			this.SetStateMachine(stateMachine);
-		}
-
-		internal static bool vZIWMjW6tww5Eqo3m8Fm()
-		{
-			return mdV0QeW66Z40eA6kTsTR == null;
-		}
-	}
 
 	private readonly DataService RGrLNZHRFiA;
 
@@ -424,7 +282,6 @@ public class ExeSettingsWindow : Window, IComponentConnector
 
 	private TinyMessageSubscriptionToken DomLNWTfmSu;
 
-	public static readonly DependencyProperty ActionUseCountsProperty;
 
 	private ExeSettings KcaLNk3irXk;
 
@@ -432,7 +289,6 @@ public class ExeSettingsWindow : Window, IComponentConnector
 
 	private static readonly ILog XfsLNs3dEIb;
 
-	private IDictionary<Guid, int> XBZLNHojobR;
 
 	internal ExeListControl ExeList;
 
@@ -456,17 +312,6 @@ public class ExeSettingsWindow : Window, IComponentConnector
 
 	private static ExeSettingsWindow KPaiZBFjhF63FvZw1RpA;
 
-	public IDictionary<Guid, int> ActionUseCounts
-	{
-		get
-		{
-			return (IDictionary<Guid, int>)GetValue(ActionUseCountsProperty);
-		}
-		set
-		{
-			SetValue(ActionUseCountsProperty, value);
-		}
-	}
 
 	public ExeSettingsWindow(DataService dataService, ITinyMessengerHub hub, AppServer appServer, ProfileManager profileManager, ActionEditMgr actionEditMgr, string exe)
 	{
@@ -559,15 +404,6 @@ public class ExeSettingsWindow : Window, IComponentConnector
 		mm3LN9aytOH.NotifyCommonDataUpdated(this, "user_mouseActions");
 	}
 
-	[AsyncStateMachine(typeof(_003CMenuShowUseCount_OnClick_003Ed__26))]
-	private void E5KLNqy1N0t(object sender, RoutedEventArgs e)
-	{
-		_003CMenuShowUseCount_OnClick_003Ed__26 stateMachine = default(_003CMenuShowUseCount_OnClick_003Ed__26);
-		stateMachine._003C_003Et__builder = AsyncVoidMethodBuilder.Create();
-		stateMachine._003C_003E4__this = this;
-		stateMachine._003C_003E1__state = -1;
-		stateMachine._003C_003Et__builder.Start(ref stateMachine);
-	}
 
 	private void LeftButtonPlus_OnDataChanged(object sender, EventArgs e)
 	{
@@ -610,15 +446,6 @@ public class ExeSettingsWindow : Window, IComponentConnector
 		case 2:
 			ActionPages = (ActionPagesControl)target;
 			break;
-		case 3:
-			((MenuItem)target).Click += E5KLNqy1N0t;
-			if (!UihXG0FjHfXUouwknZeI())
-			{
-				switch (0)
-				{
-				}
-			}
-			break;
 		case 4:
 			SettingsTab = (TabControl)target;
 			break;
@@ -645,7 +472,6 @@ public class ExeSettingsWindow : Window, IComponentConnector
 
 	static ExeSettingsWindow()
 	{
-		ActionUseCountsProperty = DependencyProperty.RegisterAttached("ActionUseCounts", typeof(IDictionary<Guid, int>), typeof(global::Quicker.View.ProfileManagement.ExeSettingsWindow), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
 		XfsLNs3dEIb = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 	}
 

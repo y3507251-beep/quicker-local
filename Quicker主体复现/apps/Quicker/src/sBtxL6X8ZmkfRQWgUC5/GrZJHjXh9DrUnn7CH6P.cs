@@ -42,7 +42,6 @@ internal class GrZJHjXh9DrUnn7CH6P
 			try
 			{
 				QuickActionRunner.RunQuickActionAsync(AppState.AppServer, tU6v4oggoah, AppState.Y2RtaqSv0AQ(), AppState.AppServer, false, ActionTrigger.LeftButtonPlus, "");
-				AppState.Lista4qx2wK().CountSelectPlus();
 				if (tU6v4oggoah.LongPressActionType > QuickActionType.None)
 				{
 					LongPressTriggerService.Start(new _003C_003Ec__DisplayClass16_1

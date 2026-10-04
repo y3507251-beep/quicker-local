@@ -9,7 +9,6 @@ public static class GlobalConstValues
 
 	public const string CommonDataItem_UserSettingsId = "user_settings";
 
-	public const string CommonDataItem_UsageSession = "user_usageSesion";
 
 	public const string CommonDataItem_TextFloatPanelState = "user_txtFloatPanelState";
 

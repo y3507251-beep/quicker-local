@@ -697,7 +697,6 @@ public class SearchWindow : Window, IComponentConnector, IStyleConnector, ISearc
 			EGigOWw9LBH(true);
 			wwxgOrG9U7u = startSearchAction != null;
 			ActionPlaceholder = $"开始搜索({(VirtualKeyCode)AppState.HHxtaMaoqJr().SearchSettings.HintTriggerKey}查看提示)...";
-			AppState.Lista4qx2wK().CountSearch();
 			cRngAKseB33();
 			SelectedAction = startSearchAction;
 			if (startSearchAction == null)

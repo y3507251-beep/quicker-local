@@ -3497,11 +3497,6 @@ public class DataService : IDisposable
 		return uT4WJujEfNmOl8aWJJC.k25tkYhXNMI().rUStBD4WdHC();
 	}
 
-	[SpecialName]
-	internal int w8Qtm66XINE()
-	{
-		return 1800;
-	}
 
 	public DataService(SQLDataMgr localDataMgr, AppPathProvider appPathProvider, ITinyMessengerHub hub)
 	{

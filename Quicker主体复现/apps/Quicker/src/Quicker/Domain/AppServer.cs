@@ -112,7 +112,6 @@ public class AppServer : IDisposable
 		{
 			if (!iYgvXIdVebT)
 			{
-				oYKvXWHuU69.RoQtRAXrU3b.CountActionClick(sJdvXkt6o2g);
 				ruWtR5o9n6j.Info("执行动作：" + sJdvXkt6o2g.Title + " id=" + sJdvXkt6o2g.Id);
 				int num = 0;
 				if (oA1qubc69wCXQTqGNBjG != null)
@@ -811,7 +810,6 @@ public class AppServer : IDisposable
 
 	private readonly ActiveWindowHook K03tRMdjDH5;
 
-	private readonly UsageCounter RoQtRAXrU3b;
 
 	private readonly IconManager z8StRO0Ygs6;
 
@@ -833,7 +831,7 @@ public class AppServer : IDisposable
 
 	internal static AppServer iecNXTQGWP5ob7dtni4P;
 
-	public AppServer(ProfileManager profileManager, ClientManager clientManger, ITinyMessengerHub hub, PanelState panelState, ProfileSwitcher profileSwitcher, ActiveWindowHook activeWindowWatcher, UsageCounter usageCounter, IconManager iconManager, RunningActionMgr runningActionMgr, DataService dataService, PopupState popupState, TextFloatPanelMgr textFloatPanelMgr, PushClient pushClient)
+	public AppServer(ProfileManager profileManager, ClientManager clientManger, ITinyMessengerHub hub, PanelState panelState, ProfileSwitcher profileSwitcher, ActiveWindowHook activeWindowWatcher, IconManager iconManager, RunningActionMgr runningActionMgr, DataService dataService, PopupState popupState, TextFloatPanelMgr textFloatPanelMgr, PushClient pushClient)
 	{
 		AppState.AppServer = this;
 		sxJtRfJwBTQ = profileManager;
@@ -842,7 +840,6 @@ public class AppServer : IDisposable
 		DkKtRo833jV = panelState;
 		wE3tRTpIAYG = profileSwitcher;
 		K03tRMdjDH5 = activeWindowWatcher;
-		RoQtRAXrU3b = usageCounter;
 		z8StRO0Ygs6 = iconManager;
 		fajtRFXAueR = runningActionMgr;
 		eGptRUyJGfy = dataService;
